@@ -90,3 +90,21 @@ using namespace std;
 //	return 0;
 //}
 
+
+
+//   3.1
+
+double GetPower(double base, int exponent) {
+    double result = 1.0;
+    for (int i = 0; i < exponent; i++) {
+        result *= base;
+    }
+    return result;
+}
+
+int main() {
+    cout << "2.0 ^ 5 = " << GetPower(2.0, 5) << endl;
+    cout << "3.0 ^ 4 = " << GetPower(3.0, 4) << endl;
+    cout << "-2.0 ^ 5 = " << GetPower(-2.0, 5) << endl;
+    return 0;
+}
