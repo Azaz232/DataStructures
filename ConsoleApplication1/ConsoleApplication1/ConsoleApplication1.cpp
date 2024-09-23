@@ -1,20 +1,108 @@
-﻿// ConsoleApplication1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿#include <iostream>
+
+using namespace std;
+
+//void Breakpoints() {
+//	double add = 1.0;
+//	double sum = 0.0;
+//	for (int i = 0; i < 1000; i++) {
+//		sum += add * i;
+//		if (i % 3 == 0) {
+//			add *= 1.1;
+//		}
+//		else {
+//			add /= 3.0;
+//		}
+//	}
+//	cout << "Total sum is " << sum << endl;
+//}
+//
+//int main() {
+//	Breakpoints();
+//}
 //
 
-#include <iostream>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+
+//task2
+
+//int main() {
+//	int array[10] = { 3, 6, -7, 4, 1, 2, -4, -10, 8, 0 };
+//
+//	cout << "sourse array: " << endl;
+//	for (int i = 0; i < 10; i++) {
+//		cout << array[i] << " ";
+//	}
+//	cout << endl;
+//
+//	for (int i = 0; i < 9; i++) {
+//		for (int j = 0; j < 9 - i; j++) {
+//			if (array[j] > array[j+1]) {
+//				int temp = array[j];
+//				array[j] = array[j + 1];
+//				array[j + 1] = temp;
+//			}
+//		}
+//	}
+//	cout << "sorted array : " << endl;
+//	for (int i = 0; i < 10; i++) {
+//		cout << array[i] << " ";
+//	}
+//	return 0;
+//}
+
+//int main() {
+//	float arr[12] = {2.0, 838.0, 798.5, -8.9, -4.4, 1.0002, 999.8, 3.999, 54675.56, -1970, 6.666, 2.33};
+//	cout << "sourse array : ";
+//	for (int i = 0; i < 12; i++) {
+//		cout << arr[i] << " ";
+//	}
+//	cout << endl;
+//	float s;
+//	int k = 0;
+//	cout << "enter searching value : " << endl; cin >> s;
+//	for (int i = 0; i < 12; i++) {
+//		if (arr[i] >= s) {
+//			k++;
+//		}
+//	}
+//	cout << k << "  ellements bigger than  " << s;
+//  return 0;
+//}
+
+//int main() {
+//	char arr[8];
+//	cout << "enter an array of 8 characters : " << endl;
+//	for (int i = 0; i < 8; i++) {
+//		cout << "a[" << i << "] : ";
+//		cin >> arr[i];
+//	}
+//	cout << "your array :" << endl;
+//	for (int i = 0; i < 8; i++) {
+//		cout << arr[i] << " ";
+//	}
+//	cout << endl << "letters from your array : " << endl;
+//	for (int i = 0; i < 8; i++) {
+//		if (arr[i] >= 'a' && arr[i] <= 'z') {
+//			cout << arr[i] << " ";
+//		}
+//	}
+//	return 0;
+//}
+
+//   3.1
+
+double GetPower(double base, int exponent) {
+    double result = 1.0;
+    for (int i = 0; i < exponent; i++) {
+        result *= base;
+    }
+    return result;
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+int main() {
+    cout << "2.0 ^ 5 = " << GetPower(2.0, 5) << endl;
+    cout << "3.0 ^ 4 = " << GetPower(3.0, 4) << endl;
+    cout << "-2.0 ^ 5 = " << GetPower(-2.0, 5) << endl;
+    return 0;
+}
