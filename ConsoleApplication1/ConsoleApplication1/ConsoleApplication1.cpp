@@ -92,17 +92,187 @@ using namespace std;
 
 //   3.1
 
-double GetPower(double base, int exponent) {
-    double result = 1.0;
-    for (int i = 0; i < exponent; i++) {
-        result *= base;
-    }
-    return result;
-}
+//double GetPower(double base, int exponent) {
+//    double result = 1.0;
+//    for (int i = 0; i < exponent; i++) {
+//        result *= base;
+//    }
+//    return result;
+//}
+//
+//int main() {
+//    cout << "2.0 ^ 5 = " << GetPower(2.0, 5) << endl;
+//    cout << "3.0 ^ 4 = " << GetPower(3.0, 4) << endl;
+//    cout << "-2.0 ^ 5 = " << GetPower(-2.0, 5) << endl;
+//    return 0;
+//}
 
-int main() {
-    cout << "2.0 ^ 5 = " << GetPower(2.0, 5) << endl;
-    cout << "3.0 ^ 4 = " << GetPower(3.0, 4) << endl;
-    cout << "-2.0 ^ 5 = " << GetPower(-2.0, 5) << endl;
-    return 0;
-}
+// 3.2
+
+//void DemoGetPower(double base, int exponent) {
+//    double result = GetPower(base, exponent);
+//    cout << base << " ^ " << exponent << " = " << result << endl;
+//}
+//
+//int main() {
+//    DemoGetPower(2.0, 5);
+//    DemoGetPower(3.0, 4);
+//    DemoGetPower(-2.0, 5);
+//    return 0;
+//}
+
+
+//   3.3
+
+//void RoundToTens(int& value) {
+//    int remainder = value % 10;
+//    if (remainder < 5) {
+//        value = (value / 10) * 10;
+//    }
+//    else {
+//        value = (value / 10 + 1) * 10;
+//    }
+//}
+//
+//int main() {
+//    int a = 14;
+//    cout << "For " << a << " rounded value is ";
+//    RoundToTens(a);
+//    cout << a << endl;
+//
+//    a = 191;
+//    std::cout << "For " << a << " rounded value is ";
+//    RoundToTens(a);
+//    cout << a << endl;
+//
+//    a = 27;
+//    cout << "For " << a << " rounded value is ";
+//    RoundToTens(a);
+//    cout << a << endl;
+//
+//    return 0;
+//}
+
+// 4.1
+
+//int main()
+//{
+//	int a = 5;
+//	int b = 4;
+//	cout << "Address of a: " << &a << endl;
+//	cout << "Address of b: " << &b << endl;
+//
+//	double c = 13.5;
+//	cout << "Address of c: " << &c << endl;
+//
+//	bool d = true;
+//	cout << "Address of d: " << &d << endl;
+//}
+
+//   4.2
+
+//int main()
+//{
+//	int a[10] = { 1, 2, 7, -1, 5, 3, -1, 7, 1, 6 };
+//	cout << "Size of int type: " << sizeof(int) << endl;
+//	for (int i = 0; i < 10; i++)
+//	{
+//	cout << "Address of a[" << i << "]: " << &a[i] << endl;
+//	}
+//	
+//	cout << endl;
+//	cout << "Size of double type: " << sizeof(double) << endl;
+//	double b[10] = { 1.0, 2.0, 7.0, -1.0, 5.0, 3.5, -1.8, 7.2, 1.9, 6.2 };
+//	for (int i = 0; i < 10; i++) {
+//		cout << "Address of b[" << i << "]: " << &b[i] << endl;
+//	}
+//}
+
+//  4.3
+
+//int main() {
+//    int a = 5;
+//    int& b = a;
+//
+//    cout << "Address of a: " << &a << endl;
+//    cout << "Address of b: " << &b << endl;
+//    cout << endl;
+//
+//    b = 7;
+//    cout << "Value of a: " << a << endl;
+//}
+
+//  4.4
+
+//void Foo(double a)
+//{
+//    cout << "Address of a in Foo(): " << &a << endl;
+//    cout << "Value of a in Foo(): " << a << endl;
+//
+//    a = 15.0;
+//    cout << "New value of a in Foo(): " << a << endl;
+//}
+//
+//int main()
+//{
+//    double a = 5.0;
+//    cout << "Address of a in main(): " << &a << endl;
+//    cout << "Value of a in main(): " << a << endl;
+//    cout << endl;
+//
+//    Foo(a);
+//
+//    cout << endl;
+//    cout << "Value of a in main(): " << a << endl;
+//
+//}
+
+//  4.5
+
+
+//void Foo(double& a)
+//{
+//    cout << "Address of a in Foo(): " << &a << endl;
+//    cout << "Value of a in Foo(): " << a << endl;
+//
+//    a = 15.0;
+//    cout << "New value of a in Foo(): " << a << endl;
+//}
+//
+//int main()
+//{
+//    double a = 5.0;
+//    cout << "Address of a in main(): " << &a << endl;
+//    cout << "Value of a in main(): " << a << endl;
+//    cout << endl;
+//
+//    Foo(a);
+//
+//    cout << endl;
+//    cout << "Value of a in main(): " << a << endl;
+//
+//}
+
+//  4.6
+
+//int main()
+//{
+//    int a = 5;
+//    int* pointer = &a;
+//
+//    cout << "Address of a: " << &a << endl;
+//    cout << "Address in pointer: " << pointer << endl;
+//    cout << "Address of pointer: " << &pointer << endl;
+//    cout << endl;
+//
+//    *pointer = 7;
+//    cout << "Value in a: " << a << endl;
+//    cout << "Value by pointer address: " << *pointer << endl;
+//
+//}
+
+//Ответьте на вопрос : как в исходном коде отличить операцию разыменования, объявление
+//указателя и операцию умножения ? Все три операции используют символ*, поэтому важно
+//уметь отличать их в исходном коде.
+
+
