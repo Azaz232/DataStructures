@@ -275,4 +275,97 @@ using namespace std;
 //указателя и операцию умножения ? Все три операции используют символ*, поэтому важно
 //уметь отличать их в исходном коде.
 
+//  4.7
+
+//void Foo(double* a)
+//{
+//    cout << "Address in pointer: " << a << endl;
+//    cout << "Address of pointer: " << &a << endl;
+//    cout << "Value in pointer address: " << *a << endl;
+//
+//    *a = 15.0;
+//    cout << "New value in pointer address: " << *a << endl;
+//}
+//
+//int main()
+//{
+//    double value = 5.0;
+//    double* pointer = &value;
+//
+//    cout << "Address of value in main(): " << &value << endl;
+//    cout << "Address in pointer in main(): " << pointer << endl;
+//    cout << "Address of pointer in main(): " << &pointer << endl;
+//    cout << "Value of a in main(): " << value << endl;
+//    cout << endl;
+//
+//    Foo(pointer);
+//
+//    cout << endl;
+//    cout << "Value of a in main(): " << value << endl;
+//
+//}
+
+
+// 5.1
+
+//int main()
+//{
+//    double* array = new double[8];
+//
+//    array[0] = 1.0;
+//    array[1] = 15.0;
+//    array[2] = -8.2;
+//    array[3] = -3.5;
+//    array[4] = 12.6;
+//    array[5] = 38.4;
+//    array[6] = -0.5;
+//    array[7] = 4.5;
+//
+//    cout << "Array of double:" << endl;
+//    for (int i = 0; i < 8; i++) {
+//        cout << array[i] << " ";
+//    }
+//    cout << endl;
+//
+//    delete[] array;
+//}
+
+//  5.2
+
+//int main()
+//{
+//    bool* array = new bool[8];
+//    array[0] = true;
+//    array[1] = false;
+//    array[2] = true;
+//    array[3] = true;
+//    array[4] = false;
+//    array[5] = true;
+//    array[6] = false;
+//    array[7] = false;
+//    cout << "Array of bool:" << endl;
+//    for (int i = 0; i < 8; i++) {
+//        cout << boolalpha <<array[i] << " "; // ?
+//    }
+//   cout << endl;
+//
+//    delete[] array;
+//}
+
+//  5.3
+
+//int main() {
+//	int n; cout << "enter n: "; cin >> n;
+//	char* arr = new char[n];
+//
+//	cout << "enter " << n << " characters: " << endl;
+//	for (int i = 0; i < n; i++) {
+//		cin >> arr[i];
+//	}
+//	cout << "array of characters: ";
+//	for (int i = 0; i < n; i++) {
+//		cout << arr [i] << " ";
+//	}
+//	delete[] arr; 
+//}
 
