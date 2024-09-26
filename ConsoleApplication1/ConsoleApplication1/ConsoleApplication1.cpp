@@ -22,9 +22,7 @@ using namespace std;
 //}
 //
 
-
-
-//task2
+// task 2
 
 //int main() {
 //	int array[10] = { 3, 6, -7, 4, 1, 2, -4, -10, 8, 0 };
@@ -87,7 +85,6 @@ using namespace std;
 //			cout << arr[i] << " ";
 //		}
 //	}
-//	return 0;
 //}
 
 //   3.1
@@ -104,7 +101,6 @@ using namespace std;
 //    cout << "2.0 ^ 5 = " << GetPower(2.0, 5) << endl;
 //    cout << "3.0 ^ 4 = " << GetPower(3.0, 4) << endl;
 //    cout << "-2.0 ^ 5 = " << GetPower(-2.0, 5) << endl;
-//    return 0;
 //}
 
 // 3.2
@@ -118,7 +114,6 @@ using namespace std;
 //    DemoGetPower(2.0, 5);
 //    DemoGetPower(3.0, 4);
 //    DemoGetPower(-2.0, 5);
-//    return 0;
 //}
 
 
@@ -149,8 +144,6 @@ using namespace std;
 //    cout << "For " << a << " rounded value is ";
 //    RoundToTens(a);
 //    cout << a << endl;
-//
-//    return 0;
 //}
 
 // 4.1
@@ -367,5 +360,191 @@ using namespace std;
 //		cout << arr [i] << " ";
 //	}
 //	delete[] arr; 
+//}
+
+// 5.4
+
+//void sort(double * arr, int size) {
+//    for (int i = 0; i < 9; i++) {
+//    	for (int j = 0; j < 9 - i; j++) {
+//    		if (arr[j] > arr[j+1]) {
+//    			int temp = arr[j];
+//    			arr[j] = arr[j + 1];
+//    			arr[j + 1] = temp;
+//    		}
+//    	}
+//    }
+//}
+//
+//int main()
+//{
+//    double* arr = new double[10];
+//
+//    arr[0] = 1.0;
+//    arr[1] = 15.0;
+//    arr[2] = -8.2;
+//    arr[3] = -3.5;
+//    arr[4] = 12.6;
+//    arr[5] = 38.4;
+//    arr[6] = -0.5;
+//    arr[7] = 4.5;
+//    arr[8] = 39.8;
+//    arr[9] = -6.5;
+//    
+//
+//    cout << "Array of double:" << endl;
+//    for (int i = 0; i < 10; i++) {
+//        cout << arr[i] << " ";
+//    }
+//    cout << endl;
+//    cout << "Sorted array: ";
+//    sort(arr, 10);
+//    for (int i = 0; i < 10; i++) {
+//        cout << arr[i] << " ";
+//    }
+//
+//    delete[] arr;
+//}
+
+//  5.5
+
+//int search(int*arr, int s) {
+//	int k = 0;
+//	for (int i = 0; i < 10; i++) {
+//		if (arr[i] >= s) {
+//			k++;
+//		}
+//	}
+//	return k;
+//}
+//
+//int main() {
+//	int* arr = new int[10];
+//	arr[0] = 1;
+//	arr[1] = 15;
+//	arr[2] = -8;
+//	arr[3] = -3;
+//	arr[4] = 12;
+//	arr[5] = 38;
+//	arr[6] = 0;
+//	arr[7] = 4;
+//	arr[8] = 39;
+//	arr[9] = -6;
+//
+//	cout << "enter searching value: "; int s; cin >> s;
+//	int k = search(arr, s);
+//	cout << k;
+// delete[] arr;
+//
+//}
+
+//  5.6
+
+//void letters(char*arr) {
+//	for (int i = 0; i < 15; i++) {
+//		if (arr[i] >= 'a' && arr[i] <= 'z') {
+//			cout << arr[i] << " ";
+//		}
+//	}
+//}
+//
+//int main() {
+//	char* arr = new char[15];
+//	arr[0] = 'd';
+//	arr[1] = 'u';
+//	arr[2] = 'f';
+//	arr[3] = 'a';
+//	arr[4] = '9';
+//	arr[5] = '4';
+//	arr[6] = ';';
+//	arr[7] = 't';
+//	arr[8] = 'e';
+//	arr[9] = 'w';
+//	arr[10] = '[';
+//	arr[11] = '6';
+//	arr[12] = '2';
+//	arr[13] = '5';
+//	arr[14] = '1';
+//	cout << "your array: " << endl;
+//	for (int i = 0; i < 15; i++) {
+//		cout << arr[i] << " ";
+//	}
+//	cout << endl << "letters in the array: " << endl;
+//	letters(arr);
+//	delete[]arr;
+//}
+
+//  5.7
+
+//#include <cstdlib>
+//#include <ctime>
+//
+//int* MakeRandomArray(int arraySize) {
+//    int* arr = new int[arraySize];
+//    for (int i = 0; i < arraySize; i++) {
+//        arr[i] = rand() % 101; // numbers from 0 to 100
+//    }
+//    return arr;
+//}
+//
+//void ShowArray(int* arr, int arraySize) {
+//    for (int i = 0; i < arraySize; i++) {
+//        cout << arr[i] << " ";
+//    }
+//    cout << endl;
+//}
+//
+//int main() {
+//    srand(time(0));
+//    int* arr5 = MakeRandomArray(5);
+//    int* arr8 = MakeRandomArray(8);
+//    int* arr13 = MakeRandomArray(13);
+//
+//    cout << "Random array of 5: ";
+//    ShowArray(arr5, 5);
+//
+//    cout << "Random array of 8: ";
+//    ShowArray(arr8, 8);
+//
+//    cout << "Random array of 13: ";
+//    ShowArray(arr13, 13);
+//
+//    delete[] arr5;
+//    delete[] arr8;
+//    delete[] arr13;
+//}
+
+//  5.8
+
+//int* ReadArray(int count) {
+//    int* values = new int[count];
+//    for (int i = 0; i < count; i++) {
+//        cin >> values[i];
+//    }
+//    return values;
+//}
+//
+//int CountPositiveValues(int* values, int count) {
+//    int result = 0;
+//    for (int i = 0; i < count; i++) {
+//        if (values[i] > 0) {
+//            result++;
+//        }
+//    }
+//    return result;
+//}
+//
+//int main() {
+//    int count = 15;
+//    int* values = ReadArray(count);
+//    cout << "Count is: " << CountPositiveValues(values, count) << endl;
+//    delete[] values; // we need to clear the heap 2 times
+//
+//    count = 20;
+//    values = ReadArray(count);
+//    cout << "Count is: " << CountPositiveValues(values, count) << endl;
+//    delete[] values; 
+//
+//    return 0;
 //}
 
