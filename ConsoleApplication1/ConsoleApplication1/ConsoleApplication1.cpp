@@ -1,13 +1,57 @@
 ﻿#include <iostream>
-
 using namespace std;
 
-//void Breakpoints() {
+//i = 0, sum = 0
+//i = 1, sum = 1,1
+//i = 2, sum = 3,52
+//i = 3, sum = 7,513
+//i = 4, sum = 13,3694
+//i = 5, sum = 21,42195
+//i = 6, sum = 32,051316
+//i = 7, sum = 45,6923357
+//i = 8, sum = 62,84104618
+//i = 9, sum = 84,062575399
+// 
+//void BreakpointsOfFirstTask()
+//{
+//    double add = 1.0;
+//    double sum = 0.0;
+//    for (int i = 0; i < 10; i++)
+//    {
+//        sum += add * i;
+//        add = 1.1;
+//    }
+//    cout << "Total sum is " << sum << endl;
+//}
+//
+////i = 776, sum = 3,2624579394327844
+//void BreakpointsOfSecondTask()
+//{
+//    double add = 1.0;
+//    double sum = 0.0;
+//    for (int i = 0; i < 1000; i++)
+//    {
+//        sum += add * i; // Поставьте условную точку останова здесь
+//        if (i % 3 == 0)
+//        {
+//            add *= 1.1;
+//        }
+//        else
+//        {
+//            add /= 3.0;
+//        }
+//    }
+//    cout << "Total sum is " << sum << endl;
+//}
+
+//void Breakpoints() 
+//{
 //	double add = 1.0;
 //	double sum = 0.0;
 //	for (int i = 0; i < 1000; i++) {
 //		sum += add * i;
-//		if (i % 3 == 0) {
+//		if (i % 3 == 0) 
+//		{
 //			add *= 1.1;
 //		}
 //		else {
@@ -24,18 +68,22 @@ using namespace std;
 
 // task 2
 
-//int main() {
-//	int array[10] = { 3, 6, -7, 4, 1, 2, -4, -10, 8, 0 };
+//int main() 
+//{
+//	int array[10] = { 3, 6, -7, 4, 1, 2, -4, -10, 8, 0 };	
 //
 //	cout << "sourse array: " << endl;
-//	for (int i = 0; i < 10; i++) {
+//	for (int i = 0; i < 10; i++) 
+//  {
 //		cout << array[i] << " ";
 //	}
 //	cout << endl;
 //
 //	for (int i = 0; i < 9; i++) {
-//		for (int j = 0; j < 9 - i; j++) {
-//			if (array[j] > array[j+1]) {
+//		for (int j = 0; j < 9 - i; j++) 
+//      {
+//			if (array[j] > array[j+1]) 
+//          {
 //				int temp = array[j];
 //				array[j] = array[j + 1];
 //				array[j + 1] = temp;
@@ -43,24 +91,30 @@ using namespace std;
 //		}
 //	}
 //	cout << "sorted array : " << endl;
-//	for (int i = 0; i < 10; i++) {
+//	for (int i = 0; i < 10; i++) 
+//  {
 //		cout << array[i] << " ";
 //	}
 //	return 0;
 //}
 
-//int main() {
+//int main() 
+// {
 //	float arr[12] = {2.0, 838.0, 798.5, -8.9, -4.4, 1.0002, 999.8, 3.999, 54675.56, -1970, 6.666, 2.33};
 //	cout << "sourse array : ";
-//	for (int i = 0; i < 12; i++) {
+//	for (int i = 0; i < 12; i++) 
+// {
 //		cout << arr[i] << " ";
 //	}
 //	cout << endl;
 //	float s;
 //	int k = 0;
-//	cout << "enter searching value : " << endl; cin >> s;
-//	for (int i = 0; i < 12; i++) {
-//		if (arr[i] >= s) {
+//	cout << "enter searching value : " << endl;
+//  cin >> s;
+//	for (int i = 0; i < 12; i++) 
+// {
+//		if (arr[i] >= s) 
+//		{
 //			k++;
 //		}
 //	}
@@ -68,20 +122,24 @@ using namespace std;
 //  return 0;
 //}
 
-//int main() {
+//int main() 
+// {
 //	char arr[8];
 //	cout << "enter an array of 8 characters : " << endl;
-//	for (int i = 0; i < 8; i++) {
+//	for (int i = 0; i < 8; i++) 
+// {
 //		cout << "a[" << i << "] : ";
 //		cin >> arr[i];
 //	}
 //	cout << "your array :" << endl;
-//	for (int i = 0; i < 8; i++) {
+//	for (int i = 0; i < 8; i++) 
+//  {
 //		cout << arr[i] << " ";
 //	}
 //	cout << endl << "letters from your array : " << endl;
 //	for (int i = 0; i < 8; i++) {
-//		if (arr[i] >= 'a' && arr[i] <= 'z') {
+//		if (arr[i] >= 'a' && arr[i] <= 'z') 
+//      {
 //			cout << arr[i] << " ";
 //		}
 //	}
@@ -89,15 +147,18 @@ using namespace std;
 
 //   3.1
 
-//double GetPower(double base, int exponent) {
+//double GetPower(double base, int exponent) 
+//{
 //    double result = 1.0;
-//    for (int i = 0; i < exponent; i++) {
+//    for (int i = 0; i < exponent; i++) 
+//    {
 //        result *= base;
 //    }
 //    return result;
 //}
 //
-//int main() {
+//int main() 
+//{
 //    cout << "2.0 ^ 5 = " << GetPower(2.0, 5) << endl;
 //    cout << "3.0 ^ 4 = " << GetPower(3.0, 4) << endl;
 //    cout << "-2.0 ^ 5 = " << GetPower(-2.0, 5) << endl;
@@ -105,12 +166,14 @@ using namespace std;
 
 // 3.2
 
-//void DemoGetPower(double base, int exponent) {
+//void DemoGetPower(double base, int exponent) 
+//{
 //    double result = GetPower(base, exponent);
 //    cout << base << " ^ " << exponent << " = " << result << endl;
 //}
 //
-//int main() {
+//int main() 
+//{
 //    DemoGetPower(2.0, 5);
 //    DemoGetPower(3.0, 4);
 //    DemoGetPower(-2.0, 5);
@@ -119,17 +182,21 @@ using namespace std;
 
 //   3.3
 
-//void RoundToTens(int& value) {
+//void RoundToTens(int& value) 
+//{
 //    int remainder = value % 10;
-//    if (remainder < 5) {
+//    if (remainder < 5)
+//    {
 //        value = (value / 10) * 10;
 //    }
-//    else {
+//    else 
+//    {
 //        value = (value / 10 + 1) * 10;
 //    }
 //}
 //
-//int main() {
+//int main() 
+//{
 //    int a = 14;
 //    cout << "For " << a << " rounded value is ";
 //    RoundToTens(a);
@@ -176,14 +243,16 @@ using namespace std;
 //	cout << endl;
 //	cout << "Size of double type: " << sizeof(double) << endl;
 //	double b[10] = { 1.0, 2.0, 7.0, -1.0, 5.0, 3.5, -1.8, 7.2, 1.9, 6.2 };
-//	for (int i = 0; i < 10; i++) {
+//	for (int i = 0; i < 10; i++) 
+//  {
 //		cout << "Address of b[" << i << "]: " << &b[i] << endl;
 //	}
 //}
 
 //  4.3
 
-//int main() {
+//int main() 
+//{
 //    int a = 5;
 //    int& b = a;
 //
@@ -315,7 +384,8 @@ using namespace std;
 //    array[7] = 4.5;
 //
 //    cout << "Array of double:" << endl;
-//    for (int i = 0; i < 8; i++) {
+//    for (int i = 0; i < 8; i++) 
+//    {
 //        cout << array[i] << " ";
 //    }
 //    cout << endl;
@@ -337,7 +407,8 @@ using namespace std;
 //    array[6] = false;
 //    array[7] = false;
 //    cout << "Array of bool:" << endl;
-//    for (int i = 0; i < 8; i++) {
+//    for (int i = 0; i < 8; i++) 
+//    {
 //        cout << boolalpha <<array[i] << " "; // ?
 //    }
 //   cout << endl;
@@ -348,15 +419,19 @@ using namespace std;
 //  5.3
 
 //int main() {
-//	int n; cout << "enter n: "; cin >> n;
+//	int n; 
+//  cout << "enter n: ";
+//  cin >> n;
 //	char* arr = new char[n];
 //
 //	cout << "enter " << n << " characters: " << endl;
-//	for (int i = 0; i < n; i++) {
+//	for (int i = 0; i < n; i++) 
+//  {
 //		cin >> arr[i];
 //	}
 //	cout << "array of characters: ";
-//	for (int i = 0; i < n; i++) {
+//	for (int i = 0; i < n; i++) 
+//  {
 //		cout << arr [i] << " ";
 //	}
 //	delete[] arr; 
@@ -365,9 +440,12 @@ using namespace std;
 // 5.4
 
 //void sort(double * arr, int size) {
-//    for (int i = 0; i < 9; i++) {
-//    	for (int j = 0; j < 9 - i; j++) {
-//    		if (arr[j] > arr[j+1]) {
+//    for (int i = 0; i < 9; i++) 
+//    {
+//    	for (int j = 0; j < 9 - i; j++) 
+//      {
+//    		if (arr[j] > arr[j+1]) 
+//          {
 //    			int temp = arr[j];
 //    			arr[j] = arr[j + 1];
 //    			arr[j + 1] = temp;
@@ -393,13 +471,15 @@ using namespace std;
 //    
 //
 //    cout << "Array of double:" << endl;
-//    for (int i = 0; i < 10; i++) {
+//    for (int i = 0; i < 10; i++) 
+//    {
 //        cout << arr[i] << " ";
 //    }
 //    cout << endl;
 //    cout << "Sorted array: ";
 //    sort(arr, 10);
-//    for (int i = 0; i < 10; i++) {
+//    for (int i = 0; i < 10; i++) 
+//    {
 //        cout << arr[i] << " ";
 //    }
 //
@@ -408,17 +488,21 @@ using namespace std;
 
 //  5.5
 
-//int search(int*arr, int s) {
+//int Search(int*arr, int s) 
+//{
 //	int k = 0;
-//	for (int i = 0; i < 10; i++) {
-//		if (arr[i] >= s) {
+//	for (int i = 0; i < 10; i++) 
+//  {
+//		if (arr[i] >= s) 
+//      {
 //			k++;
 //		}
 //	}
 //	return k;
 //}
 //
-//int main() {
+//int main() 
+//{
 //	int* arr = new int[10];
 //	arr[0] = 1;
 //	arr[1] = 15;
@@ -431,8 +515,10 @@ using namespace std;
 //	arr[8] = 39;
 //	arr[9] = -6;
 //
-//	cout << "enter searching value: "; int s; cin >> s;
-//	int k = search(arr, s);
+//	cout << "enter searching value: ";
+//  int s;
+//  cin >> s;
+//	int k = Search(arr, s);
 //	cout << k;
 // delete[] arr;
 //
@@ -440,15 +526,19 @@ using namespace std;
 
 //  5.6
 
-//void letters(char*arr) {
-//	for (int i = 0; i < 15; i++) {
-//		if (arr[i] >= 'a' && arr[i] <= 'z') {
+//void letters(char*arr) 
+//{
+//	for (int i = 0; i < 15; i++)
+//  {
+//		if (arr[i] >= 'a' && arr[i] <= 'z') 
+//      {
 //			cout << arr[i] << " ";
 //		}
 //	}
 //}
 //
-//int main() {
+//int main() 
+//{
 //	char* arr = new char[15];
 //	arr[0] = 'd';
 //	arr[1] = 'u';
@@ -466,7 +556,8 @@ using namespace std;
 //	arr[13] = '5';
 //	arr[14] = '1';
 //	cout << "your array: " << endl;
-//	for (int i = 0; i < 15; i++) {
+//	for (int i = 0; i < 15; i++) 
+//  {
 //		cout << arr[i] << " ";
 //	}
 //	cout << endl << "letters in the array: " << endl;
@@ -479,22 +570,27 @@ using namespace std;
 //#include <cstdlib>
 //#include <ctime>
 //
-//int* MakeRandomArray(int arraySize) {
+//int* MakeRandomArray(int arraySize) 
+//{
 //    int* arr = new int[arraySize];
-//    for (int i = 0; i < arraySize; i++) {
+//    for (int i = 0; i < arraySize; i++) 
+//    {
 //        arr[i] = rand() % 101; // numbers from 0 to 100
 //    }
 //    return arr;
 //}
 //
-//void ShowArray(int* arr, int arraySize) {
-//    for (int i = 0; i < arraySize; i++) {
+//void ShowArray(int* arr, int arraySize) 
+//{
+//    for (int i = 0; i < arraySize; i++) 
+//    {
 //        cout << arr[i] << " ";
 //    }
 //    cout << endl;
 //}
 //
-//int main() {
+//int main() 
+//{
 //    srand(time(0));
 //    int* arr5 = MakeRandomArray(5);
 //    int* arr8 = MakeRandomArray(8);
@@ -516,25 +612,31 @@ using namespace std;
 
 //  5.8
 
-//int* ReadArray(int count) {
+//int* ReadArray(int count) 
+//{
 //    int* values = new int[count];
-//    for (int i = 0; i < count; i++) {
+//    for (int i = 0; i < count; i++) 
+//    {
 //        cin >> values[i];
 //    }
 //    return values;
 //}
 //
-//int CountPositiveValues(int* values, int count) {
+//int CountPositiveValues(int* values, int count) 
+//{
 //    int result = 0;
-//    for (int i = 0; i < count; i++) {
-//        if (values[i] > 0) {
+//    for (int i = 0; i < count; i++) 
+//    {
+//        if (values[i] > 0) 
+//        {
 //            result++;
 //        }
 //    }
 //    return result;
 //}
 //
-//int main() {
+//int main() 
+//{
 //    int count = 15;
 //    int* values = ReadArray(count);
 //    cout << "Count is: " << CountPositiveValues(values, count) << endl;
