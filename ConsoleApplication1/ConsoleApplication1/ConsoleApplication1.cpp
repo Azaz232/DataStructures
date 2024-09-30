@@ -23,9 +23,10 @@ using namespace std;
 //    }
 //    cout << "Total sum is " << sum << endl;
 //}
-//
-////i = 776, sum = 3,2624579394327844
 
+
+
+////i = 777, sum = 3,2624579394327844
 
 //void Breakpoints()
 //{
