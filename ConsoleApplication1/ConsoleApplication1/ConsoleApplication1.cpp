@@ -11,24 +11,30 @@ using namespace std;
 //i = 7, sum = 45,6923357
 //i = 8, sum = 62,84104618
 //i = 9, sum = 84,062575399
-// 
-//void Breakpoints()
+
+
+//void BreakPoints()
 //{
-//    double add = 1.0;
-//    double sum = 0.0;
-//    for (int i = 0; i < 10; i++)
-//    {
-//        sum += add * i;
-//        add = 1.1;
-//    }
-//    cout << "Total sum is " << sum << endl;
+//	double add = 1.0;
+//	double sum = 0.0;
+//	for (int i = 0; i < 10; i++)
+//	{
+//		sum += add * i;
+//		add *= 1.1;
+//	}
+//	cout << "Total sum is " << sum << endl;
+//}
+//
+//int main()
+//{
+//	BreakPoints();
 //}
 
-
+//   1.2
 
 ////i = 777, sum = 3,2624579394327844
 
-//void Breakpoints()
+//void BreakPoints()
 //{
 //    double add = 1.0;
 //    double sum = 0.0;
@@ -46,28 +52,12 @@ using namespace std;
 //    }
 //    cout << "Total sum is " << sum << endl;
 //}
-
-//void Breakpoints() 
+//
+//int main()
 //{
-//	double add = 1.0;
-//	double sum = 0.0;
-//	for (int i = 0; i < 1000; i++) {
-//		sum += add * i;
-//		if (i % 3 == 0) 
-//		{
-//			add *= 1.1;
-//		}
-//		else {
-//			add /= 3.0;
-//		}
-//	}
-//	cout << "Total sum is " << sum << endl;
+//    BreakPoints();
 //}
-//
-//int main() {
-//	Breakpoints();
-//}
-//
+
 
 //  2
 
