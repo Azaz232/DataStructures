@@ -1,5 +1,6 @@
 //#pragma once
 #include "DynamicArray.h"
+//TODO: remove
 #include <iostream>
 using namespace std;
 
@@ -15,30 +16,15 @@ DynamicArray* CreateDynamicArray()
 	return array;
 }
 
-void IncreaseCapacity(DynamicArray* array) 
+
+void ResizeArray(DynamicArray* array, int capacity) 
 {
-	array->Capacity *= growthFactor;
-	int* newArray = new int[array->Capacity];
+	int* newArray = new int[capacity];
 	for (int i = 0; i < array->Size; i++)
 	{
 		newArray[i] = array->Array[i];
 	}
 	delete[] array->Array;
-
-	array->Array = newArray;
-}
-
-
-void DecreaseCapacity(DynamicArray* array) 
-{
-	array->Capacity /= growthFactor;
-	int* newArray = new int[array->Capacity];
-	for (int i = 0; i < array->Size; i++)
-	{
-		newArray[i] = array->Array[i];
-	}
-	delete[] array->Array;
-
 	array->Array = newArray;
 }
 
@@ -57,21 +43,7 @@ void AddElement(DynamicArray* array, int index, int value)
 
 	if (array->Size >= array->Capacity)
 	{
-		/*int newCapacity = array->Capacity * 2;
-		int* newArray = new int[newCapacity];
-
-		for (int i = 0; i < array->Size; i++)
-		{
-			newArray[i] = array->Array[i];
-		}
-
-		delete[] array->Array;
-
-		array->Array = newArray;
-		array->Capacity = newCapacity;*/
-
-		IncreaseCapacity(array);
-
+		ResizeArray(array, array->Capacity*growthFactor);
 	}
 
 	for (int i = array->Size; i > index; i--)
@@ -97,20 +69,7 @@ void RemoveByIndex(DynamicArray* array, int index)
 	
 	if (array->Size < array->Capacity / growthFactor)
 	{
-		/*int newCapacity = array->Capacity / 2;
-		int* newArray = new int[newCapacity];
-
-		for (int i = 0; i < array->Size; i++)
-		{
-			newArray[i] = array->Array[i];
-		}
-		delete[] array->Array;
-
-		array->Array = newArray;
-		array->Capacity = newCapacity;*/
-
-		DecreaseCapacity(array);
-
+		ResizeArray(array, array->Capacity/growthFactor);
 	}
 }
 
@@ -138,6 +97,7 @@ void RemoveByValue(DynamicArray* array, int value)
 	}
 	else
 	{
+		//TODO: remove
 		cout << "Value wasn't found in the array" << endl;
 	}
 }
@@ -157,12 +117,14 @@ int GetElement(DynamicArray* array, int index)
 
 
 
+//TODO: RSDN
 
 void swap(int& a, int& b) {
 	int temp = a;
 	a = b;
 	b = temp;
 }
+//TODO: RSDN
 
 int partition(int* arr, int low, int high) {
 	int pivot = arr[high];
@@ -179,6 +141,7 @@ int partition(int* arr, int low, int high) {
 	return i + 1;
 }
 
+//TODO: RSDN
 
 void quicksort(int* arr, int low, int high) {
 	if (low < high) {
@@ -206,6 +169,7 @@ void LinearSearch(DynamicArray* array, int value)
 	{
 		if (array->Array[i] == value)
 		{
+			//TODO: remove
 			cout << "Requested value is placed at index: " << i << endl;
 			return;
 		}
@@ -225,6 +189,7 @@ void BinarySearch(DynamicArray* array, int value)
 
 		if (array->Array[middle] == value)
 		{
+			//TODO: remove
 			cout << "Needed element is at the index: " << middle << endl;
 			return;
 		}
@@ -237,11 +202,13 @@ void BinarySearch(DynamicArray* array, int value)
 			left = middle + 1;
 		}
 	}
+	//TODO: remove
 	cout << "Element wasn't found in the array" << endl;
 }
 
 void PrintArray(const DynamicArray* array)
 {
+	//TODO: remove
 	cout << "Array elements: ";
 	for (int i = 0; i < array->Size; i++)
 	{

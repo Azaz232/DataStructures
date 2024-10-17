@@ -1,5 +1,5 @@
 #pragma once
-
+//TODO: remove
 #include <iostream>
 using namespace std;
 
@@ -16,23 +16,18 @@ struct DynamicArray
 	int* Array;
 };
 
+//TODO: RSDN
 const int originalCapacity = 4;
+//TODO: RSDN
 const int growthFactor = 2;
 
 // !\brief Creation of the array.
+//TODO: return
 DynamicArray* CreateDynamicArray();
 
-
-//! \brief Increases capacity of the array.
+//! \brief Resizes capacity of the array.
 //! \param array Struct of the dynamic array.
-void IncreaseCapacity(DynamicArray* array);
-
-//! \brief Decreases capacity of the array.
-//! \param array Struct of the dynamic array.
-void DecreaseCapacity(DynamicArray* array);
-
-
-
+void ResizeArray(DynamicArray* array, int capacity);
 
 //! \brief Adds an element to the array.
 //! \param array Struct of the dynamic array.
@@ -70,6 +65,7 @@ void LinearSearch(DynamicArray* array, int value);
 //! \param value Value whose index needs to be found.
 void BinarySearch(DynamicArray* array, int value);
 
+//TODO: why const?
 //! \brief Prints an array.
 //! \param array Struct of the dynamic array.
 void PrintArray(const DynamicArray* array);
