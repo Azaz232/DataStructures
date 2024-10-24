@@ -1,7 +1,7 @@
 #pragma once
 //TODO: remove
-#include <iostream>
-using namespace std;
+//#include <iostream>
+//using namespace std;
 
 //! \brief Struct of a dynamic array.
 struct DynamicArray
@@ -17,11 +17,17 @@ struct DynamicArray
 };
 
 //TODO: RSDN
+
+//! \bried initial capacity.
 const int originalCapacity = 4;
+
 //TODO: RSDN
+
+//! \bried growth factor of the array.
 const int growthFactor = 2;
 
 // !\brief Creation of the array.
+// !\return Returns an array.
 //TODO: return
 DynamicArray* CreateDynamicArray();
 
@@ -58,14 +64,21 @@ void SortArray(DynamicArray* array);
 //! \brief Linear search for an element in an array.
 //! \param array Struct of the dynamic array.
 //! \param value Value whoose index needs to be found.
-void LinearSearch(DynamicArray* array, int value);
+int LinearSearch(DynamicArray* array, int value);
 
 //! \brief Binary search for an element in an array.
 //! \param array Struct of the dynamic array.
 //! \param value Value whose index needs to be found.
 void BinarySearch(DynamicArray* array, int value);
 
-//TODO: why const?
+
+
+//TODO: why const?                                       ????????????????????????
 //! \brief Prints an array.
 //! \param array Struct of the dynamic array.
 void PrintArray(const DynamicArray* array);
+
+
+//! \brief Clears teh memory.
+//! \param array Struct of the dynamic array.
+void FreeArray(DynamicArray* array);

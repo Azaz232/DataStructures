@@ -1,7 +1,8 @@
 //#pragma once
 #include "DynamicArray.h"
+#include <stdexcept>
 //TODO: remove
-#include <iostream>
+//#include <iostream>
 using namespace std;
 
 DynamicArray* CreateDynamicArray()
@@ -30,8 +31,9 @@ void ResizeArray(DynamicArray* array, int capacity)
 
 void CheckRange(DynamicArray* array, int index)
 {
-	if (index < 0 || index > array->Size) {
-		cout << "Index out of range";
+	if (index < 0 || index > array->Size) 
+	{
+		throw out_of_range("Index out of range");
 	}
 }
 
@@ -95,38 +97,35 @@ void RemoveByValue(DynamicArray* array, int value)
 
 		array->Size--;
 	}
-	else
-	{
-		//TODO: remove
-		cout << "Value wasn't found in the array" << endl;
-	}
+	//else
+	//{
+	//	//TODO: remove
+	//	cout << "Value wasn't found in the array" << endl;
+	//}
 }
 
 
 int GetElement(DynamicArray* array, int index)
 {
 	CheckRange(array, index);
-
 	return array->Array[index];
 }
 
 
 
 
-
-
-
-
 //TODO: RSDN
 
-void swap(int& a, int& b) {
+void swap(int& a, int& b) 
+{
 	int temp = a;
 	a = b;
 	b = temp;
 }
 //TODO: RSDN
 
-int partition(int* arr, int low, int high) {
+int partition(int* arr, int low, int high) 
+{
 	int pivot = arr[high];
 	int i = low - 1;
 
@@ -143,7 +142,8 @@ int partition(int* arr, int low, int high) {
 
 //TODO: RSDN
 
-void quicksort(int* arr, int low, int high) {
+void quicksort(int* arr, int low, int high) 
+{
 	if (low < high) {
 		int pivotIndex = partition(arr, low, high);
 		quicksort(arr, low, pivotIndex - 1);
@@ -163,21 +163,22 @@ void SortArray(DynamicArray* array)
 
 
 
-void LinearSearch(DynamicArray* array, int value)
+int LinearSearch(DynamicArray* array, int value)
 {
 	for (int i = 0; i < array->Size; i++)
 	{
 		if (array->Array[i] == value)
 		{
 			//TODO: remove
-			cout << "Requested value is placed at index: " << i << endl;
-			return;
+			/*cout << "Requested value is placed at index: " << i << endl;*/
+			return i;
 		}
 	}
-	cout << "Requested value wasn't found" << endl;
+	return -1;
+	/*cout << "Requested value wasn't found" << endl;*/
 }
 
-void BinarySearch(DynamicArray* array, int value)
+int BinarySearch(DynamicArray* array, int value)
 {
 	SortArray(array);
 	int left = 0;
@@ -190,8 +191,8 @@ void BinarySearch(DynamicArray* array, int value)
 		if (array->Array[middle] == value)
 		{
 			//TODO: remove
-			cout << "Needed element is at the index: " << middle << endl;
-			return;
+			/*out << "Needed element is at the index: " << middle << endl;*/
+			return middle;
 		}
 		else if (value < array->Array[middle])
 		{
@@ -203,7 +204,8 @@ void BinarySearch(DynamicArray* array, int value)
 		}
 	}
 	//TODO: remove
-	cout << "Element wasn't found in the array" << endl;
+	/*cout << "Element wasn't found in the array" << endl;*/
+	return -1;
 }
 
 void PrintArray(const DynamicArray* array)
@@ -215,4 +217,11 @@ void PrintArray(const DynamicArray* array)
 		cout << array->Array[i] << " ";
 	}
 	cout << endl;
+}
+
+
+void FreeArray(DynamicArray* array)
+{
+	delete[] array->Array;
+	delete array;
 }
