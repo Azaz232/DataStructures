@@ -69,15 +69,7 @@ int LinearSearch(DynamicArray* array, int value);
 //! \brief Binary search for an element in an array.
 //! \param array Struct of the dynamic array.
 //! \param value Value whose index needs to be found.
-void BinarySearch(DynamicArray* array, int value);
-
-
-
-//TODO: why const?                                       ????????????????????????
-//! \brief Prints an array.
-//! \param array Struct of the dynamic array.
-void PrintArray(const DynamicArray* array);
-
+int BinarySearch(DynamicArray* array, int value);
 
 //! \brief Clears teh memory.
 //! \param array Struct of the dynamic array.

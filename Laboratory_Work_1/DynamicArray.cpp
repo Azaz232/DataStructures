@@ -178,47 +178,31 @@ int LinearSearch(DynamicArray* array, int value)
 	/*cout << "Requested value wasn't found" << endl;*/
 }
 
+
 int BinarySearch(DynamicArray* array, int value)
 {
 	SortArray(array);
-	int left = 0;
-	int right = array->Size - 1;
+	int first = 0;
+	int last = array->Size - 1;
 
-	while (left <= right)
+	while (first <= last)
 	{
-		int middle = (left + right) / 2;
-
-		if (array->Array[middle] == value)
+		int mid = (first + last) / 2;
+		if (array->Array[mid] == value)
 		{
-			//TODO: remove
-			/*out << "Needed element is at the index: " << middle << endl;*/
-			return middle;
+			return mid;
 		}
-		else if (value < array->Array[middle])
+		if (value < array->Array[mid])
 		{
-			right = middle - 1;
+			last = mid - 1;
 		}
 		else
 		{
-			left = middle + 1;
+			first = mid + 1;
 		}
 	}
-	//TODO: remove
-	/*cout << "Element wasn't found in the array" << endl;*/
 	return -1;
 }
-
-void PrintArray(const DynamicArray* array)
-{
-	//TODO: remove
-	cout << "Array elements: ";
-	for (int i = 0; i < array->Size; i++)
-	{
-		cout << array->Array[i] << " ";
-	}
-	cout << endl;
-}
-
 
 void FreeArray(DynamicArray* array)
 {

@@ -3,6 +3,9 @@
 using namespace std;
 
 //TODO: comment
+
+//! \brief Resizes capacity of the array.
+//! \param prompt Struct of the dynamic array.
 int GetInput(const string& prompt)
 {
     int value;
@@ -11,34 +14,50 @@ int GetInput(const string& prompt)
     return value;
 }
 
+
+
+void PrintIndexResult(int index)
+{
+    if (index != -1)
+    {
+        cout << "Element found at index: " << index << endl;
+    }
+    else
+    {
+        cout << "Element not found. \n";
+    }
+}
+
+
+
+
+
 int main()
 {
     //TODO: RSDN
     DynamicArray* Array = CreateDynamicArray();
 
-
-    cout << "Current array \n";
-    //TODO: RSDN
-
-    for (int i = 0; i < Array->Size; i++)
-    {
-        cout << Array->Array[i] << ", ";
-    }
-    cout << endl;
-
-
     while (true)
     {
-        cout << "Select the action you want to do: /n";
-        cout << "1. Remove an element by index from an array /n";
-        cout << "2. Remove an element by value from an array /n";
-        cout << "3. Insert an element at the beginning /n";
-        cout << "4. Insert an element at the end /n";
-        cout << "5. Insert after a certain element /n";
-        cout << "6. Sort array /n";
-        cout << "7. Linear search for an element in an array /n";
-        cout << "8. Binary search for an element in an array /n";
-        cout << "Your input: /n";
+        cout << "Current array \n";
+        //TODO: RSDN
+
+        for (int i = 0; i < Array->Size; i++)
+        {
+            cout << Array->Array[i] << ", ";
+        }
+        cout << endl;
+
+
+        cout << "Select the action you want to do: \n";
+        cout << "1. Remove an element by index from an array \n";
+        cout << "2. Remove an element by value from an array \n";
+        cout << "3. Insert an element at the beginning \n";
+        cout << "4. Insert an element at the end \n";
+        cout << "5. Insert after a certain element \n";
+        cout << "6. Sort array \n";
+        cout << "7. Linear search for an element in an array \n";
+        cout << "8. Binary search for an element in an array \n";
 
         int choice = GetInput("Your input: ");
         
@@ -46,79 +65,72 @@ int main()
         {
             case 1:
             {
-                int index = GetInput("Enter the index to delete: ");
+                int index = GetInput("Enter the index to delete: \n");
                 //TODO: insert to function remove duplication
-                cout << endl;
                 RemoveByIndex(Array, index);
-                PrintArray(Array);
                 cout << endl;
                 break;
             }
             case 2:
             {
-                int value = GetInput("Enter the value to delete: ");
-                cout << endl;
+                int value = GetInput("Enter the value to delete: \n");
                 RemoveByValue(Array, value);
-                PrintArray(Array);
                 cout << endl;
                 break;
             }
             case 3:
             {
-                int value = GetInput("Enter the element to insert it at the beginning: ");
-                cout << endl;
+                int value = GetInput("Enter the element to insert it at the beginning: \n");
                 AddElement(Array, 0, value);
-                PrintArray(Array);
                 cout << endl;
                 break;
             }
             case 4:
             {
-                int value = GetInput("Enter the element to inset it at the end: ");
-                cout << endl;
+                int value = GetInput("Enter the element to inset it at the end: \n");
                 AddElement(Array, Array->Size, value);
-                PrintArray(Array);
                 cout << endl;
                 break;
             }
             case 5:
             {
-                int index = GetInput("Enter the index where you want to insert the value: ");
-                int value = GetInput("Enter the value you want to insert: ");
-                cout << endl;
+                int index = GetInput("Enter the index where you want to insert the value: \n");
+                int value = GetInput("Enter the value you want to insert: \n");
                 AddElement(Array, index, value);
-                PrintArray(Array);
                 cout << endl;
                 break;
             }
             case 6:
             {
                 SortArray(Array);
-                cout << "Array is sorted " << endl;
-                PrintArray(Array);
+                cout << "Array is sorted \n";
                 cout << endl;
                 break;
             }
             case 7:
             {
-                int value = GetInput("Enter the value you want to find in the array: ");
-                cout << endl;
-                LinearSearch(Array, value);
-                PrintArray(Array);
+                int value = GetInput("Enter the value you want to find in the array: \n");
+                int index = LinearSearch(Array, value);
+
+                PrintIndexResult(index);
                 cout << endl;
                 break;
             }
             case 8:
             {
-                int value = GetInput("Enter the value you want to find in the array: ");
-                cout << endl;
-                BinarySearch(Array, value);
-                PrintArray(Array);
-                cout << endl;
+                int value = GetInput("Enter the value you want to find in the array: \n");
+                int index = BinarySearch(Array, value);
+
+                PrintIndexResult(index);
                 break;
             }
+            case 0:
+            {
+                FreeArray(Array);
+                return 0;
+            }
             default:
-                cout << "Unknown command. Try entering the command again";
+                cout << "Unknown command. Try entering the command again \n";
         }
     }
 
