@@ -14,8 +14,8 @@ int GetInput(const string& prompt)
     return value;
 }
 
-
-
+//! \brief Resizes capacity of the array.
+//! \param prompt Struct of the dynamic array.
 void PrintIndexResult(int index)
 {
     if (index != -1)
@@ -27,9 +27,6 @@ void PrintIndexResult(int index)
         cout << "Element not found. \n";
     }
 }
-
-
-
 
 
 int main()
