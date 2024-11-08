@@ -2,10 +2,8 @@
 #include "DynamicArray.h"
 using namespace std;
 
-//TODO: comment
-
 //! \brief Resizes capacity of the array.
-//! \param prompt Struct of the dynamic array.
+//! \param prompt A line.
 int GetInput(const string& prompt)
 {
     int value;
@@ -14,8 +12,8 @@ int GetInput(const string& prompt)
     return value;
 }
 
-//! \brief Resizes capacity of the array.
-//! \param prompt Struct of the dynamic array.
+//! \brief Depending on index we either output an index or not.
+//! \param index An index.
 void PrintIndexResult(int index)
 {
     if (index != -1)
@@ -31,20 +29,17 @@ void PrintIndexResult(int index)
 
 int main()
 {
-    //TODO: RSDN
-    DynamicArray* Array = CreateDynamicArray();
+    DynamicArray* array = CreateDynamicArray();
 
     while (true)
     {
         cout << "Current array \n";
-        //TODO: RSDN
 
-        for (int i = 0; i < Array->Size; i++)
+        for (int i = 0; i < array->Size; i++)
         {
-            cout << Array->Array[i] << ", ";
+            cout << array->Array[i] << ", ";
         }
         cout << endl;
-
 
         cout << "Select the action you want to do: \n";
         cout << "1. Remove an element by index from an array \n";
@@ -63,29 +58,25 @@ int main()
             case 1:
             {
                 int index = GetInput("Enter the index to delete: \n");
-                //TODO: insert to function remove duplication
-                RemoveByIndex(Array, index);
-                cout << endl;
+                RemoveByIndex(array, index);
                 break;
             }
             case 2:
             {
                 int value = GetInput("Enter the value to delete: \n");
-                RemoveByValue(Array, value);
-                cout << endl;
+                RemoveByValue(array, value);
                 break;
             }
             case 3:
             {
                 int value = GetInput("Enter the element to insert it at the beginning: \n");
-                AddElement(Array, 0, value);
-                cout << endl;
+                AddElement(array, 0, value);
                 break;
             }
             case 4:
             {
                 int value = GetInput("Enter the element to inset it at the end: \n");
-                AddElement(Array, Array->Size, value);
+                AddElement(array, array->Size, value);
                 cout << endl;
                 break;
             }
@@ -93,46 +84,35 @@ int main()
             {
                 int index = GetInput("Enter the index where you want to insert the value: \n");
                 int value = GetInput("Enter the value you want to insert: \n");
-                AddElement(Array, index, value);
-                cout << endl;
+                AddElement(array, index, value);
                 break;
             }
             case 6:
             {
-                SortArray(Array);
+                SortArray(array);
                 cout << "Array is sorted \n";
-                cout << endl;
                 break;
             }
             case 7:
             {
                 int value = GetInput("Enter the value you want to find in the array: \n");
-                int index = LinearSearch(Array, value);
+                int index = LinearSearch(array, value);
 
                 PrintIndexResult(index);
-                cout << endl;
                 break;
             }
             case 8:
             {
                 int value = GetInput("Enter the value you want to find in the array: \n");
-                int index = BinarySearch(Array, value);
+                int index = BinarySearch(array, value);
 
                 PrintIndexResult(index);
                 break;
-            }
-            case 0:
-            {
-                FreeArray(Array);
-                return 0;
             }
             default:
                 cout << "Unknown command. Try entering the command again \n";
         }
     }
 
-    //TODO: to method
-    /*delete[] Array->Array;
-    delete Array;*/
-
+    FreeArray(array);
 }

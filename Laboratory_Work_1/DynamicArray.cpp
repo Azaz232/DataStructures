@@ -1,22 +1,17 @@
-//#pragma once
 #include "DynamicArray.h"
 #include <stdexcept>
-//TODO: remove
-//#include <iostream>
 using namespace std;
 
 DynamicArray* CreateDynamicArray()
 {
-
 	DynamicArray* array = new DynamicArray;
 
 	array->Size = 0;
-	array->Capacity = originalCapacity;
+	array->Capacity = OriginalCapacity;
 	array->Array = new int[array->Capacity];
 
 	return array;
 }
-
 
 void ResizeArray(DynamicArray* array, int capacity) 
 {
@@ -27,6 +22,7 @@ void ResizeArray(DynamicArray* array, int capacity)
 	}
 	delete[] array->Array;
 	array->Array = newArray;
+	array->Capacity = capacity;
 }
 
 void CheckRange(DynamicArray* array, int index)
@@ -37,71 +33,51 @@ void CheckRange(DynamicArray* array, int index)
 	}
 }
 
-
-
 void AddElement(DynamicArray* array, int index, int value)
 {
 	CheckRange(array, index);
 
 	if (array->Size >= array->Capacity)
 	{
-		ResizeArray(array, array->Capacity*growthFactor);
+		ResizeArray(array, array->Capacity*GrowthFactor);
 	}
 
-	for (int i = array->Size; i > index; i--)
+	for (int i = array->Size; i > index; --i)
 	{
 		array->Array[i] = array->Array[i - 1];
 	}
 
 	array->Array[index] = value;
-	array->Size++;
+	++array->Size;
 }
 
 void RemoveByIndex(DynamicArray* array, int index)
 {
 	CheckRange(array, index);
 
-
-	for (int i = index; i < array->Size - 1; i++)
+	for (int i = index; i < array->Size - 1; ++i)
 	{
 		array->Array[i] = array->Array[i + 1];
 	}
 
-	array->Size--;
+	--array->Size;
 	
-	if (array->Size < array->Capacity / growthFactor)
+	if (array->Size < array->Capacity / GrowthFactor && array->Capacity > OriginalCapacity)
 	{
-		ResizeArray(array, array->Capacity/growthFactor);
+		ResizeArray(array, array->Capacity / GrowthFactor);
 	}
 }
 
 void RemoveByValue(DynamicArray* array, int value)
 {
-	int deleteIndex = -1;
-
-	for (int i = 0; i < array->Size; i++)
+	for (int i = 0; i < array->Size; ++i)
 	{
 		if (array->Array[i] == value)
 		{
-			deleteIndex = i;
-			break;
+			RemoveByIndex(array, i);
+			--i;
 		}
 	}
-
-	if (deleteIndex != -1)
-	{
-		for (int i = deleteIndex; i < array->Size; i++)
-		{
-			array->Array[i] = array->Array[i + 1];
-		}
-
-		array->Size--;
-	}
-	//else
-	//{
-	//	//TODO: remove
-	//	cout << "Value wasn't found in the array" << endl;
-	//}
 }
 
 
@@ -111,73 +87,76 @@ int GetElement(DynamicArray* array, int index)
 	return array->Array[index];
 }
 
-
-
-
 //TODO: RSDN
 
-void swap(int& a, int& b) 
+//! \brief Swaps elements.
+//! \param firstElement First element of the dynamic array.
+//! \param secondElement First element of the dynamic array.
+void Swap(int& firstElement, int& secondElement) 
 {
-	int temp = a;
-	a = b;
-	b = temp;
+	int temp = firstElement;
+	firstElement = secondElement;
+	secondElement = temp;
 }
 //TODO: RSDN
 
-int partition(int* arr, int low, int high) 
+//! \brief Partitions an array around a pivot element.
+//! \param array Pointer to the array to be partitioned.
+//! \param low The starting index of the range to be partitioned.
+//! \param high The ending index of the range to be partitioned.
+//! \return The index of the pivot element after partitioning.
+int Partition(int* array, int low, int high) 
 {
-	int pivot = arr[high];
+	int pivot = array[high];
 	int i = low - 1;
 
-	for (int j = low; j < high; j++) {
-		if (arr[j] < pivot) {
+	for (int j = low; j < high; j++) 
+	{
+		if (array[j] < pivot) {
 			i++;
-			swap(arr[i], arr[j]);
+			swap(array[i], array[j]);
 		}
 	}
 
-	swap(arr[i + 1], arr[high]);
+	swap(array[i + 1], array[high]);
 	return i + 1;
 }
 
 //TODO: RSDN
 
-void quicksort(int* arr, int low, int high) 
+//! \brief Sorts an array using the QuickSort algorithm.
+//! \param array Pointer to the array to be sorted.
+//! \param low The starting index of the portion of the array to be sorted.
+//! \param high The ending index of the portion of the array to be sorted.
+void QuickSort(int* array, int low, int high) 
 {
-	if (low < high) {
-		int pivotIndex = partition(arr, low, high);
-		quicksort(arr, low, pivotIndex - 1);
-		quicksort(arr, pivotIndex + 1, high);
+	if (low < high) 
+	{
+		int pivotIndex = Partition(array, low, high);
+		QuickSort(array, low, pivotIndex - 1);
+		QuickSort(array, pivotIndex + 1, high);
 	}
 }
 
 
 void SortArray(DynamicArray* array)
 {
-	quicksort(array->Array, 0, array->Size - 1);
+	QuickSort(array->Array, 0, array->Size - 1);
 }
-
-
-
-
 
 
 
 int LinearSearch(DynamicArray* array, int value)
 {
-	for (int i = 0; i < array->Size; i++)
+	for (int i = 0; i < array->Size; ++i)
 	{
 		if (array->Array[i] == value)
 		{
-			//TODO: remove
-			/*cout << "Requested value is placed at index: " << i << endl;*/
 			return i;
 		}
 	}
 	return -1;
-	/*cout << "Requested value wasn't found" << endl;*/
 }
-
 
 int BinarySearch(DynamicArray* array, int value)
 {
@@ -187,18 +166,18 @@ int BinarySearch(DynamicArray* array, int value)
 
 	while (first <= last)
 	{
-		int mid = (first + last) / 2;
-		if (array->Array[mid] == value)
+		int middle = (first + last) / 2;
+		if (array->Array[middle] == value)
 		{
-			return mid;
+			return middle;
 		}
-		if (value < array->Array[mid])
+		if (value < array->Array[middle])
 		{
-			last = mid - 1;
+			last = middle - 1;
 		}
 		else
 		{
-			first = mid + 1;
+			first = middle + 1;
 		}
 	}
 	return -1;

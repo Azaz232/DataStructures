@@ -1,7 +1,4 @@
 #pragma once
-//TODO: remove
-//#include <iostream>
-//using namespace std;
 
 //! \brief Struct of a dynamic array.
 struct DynamicArray
@@ -16,23 +13,19 @@ struct DynamicArray
 	int* Array;
 };
 
-//TODO: RSDN
-
 //! \bried initial capacity.
-const int originalCapacity = 4;
-
-//TODO: RSDN
+const int OriginalCapacity = 4;
 
 //! \bried growth factor of the array.
-const int growthFactor = 2;
+const int GrowthFactor = 2;
 
 // !\brief Creation of the array.
 // !\return Returns an array.
-//TODO: return
 DynamicArray* CreateDynamicArray();
 
 //! \brief Resizes capacity of the array.
 //! \param array Struct of the dynamic array.
+//! \param capacity Capacity of the array.
 void ResizeArray(DynamicArray* array, int capacity);
 
 //! \brief Adds an element to the array.
