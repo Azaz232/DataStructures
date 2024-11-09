@@ -1,5 +1,4 @@
 #include "ListItem.h"
-// cpp file for a node
 
 Node* CreateNode()
 {

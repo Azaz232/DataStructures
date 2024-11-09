@@ -1,5 +1,4 @@
 #pragma once
-// header file for definition of the node
 
 /// <summary>
 /// Structure of a node.
