@@ -71,8 +71,24 @@ void Remove(List* list, int index);
 /// <param name="list"> Doubly linked list. </param>
 void FreeList(List* list);
 
-
+/// <summary>
+/// Inserts a value by index in the linked list.
+/// </summary>
+/// <param name="list"> Doubly linked list. </param>
+/// <param name="index"> Index at which you want to insert an element. </param>
+/// <param name="data"> Value which you want to insert at the list. </param>
 void Insert(List* list, int index, int data);
 
+/// <summary>
+///  Searches the element in linked list by its value.
+/// </summary>
+/// <param name="list"> Doubly linked list. </param>
+/// <param name="element"> Elemenet which you want to find. </param>
+/// <returns> Returns index of the element. </returns>
+int LinearSearch(List* list, int element);
 
-Node* Search(List* list, int element);
+/// <summary>
+/// Sorts an array using merge sort method.
+/// </summary>
+/// <param name="list"> Doubly linked list. </param>
+void Sort(List* list);

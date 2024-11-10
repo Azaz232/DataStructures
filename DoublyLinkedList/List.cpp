@@ -239,29 +239,106 @@ void Insert(List* list, int index, int data)
 	list->Size++;
 }
 
-
-
-
-Node* Search(List* list, int element)
+int LinearSearch(List* list, int element)
 {
-	if (list == nullptr) 
-	{
-		throw ("hell nah");
-		return nullptr;
-	}
+	Node* currentNode = list->Head;
+	int index = 0;
 
-	Node* current = list->Head;
-	while (current != nullptr) 
+	while (currentNode != nullptr)
 	{
-		if (current->Data == element) 
+		if (currentNode->Data == element)
 		{
-			return current;
+			return index;
 		}
-		current = current->Next;
+		index++;
+		currentNode = currentNode->Next;
 	}
-	return nullptr;
+	return -1;
 }
 
+/// <summary>
+/// Merges two halfs of a linked ilist into one recursively.
+/// </summary>
+/// <param name="left"> First part of the list. </param>
+/// <param name="right"> Second part of the list. </param>
+/// <returns> Returns the head of the merged list.</returns>
+Node* Merge(Node* left, Node* right)
+{
+	if (!left)
+	{
+		return right;
+	}
+
+	if (!right)
+	{
+		return left;
+	}
+
+	if (left->Data < right->Data)
+	{
+		left->Next = Merge(left->Next, right);
+		left->Next->Previous = left;
+		left->Previous = nullptr;
+		return left;
+	}
+	else
+	{
+		right->Next = Merge(left, right->Next);
+		right->Next->Previous = right;
+		right->Previous = nullptr;
+		return right;
+	}
+}
+
+/// <summary>
+/// Splits th elist into two parts.
+/// </summary>
+/// <param name="head"> Head of the list. </param>
+/// <returns> Returns the head of the second half of the list. </returns>
+Node* Split(Node* head)
+{
+	Node* slow = head;
+	Node* fast = head->Next;
+
+	while (fast && fast->Next)
+	{
+		slow = slow->Next;
+		fast = fast->Next->Next;
+	}
+
+	Node* temp = slow->Next;
+	slow->Next = nullptr;
+	if (temp)
+	{
+		temp->Previous = nullptr;
+	}
+
+	return temp;
+}
+
+/// <summary>
+/// Merge sort of the list.
+/// </summary>
+/// <param name="head"> Head of the linked list. </param>
+/// <returns> Head of the fully sorted list. </returns>
+Node* MergeSort(Node* head)
+{
+	if (!head || !head->Next)
+	{
+		return head;
+	}
+
+	Node* secondHalf = Split(head);
+	head = MergeSort(head);
+	secondHalf = MergeSort(secondHalf);
+
+	return Merge(head, secondHalf);
+}
+
+void Sort(List* list)
+{
+	list->Head = MergeSort(list->Head);
+}
 
 
 void FreeList(List* list)
