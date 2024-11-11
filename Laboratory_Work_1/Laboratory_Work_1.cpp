@@ -4,7 +4,7 @@ using namespace std;
 
 //! \brief Resizes capacity of the array.
 //! \param prompt A line.
-//! \return 
+//! \return Value intered by a user.
 int GetInput(const string& prompt)
 {
     int value;

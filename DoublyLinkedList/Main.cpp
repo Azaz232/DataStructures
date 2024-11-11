@@ -1,6 +1,10 @@
 ﻿#include <iostream>
 #include "List.h"
 
+
+#include <limits>
+#include <string>
+
 using namespace std;
 
 /// <summary>
@@ -24,12 +28,39 @@ void Found(int index)
 /// </summary>
 /// <param name="prompt"> Prompt. </param>
 /// <returns> Returns the integer value entered by the user. </returns>
+
+//int GetInput(const string& prompt)
+//{
+//    int value;
+//    cout << prompt;
+//    cin >> value;
+//    return value;
+//}
+
 int GetInput(const string& prompt)
 {
     int value;
-    cout << prompt;
-    cin >> value;
-    return value;
+    string input;
+
+    while (true)
+    {
+        cout << prompt;
+        getline(cin, input);
+
+        try
+        {
+            value = stoi(input);
+            return value;
+        }
+        catch (const invalid_argument& e)
+        {
+            cout << "Invalid input. Enter an integer value.\n";
+        }
+        catch (const out_of_range& e)
+        {
+            cout << "Input is out of range. Enter a valid integer value.\n";
+        }
+    }
 }
 
 int main()
