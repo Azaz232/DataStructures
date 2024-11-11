@@ -1,5 +1,11 @@
 #include "List.h"
 
+
+
+// maybe i should make a function for finding a node in the list
+// bc i have duplicates in my code
+
+
 List* CreateLinkedList()
 {
 	List* linkedList = new List;
@@ -51,22 +57,6 @@ void InsertAtEnd(List* list, int value)
 	list->Tail = newNode;
 	list->Size++;
 }
-
-//Node* GetElement(List* list, int index)
-//{
-//	Node* currentNode = list->Head;
-//	for (int i = 0; i < index; ++i)
-//	{
-//		if (currentNode == nullptr)
-//		{
-//			return currentNode;
-//		}
-//		currentNode = currentNode->Next;
-//	}
-//
-//	return currentNode;
-//}
-
 
 void InsertAfter(List* list, int target, int data)
 {
