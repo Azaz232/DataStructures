@@ -1,10 +1,7 @@
 #include "List.h"
 
-
-
 // maybe i should make a function for finding a node in the list
 // bc i have duplicates in my code
-
 
 List* CreateLinkedList()
 {
@@ -14,7 +11,6 @@ List* CreateLinkedList()
 
 	return linkedList;
 }
-
 
 void InsertAtBeginning(List* list, int value)
 {
@@ -328,8 +324,16 @@ Node* MergeSort(Node* head)
 void Sort(List* list)
 {
 	list->Head = MergeSort(list->Head);
-}
 
+	Node* current = list->Head;
+	list->Tail = nullptr; 
+
+	while (current != nullptr)
+	{
+		list->Tail = current;
+		current = current->Next;
+	}
+}
 
 void FreeList(List* list)
 {

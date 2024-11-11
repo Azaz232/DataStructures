@@ -32,7 +32,7 @@ void ResizeArray(DynamicArray* array, int capacity);
 //! \param array Struct of the dynamic array.
 //! \param index Index of an element, where you want to add an element.
 //! \param value Value of an element.
-void AddElement(DynamicArray* array, int index, int value);	
+void AddElement(DynamicArray* array, int index, int value);	 // надо value +1 сделать, чтобы вставляло после элемента
 
 //! \brief Deletes an element by an index.
 //! \param array Struct of the dynamic array.

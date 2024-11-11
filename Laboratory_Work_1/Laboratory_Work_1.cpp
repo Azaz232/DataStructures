@@ -1,17 +1,48 @@
 ﻿#include <iostream>
 #include "DynamicArray.h"
+
+#include <limits>
+#include <string>
+
 using namespace std;
 
 //! \brief Resizes capacity of the array.
 //! \param prompt A line.
 //! \return Value intered by a user.
+//int GetInput(const string& prompt)
+//{
+//    int value;
+//    cout << prompt;
+//    cin >> value;
+//    return value;
+//}
+
 int GetInput(const string& prompt)
 {
     int value;
-    cout << prompt;
-    cin >> value;
-    return value;
+    string input;
+
+    while (true)
+    {
+        cout << prompt;
+        getline(cin, input);
+
+        try
+        {
+            value = stoi(input);
+            return value;
+        }
+        catch (const invalid_argument& e)
+        {
+            cout << "Invalid input. Please enter an integer value.\n";
+        }
+        catch (const out_of_range& e)
+        {
+            cout << "Input is out of range. Please enter a valid integer value.\n";
+        }
+    }
 }
+
 
 //! \brief Depending on index we either output an index or not.
 //! \param index An index.

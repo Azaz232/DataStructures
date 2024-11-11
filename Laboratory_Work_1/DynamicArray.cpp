@@ -75,7 +75,7 @@ void RemoveByValue(DynamicArray* array, int value)
 		if (array->Array[i] == value)
 		{
 			RemoveByIndex(array, i);
-			--i;
+			--i;	
 		}
 	}
 }
