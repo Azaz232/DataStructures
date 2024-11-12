@@ -43,7 +43,6 @@ int GetInput(const string& prompt)
     }
 }
 
-
 //! \brief Depending on index we either output an index or not.
 //! \param index An index.
 void PrintIndexResult(int index)
@@ -83,16 +82,19 @@ int main()
         cout << "7. Linear search for an element in an array \n";
         cout << "8. Binary search for an element in an array \n";
 
-        int choice = GetInput("Your input: ");
-        
+        /*int choice = GetInput("Your input: ");*/
+        cout << "Your input";
+        int choice;
+        cin >> choice;
+
         switch (choice)
         {
             case 1:
-            {
+            
                 int index = GetInput("Enter the index to delete: \n");
                 RemoveByIndex(array, index);
                 break;
-            }
+            
             case 2:
             {
                 int value = GetInput("Enter the value to delete: \n");

@@ -1,8 +1,5 @@
 #include "List.h"
 
-// maybe i should make a function for finding a node in the list
-// bc i have duplicates in my code
-
 List* CreateLinkedList()
 {
 	List* linkedList = new List;
@@ -12,12 +9,48 @@ List* CreateLinkedList()
 	return linkedList;
 }
 
-void InsertAtBeginning(List* list, int value)
+/// <summary>
+/// Finds a node in the list
+/// </summary>
+/// <param name="list"> Doubly linked list.  </param>
+/// <param name="index"> Index. </param>
+/// <returns> Pointer to the node. </returns>
+Node* FindInList(List* list, int index)
 {
-	Node* newNode = CreateNode();
-	newNode->Data = value;
-	newNode->Next = list->Head;
+	Node* currentNode = list->Head;
 
+	for (int i = 0; i < index; ++i)
+	{
+		if (currentNode == nullptr)
+		{
+			return currentNode;
+		}
+
+		currentNode = currentNode->Next;
+	}
+	return currentNode;
+}
+
+/// <summary>
+/// Checks whether the input value was in the range or not.
+/// </summary>
+/// <param name="list"> Doubly linked list. </param>
+/// <param name="index"> Index. </param>
+void CheckRange(List* list, int index)
+{
+	if (index < 0 || index>list->Size)
+	{
+		throw "Index out of range \n";
+	}
+}
+
+/// <summary>
+/// For elements in the beginning.
+/// </summary>
+/// <param name="list"> Doubly linked list. </param>
+/// <param name="newNode"> Node that we insert. </param>
+void HeadInsert(List* list, Node* newNode)
+{
 	if (list->Head != nullptr)
 	{
 		list->Head->Previous = newNode;
@@ -29,6 +62,57 @@ void InsertAtBeginning(List* list, int value)
 	}
 
 	list->Head = newNode;
+}
+
+/// <summary>
+/// For elements at the end.
+/// </summary>
+/// <param name="list"> Doubly linked list. </param>
+/// <param name="newNode"> Node that we insert. </param>
+void TailInsert(List* list, Node* newNode)
+{
+	if (list->Tail != nullptr)
+	{
+		list->Tail->Next = newNode;
+	}
+
+	list->Tail = newNode;
+
+	if (list->Head == nullptr)
+	{
+		list->Head = newNode;
+	}
+}
+
+/// <summary>
+/// Inserts a node at index of a node
+/// </summary>
+/// <param name="list"> Doubly linked list. </param>
+/// <param name="newNode"> Node that we need to insert. </param>
+/// <param name="currentNode"> Node at which we need to insert. </param>
+void InsertAt(List* list, Node* newNode, Node* currentNode)
+{
+	newNode->Next = currentNode;
+	newNode->Previous = currentNode->Previous;
+
+	if (currentNode->Previous != nullptr)
+	{
+		currentNode->Previous->Next = newNode;
+	}
+	else
+	{
+		list->Head = newNode;
+	}
+	currentNode->Previous = newNode;
+}
+
+void InsertAtBeginning(List* list, int value)
+{
+	Node* newNode = CreateNode();
+	newNode->Data = value;
+	newNode->Next = list->Head;
+
+	HeadInsert(list, newNode);
 
 	list->Size++;
 }
@@ -37,20 +121,10 @@ void InsertAtEnd(List* list, int value)
 {
 	Node* newNode = CreateNode();
 	newNode->Data = value;
-
 	newNode->Previous = list->Tail;
 
-	if (list->Tail != nullptr)
-	{
-		list->Tail->Next = newNode;
-	}
+	TailInsert(list, newNode);
 
-	if (list->Head == nullptr)
-	{
-		list->Head = newNode;
-	}
-
-	list->Tail = newNode;
 	list->Size++;
 }
 
@@ -60,10 +134,12 @@ void InsertAfter(List* list, int target, int data)
 
 	while (currentNode != nullptr)
 	{
+		// TODO: Дубль
 		if (currentNode->Data == target)
 		{
 			Node* newNode = CreateNode();
 			newNode->Data = data;
+
 			newNode->Next = currentNode->Next;
 			newNode->Previous = currentNode;
 
@@ -92,20 +168,10 @@ void InsertBefore(List* list, int target, int data)
 		if (currentNode->Data == target)
 		{
 			Node* newNode = CreateNode();
-
 			newNode->Data = data;
-			newNode->Next = currentNode;
-			newNode->Previous = currentNode->Previous;
 
-			if (currentNode->Previous != nullptr)
-			{
-				currentNode->Previous->Next = newNode;
-			}
-			else
-			{
-				list->Head = newNode;
-			}
-			currentNode->Previous = newNode;
+			InsertAt(list, newNode, currentNode);
+
 			list->Size++;
 		}
 		currentNode = currentNode->Next;
@@ -114,19 +180,11 @@ void InsertBefore(List* list, int target, int data)
 
 void Remove(List* list, int index)
 {
-	if (index < 0 || index>list->Size)
-	{
-		throw "Index out of range \n";
-		return;
-	}
+	CheckRange(list, index);
 
-	Node* currentNode = list->Head;
+	Node* currentNode = FindInList(list, index);
 
-	for (int i = 0; i < index; ++i)
-	{
-		currentNode = currentNode->Next;
-	}
-
+	// TODO: Дубль
 	if (currentNode == list->Head)
 	{
 		list->Head = currentNode->Next;
@@ -142,7 +200,6 @@ void Remove(List* list, int index)
 		{
 			list->Tail->Next = nullptr;
 		}
-
 	}
 	else
 	{
@@ -156,11 +213,7 @@ void Remove(List* list, int index)
 
 void Insert(List* list, int index, int data)
 {
-	if (index < 0 || index > list->Size-1)
-	{
-		throw "Index out of range";
-		return;
-	}
+	CheckRange(list, index);
 
 	Node* newNode = CreateNode();
 	newNode->Data = data;
@@ -170,57 +223,20 @@ void Insert(List* list, int index, int data)
 		newNode->Next = list->Head;
 		newNode->Previous = nullptr;
 
-		if (list->Head != nullptr)
-		{
-			list->Head->Previous = newNode;
-		}
-
-		list->Head = newNode;
-
-		if (list->Tail == nullptr)
-		{
-			list->Tail = newNode;
-		}
+		HeadInsert(list, newNode);
 	}
 	else if (index == list->Size-1)
 	{
 		newNode->Previous = list->Tail;
 		newNode->Next = nullptr;
 
-		if (list->Tail != nullptr)
-		{
-			list->Tail->Next = newNode;
-		}
-
-		list->Tail = newNode;
-
-		if (list->Head == nullptr)
-		{
-			list->Head = newNode;
-		}
+		TailInsert(list, newNode);
 	}
 	else
 	{
-		Node* currentNode = list->Head;
-
-		for (int i = 0; i < index; ++i)
-		{
-			currentNode = currentNode->Next;
-		}
-
-		newNode->Next = currentNode;
-		newNode->Previous = currentNode->Previous;
-
-		if (currentNode->Previous != nullptr)
-		{
-			currentNode->Previous->Next = newNode;
-		}
-		else
-		{
-			list->Head = newNode;
-		}
-
-		currentNode->Previous = newNode;
+		Node* currentNode = FindInList(list, index);
+		
+		InsertAt(list, newNode, currentNode);
 	}
 	list->Size++;
 }
@@ -346,4 +362,3 @@ void FreeList(List* list)
 	}
 	delete list;
 }
-

@@ -1,8 +1,12 @@
 ﻿#include <iostream>
 #include "List.h"
-
+#include <chrono>
 #include <limits>
 #include <string>
+#include <fstream> 
+
+using namespace std;
+using namespace std::chrono;
 
 using namespace std;
 
@@ -27,14 +31,6 @@ void Found(int index)
 /// </summary>
 /// <param name="prompt"> Prompt. </param>
 /// <returns> Returns the integer value entered by the user. </returns>
-
-//int GetInput(const string& prompt)
-//{
-//    int value;
-//    cout << prompt;
-//    cin >> value;
-//    return value;
-//}
 
 int GetInput(const string& prompt)
 {
@@ -62,9 +58,61 @@ int GetInput(const string& prompt)
     }
 }
 
+/// <summary>
+/// For reaserch.
+/// </summary>
+/// <param name="listSize"> Size of the list.</param>
+/// <param name="outputFile"> File. </param>
+void measureInsertionAndDeletion(int listSize)
+{
+    List* doublyLinkedList = CreateLinkedList();
+
+    auto startInsertBeginning = high_resolution_clock::now();
+    for (int i = 0; i < listSize; ++i)
+    {
+        InsertAtBeginning(doublyLinkedList, i);
+    }
+    auto stopInsertBeginning = high_resolution_clock::now();
+    auto durationInsertBeginning = duration_cast<microseconds>(stopInsertBeginning - startInsertBeginning);
+
+    auto startInsertEnd = high_resolution_clock::now();
+    for (int i = 0; i < listSize; ++i)
+    {
+        InsertAtEnd(doublyLinkedList, i);
+    }
+    auto stopInsertEnd = high_resolution_clock::now();
+    auto durationInsertEnd = duration_cast<microseconds>(stopInsertEnd - startInsertEnd);
+
+    long long durationDeleteBeginning = 0;
+    if (doublyLinkedList->Size > 0) 
+    {
+        auto startDeleteBeginning = high_resolution_clock::now();
+        Remove(doublyLinkedList, 0);
+        auto stopDeleteBeginning = high_resolution_clock::now();
+        durationDeleteBeginning = duration_cast<microseconds>(stopDeleteBeginning - startDeleteBeginning).count();
+    }
+
+    long long durationDeleteEnd = 0;
+    if (doublyLinkedList->Size > 0) 
+    {
+        auto startDeleteEnd = high_resolution_clock::now();
+        Remove(doublyLinkedList, doublyLinkedList->Size - 1);
+        auto stopDeleteEnd = high_resolution_clock::now();
+        durationDeleteEnd = duration_cast<microseconds>(stopDeleteEnd - startDeleteEnd).count();
+    }
+
+    cout << "List Size: " << listSize
+        << ", Insertion at Beginning Time: " << durationInsertBeginning.count()
+        << " microseconds, Insertion at End Time: " << durationInsertEnd.count()
+        << " microseconds, Deletion from Beginning Time: " << durationDeleteBeginning
+        << " microseconds, Deletion from End Time: " << durationDeleteEnd << " microseconds" << endl;
+
+    FreeList(doublyLinkedList);
+}
+
 int main()
 {
-	List* doublyLinkedList = CreateLinkedList();
+    List* doublyLinkedList = CreateLinkedList();
 
 	while (true)
 	{
@@ -83,6 +131,7 @@ int main()
         cout << "6. Insert element at certain index \n";
         cout << "7. Linear search for an element in an list \n";
         cout << "8. Sort array \n";
+        cout << "9. Measure time \n";
 
         int choice = GetInput("Your input: ");
 
@@ -137,6 +186,12 @@ int main()
         case 8:
         {
             Sort(doublyLinkedList);
+            break;
+        }
+        case 9:
+        {
+            int value = GetInput("Size of the list you need to check duration: ");
+            measureInsertionAndDeletion(value);
             break;
         }
         default:
