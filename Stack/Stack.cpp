@@ -1,20 +1,49 @@
-﻿// Stack.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+#include "Stack.h"
 
-#include <iostream>
-
-int main()
+Stack* CreateStack(int size)
 {
-    std::cout << "Hello World!\n";
+	return new Stack(size);
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
+bool IsEmpty(Stack* stack)
+{
+	return stack->Top < 0;
+}
 
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+void DeleteStack(Stack* stack)
+{
+	delete[] stack->Buffer;
+	delete stack;
+}
+
+void Push(Stack* stack, int data)
+{
+	if (stack->Top >= stack->BufferSize - 1)
+	{
+		throw "Stack overflow!\n";
+	}
+	stack->Buffer[++stack->Top] = data;
+}
+
+int Pop(Stack* stack)
+{
+	if (IsEmpty(stack))
+	{
+		throw "Stack is empty \n";
+	}
+	return stack->Buffer[stack->Top--];
+}
+
+void ResizeStack(Stack* stack, int newSize)
+{
+	stack->BufferSize = newSize;
+	int* newBuffer = new int[newSize];
+
+	for (int i = stack->BufferSize - 1; i > -1; i-- )
+	{
+		newBuffer[i] = stack->Buffer[i];
+	}
+
+	delete[] stack->Buffer;
+	stack->Buffer = newBuffer;
+}
