@@ -20,9 +20,10 @@ void Push(Stack* stack, int data)
 {
 	if (stack->Top >= stack->BufferSize - 1)
 	{
-		throw "Stack overflow!\n";
+		throw "Stack overflow";
 	}
 	stack->Buffer[++stack->Top] = data;
+	++stack->Size;
 }
 
 int Pop(Stack* stack)
@@ -31,6 +32,7 @@ int Pop(Stack* stack)
 	{
 		throw "Stack is empty \n";
 	}
+	--stack->Size;
 	return stack->Buffer[stack->Top--];
 }
 

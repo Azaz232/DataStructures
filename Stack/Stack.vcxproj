@@ -129,10 +129,12 @@
   <ItemGroup>
     <ClCompile Include="CircularBuffer.cpp" />
     <ClCompile Include="Laborotory_work_3.cpp" />
+    <ClCompile Include="CircularBufferQueue.cpp" />
     <ClCompile Include="Stack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CircularBuffer.h" />
+    <ClInclude Include="CircularBufferQueue.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StackItem.h" />
   </ItemGroup>

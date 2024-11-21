@@ -19,7 +19,9 @@ struct Stack
 	/// </summary>
 	int Top;
 
-	Stack(int size) : BufferSize(size), Top(-1)
+	int Size;
+
+	Stack(int size) : BufferSize(size), Top(-1), Size(0)
 	{
 		Buffer = new int[BufferSize];
 	}
