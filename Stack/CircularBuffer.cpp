@@ -75,7 +75,6 @@ void ResizeCircularBuffer(CircularBuffer* circularBuffer, int newCapacity)
 
 	for (int i = 0; i < circularBuffer->Size; i++)
 	{
-		// Calculate the index in the old buffer
 		int oldIndex = (circularBuffer->Tail + i) % circularBuffer->Capacity;
 		newBuffer[i] = circularBuffer->Buffer[oldIndex];
 	}

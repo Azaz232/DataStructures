@@ -3,6 +3,7 @@
 #include <string>
 #include "CircularBuffer.h"
 #include "CircularBufferQueue.h"
+#include "StackQueue.h"
 
 using namespace std;
 
@@ -69,7 +70,7 @@ int PositiveSize(const string& prompt)
 
 void PrintStack(Stack* stack)
 {
-    cout << "Stack contents: \n";
+    cout << "\nStack contents: \n";
     for (int i = stack->Size - 1; i > -1; i--)
     {
         cout << stack->Buffer[i] << endl;
@@ -84,7 +85,7 @@ void PrintCircularBuffer(CircularBuffer* circularBuffer)
         cout << "Buffer is empty. \n";
         return;
     }
-    cout << "Buffer contents: \n";
+    cout << "\nBuffer contents: \n";
     for (int i = 0; i < circularBuffer->Size; i++)
     {
         cout << circularBuffer->Buffer[(circularBuffer->Tail + i) % circularBuffer->Capacity] << " ";
@@ -95,6 +96,14 @@ void PrintCircularBuffer(CircularBuffer* circularBuffer)
 void PrintCircularBufferQueue(CircularBufferQueue* queue)
 {
     PrintCircularBuffer(queue->CircularBuffer);
+}
+
+void PrintStackQueue(StackQueue* stackQueue)
+{
+    cout << "First stack:";
+    PrintStack(stackQueue->FirstStack);
+    cout << "Second stack:";
+    PrintStack(stackQueue->SecondStack);
 }
 
 int main()
@@ -108,18 +117,27 @@ int main()
     int circularBufferQueueSize = PositiveSize("Enter the size of the circcular buffer queue: ");
     CircularBufferQueue* circularBufferQueue = CreateCircularBufferQueue(circularBufferQueueSize);
 
+    int stackQueueSize = PositiveSize("Enter the size of the stack queue: ");
+    StackQueue* stackQueue = CreateStackQueue(stackQueueSize);
+
 	while (true)
 	{
 		cout << "Select the action you want to do: \n";
         cout << "1. Push the value to stack \n";
         cout << "2. Pop the value from stack \n";
         cout << "3. Resize the stack \n";
+
         cout << "4. Write an element to the circular buffer \n";
         cout << "5. Read an element from the circular buffer \n";
         cout << "6. Resize the circular buffer \n";
+
         cout << "7. Enqueue the value to the circular buffer queue \n";
         cout << "8. Dequeue the circular buffer queue \n";
         cout << "9. Resize the circular buffer queue \n";
+
+        cout << "10. Enqueue the value to the stack queue \n";
+        cout << "11. Dequeue the value from the stack queue \n";
+        cout << "12. Resize the stack queue \n";
 
 
         int choice = GetInput("Enter ur choice: \n");
@@ -193,9 +211,39 @@ int main()
             PrintCircularBufferQueue(circularBufferQueue);
             break;
         }
+        case 10:
+        {
+            int value = GetInput("Enter the value to add: ");
+            cout << endl;
+            EnqueueStack(stackQueue, value);
+            PrintStackQueue(stackQueue);
+            cout << endl;
+            break;
+        }
+        case 11:
+        {
+            int value = DequeueStack(stackQueue);
+            cout << "Element received " << value << endl;
+            PrintStackQueue(stackQueue);
+            break;
+        }
+        case 12:
+        {
+            PrintStackQueue(stackQueue);
+            int newCapacity = GetInput("Enter the new size of the stack queue: ");
+            ResizeStackQueue(stackQueue, newCapacity);
+            PrintStackQueue(stackQueue);
+            break;
+        }
+        default:
+        {
+            cout << "\nWrong command, try entering again\n";
+        }
         }
 
 	}
     DeleteStack(stack);
     DeleteCircularBuffer(circularBuffer);
+    DeleteCircularBufferQueue(circularBufferQueue);
+    DeleteStackQueue(stackQueue);
 }

@@ -8,7 +8,7 @@ CircularBufferQueue* CreateCircularBufferQueue(int capacity)
 	return circularBufferQueue;
 }
 
-void DeleCircularBufferQueue(CircularBufferQueue* circularBufferQueue)
+void DeleteCircularBufferQueue(CircularBufferQueue* circularBufferQueue)
 {
 	DeleteCircularBuffer(circularBufferQueue->CircularBuffer);
 	delete circularBufferQueue;

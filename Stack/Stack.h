@@ -40,3 +40,5 @@ int Pop(Stack* stack);
 void DeleteStack(Stack* stack);
 
 void ResizeStack(Stack* stack, int newSize);
+
+bool IsEmpty(Stack* stack);

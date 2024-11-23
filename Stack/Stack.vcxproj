@@ -131,12 +131,14 @@
     <ClCompile Include="Laborotory_work_3.cpp" />
     <ClCompile Include="CircularBufferQueue.cpp" />
     <ClCompile Include="Stack.cpp" />
+    <ClCompile Include="StackQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CircularBuffer.h" />
     <ClInclude Include="CircularBufferQueue.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StackItem.h" />
+    <ClInclude Include="StackQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

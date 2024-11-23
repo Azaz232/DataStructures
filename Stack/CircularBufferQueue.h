@@ -9,7 +9,7 @@ struct CircularBufferQueue
 
 CircularBufferQueue* CreateCircularBufferQueue(int capacity);
 
-void DeleCircularBufferQueue(CircularBufferQueue* circularBufferQueue);
+void DeleteCircularBufferQueue(CircularBufferQueue* circularBufferQueue);
 
 void Enqueue(CircularBufferQueue* queue, int data);
 
