@@ -10,3 +10,4 @@ struct HashItem
 	HashItem* Next;
 };
 
+HashItem* CreateHashItem();
