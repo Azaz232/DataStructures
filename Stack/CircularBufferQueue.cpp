@@ -33,7 +33,8 @@ int Peek(CircularBufferQueue* queue)
 {
 	if (queue->CircularBuffer->Size == 0)
 	{
-		throw "queue id empty";
+		/*throw "queue is empty";*/
+		return;
 	}
 	return queue->CircularBuffer->Buffer[queue->CircularBuffer->Tail];
 }

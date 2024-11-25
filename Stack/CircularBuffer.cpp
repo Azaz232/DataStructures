@@ -34,7 +34,6 @@ void Enqueue(CircularBuffer* circularBuffer, int data)
 	{
 		/*circularBuffer->Head = (circularBuffer->Head) % circularBuffer->Capacity;*/
 		circularBuffer->Tail = (circularBuffer->Tail + 1) % circularBuffer->Capacity;
-		/*circularBuffer->Tail++;*/
 		/*circularBuffer->Head = 0;*/
 	}
 	else 
@@ -84,8 +83,6 @@ void ResizeCircularBuffer(CircularBuffer* circularBuffer, int newCapacity)
 	circularBuffer->Capacity = newCapacity; 
 	circularBuffer->Head = circularBuffer->Size; 
 	circularBuffer->Tail = 0; 
-
-
 }
 
 void DeleteCircularBuffer(CircularBuffer* circularBuffer)
