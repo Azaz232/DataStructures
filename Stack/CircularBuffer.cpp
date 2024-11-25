@@ -19,7 +19,8 @@ void Enqueue(CircularBuffer* circularBuffer, int data)
 {
 	//if (FreeSpace(circularBuffer) == 0)
 	//{
-	//	throw "Circular Buffer is full";
+	//	/*throw "Circular Buffer is full";*/
+	//	return;
 	//}
 	//if (circularBuffer->Head >= circularBuffer->Capacity)
 	//{
@@ -32,9 +33,7 @@ void Enqueue(CircularBuffer* circularBuffer, int data)
 
 	if (circularBuffer->Size == circularBuffer->Capacity) 
 	{
-		/*circularBuffer->Head = (circularBuffer->Head) % circularBuffer->Capacity;*/
 		circularBuffer->Tail = (circularBuffer->Tail + 1) % circularBuffer->Capacity;
-		/*circularBuffer->Head = 0;*/
 	}
 	else 
 	{
@@ -43,7 +42,6 @@ void Enqueue(CircularBuffer* circularBuffer, int data)
 	circularBuffer->Buffer[circularBuffer->Head] = data;
 	circularBuffer->Head = (circularBuffer->Head + 1) % circularBuffer->Capacity;
 }
-
 
 int Dequeue(CircularBuffer* circularBuffer)
 {
@@ -59,17 +57,6 @@ int Dequeue(CircularBuffer* circularBuffer)
 
 void ResizeCircularBuffer(CircularBuffer* circularBuffer, int newCapacity)
 {
-	/*circularBuffer->Capacity = newCapacity;
-	int* newBuffer = new int[newCapacity];
-
-	for (int i = 0; i < circularBuffer->Size; i++)
-	{
-		newBuffer[i] = circularBuffer->Buffer[i];
-	}
-
-	delete[] circularBuffer->Buffer;
-	circularBuffer->Buffer = newBuffer;*/
-
 	int* newBuffer = new int[newCapacity];
 
 	for (int i = 0; i < circularBuffer->Size; i++)

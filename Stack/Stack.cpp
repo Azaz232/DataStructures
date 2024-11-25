@@ -20,7 +20,8 @@ void Push(Stack* stack, int data)
 {
 	if (stack->Top >= stack->BufferSize - 1)
 	{
-		throw "Stack overflow";
+		/*throw "Stack overflow";*/
+		return;
 	}
 	stack->Buffer[++stack->Top] = data;
 	++stack->Size;

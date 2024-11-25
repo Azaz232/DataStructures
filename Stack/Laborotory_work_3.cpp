@@ -7,60 +7,68 @@
 
 using namespace std;
 
-bool isNumber(const string& prompt)
+/// <summary>
+/// Checks whether the string is a number
+/// </summary>
+/// <param name="prompt"> Prompt </param>
+/// <returns> True if the string is a number </returns>
+bool isNumber(const string& msg)
 {
-    if (prompt.empty())
+    if (msg.empty())
     {
         return false;
     }
-
     size_t start = 0;
-    if (prompt[0] == '-' || prompt[0] == '+')
+    if (msg[0] == '-' || msg[0] == '+')
     {
         start = 1;
     }
-
-    for (size_t i = start; i < prompt.size(); ++i)
+    for (size_t i = start; i < msg.size(); ++i)
     {
-        if (!isdigit(prompt[i]))
+        if (!isdigit(msg[i]))
         {
             return false;
         }
     }
-
     return true;
 }
 
-int GetInput(const string& prompt)
+/// <summary>
+/// Getsinput from the user
+/// </summary>
+/// <param name="prompt"> Prompt </param>
+/// <returns> Number </returns>
+int GetInput(const string& msg)
 {
     string input;
-    cout << prompt;
+    cout << msg;
     cin >> input;
-
     if (isNumber(input))
     {
         return stoi(input);
     }
     else
     {
-        cout << endl;
         cout << "Unknown command. Try entering the command again." << endl;
-        cout << endl;
-        return GetInput(prompt);
+        return GetInput(msg);
     }
 }
 
-int PositiveSize(const string& prompt)
+/// <summary>
+/// Gets users input for the size
+/// </summary>
+/// <param name="prompt"> Prompt </param>
+/// <returns> Positive number </returns>
+int PositiveSize(const string& msg)
 {
     string input;
-    cout << prompt;
+    cout << msg;
     cin >> input;
-
     if (!isNumber(input) || stoi(input) <= 0)
     {
         cout << endl;
         cout << "Size must be positive or not be zero. \n";
-        return PositiveSize(prompt);
+        return PositiveSize(msg);
     }
     else
     {
@@ -68,6 +76,10 @@ int PositiveSize(const string& prompt)
     }
 }
 
+/// <summary>
+/// Prints stack
+/// </summary>
+/// <param name="stack"> A pointer to the stack </param>
 void PrintStack(Stack* stack)
 {
     cout << "\nStack contents: \n";
@@ -78,6 +90,10 @@ void PrintStack(Stack* stack)
     cout << endl;
 }
 
+/// <summary>
+/// Prints circular buffer
+/// </summary>
+/// <param name="circularBuffer"> A pointer to the circular buffer </param>
 void PrintCircularBuffer(CircularBuffer* circularBuffer)
 {
     if (OccupiedSpace(circularBuffer) == 0)
@@ -93,11 +109,19 @@ void PrintCircularBuffer(CircularBuffer* circularBuffer)
     cout << endl;
 }
 
+/// <summary>
+/// Prints circular buffer queue
+/// </summary>
+/// <param name="queue"> A pointer to the circular buffer queue </param>
 void PrintCircularBufferQueue(CircularBufferQueue* queue)
 {
     PrintCircularBuffer(queue->CircularBuffer);
 }
 
+/// <summary>
+/// Prints stack queue
+/// </summary>
+/// <param name="stackQueue"> A pointer to the stack queue </param>
 void PrintStackQueue(StackQueue* stackQueue)
 {
     cout << "First stack:";
@@ -122,23 +146,22 @@ int main()
 
 	while (true)
 	{
-		cout << "Select the action you want to do: \n";
+		cout << "\tSelect the action you want to do: \n";
         cout << "1. Push the value to stack \n";
         cout << "2. Pop the value from stack \n";
-        cout << "3. Resize the stack \n";
+        cout << "3. Resize the stack \n\n";
 
         cout << "4. Write an element to the circular buffer \n";
         cout << "5. Read an element from the circular buffer \n";
-        cout << "6. Resize the circular buffer \n";
+        cout << "6. Resize the circular buffer \n\n";
 
         cout << "7. Enqueue the value to the circular buffer queue \n";
         cout << "8. Dequeue the circular buffer queue \n";
-        cout << "9. Resize the circular buffer queue \n";
+        cout << "9. Resize the circular buffer queue \n\n";
 
         cout << "10. Enqueue the value to the stack queue \n";
         cout << "11. Dequeue the value from the stack queue \n";
-        cout << "12. Resize the stack queue \n";
-
+        cout << "12. Resize the stack queue \n\n";
 
         int choice = GetInput("Enter ur choice: \n");
 
@@ -169,7 +192,7 @@ int main()
         {
             int value = GetInput("Enter the value you want to write to the circular buffer: \n");
             Enqueue(circularBuffer, value);
-            cout << endl << "i am not dumb i swear\ntail - " << circularBuffer->Tail << endl << "head- " << circularBuffer->Head << endl;
+            /*cout << endl << "i am not dumb i swear\ntail - " << circularBuffer->Tail << endl << "head- " << circularBuffer->Head << endl;*/
             PrintCircularBuffer(circularBuffer);
             break;
         }
@@ -240,7 +263,6 @@ int main()
             cout << "\nWrong command, try entering again\n";
         }
         }
-
 	}
     DeleteStack(stack);
     DeleteCircularBuffer(circularBuffer);
