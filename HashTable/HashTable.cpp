@@ -16,14 +16,14 @@ HashTable* CreateHashTable(int capacity)
 
 int Pearson(string& key, int a, int capacity)
 {
-	int hashValue = 0;
+	int hashCode = 0;
 	int power = 1;
 	for (char i : key)
 	{
-		hashValue += i * power;
+		hashCode += i * power;
 		power *= a;
 	}
-	return abs(hashValue % capacity);
+	return abs(hashCode % capacity);
 }
 
 int GSD(int a, int b)
@@ -49,33 +49,35 @@ int MutuallySimpleNumber(int capacity)
 	return count;
 }
 
-void Insert(HashTable* hashTable, string& key, string& value) 
+void Insert(HashTable*& hashTable, string& key, string& value) 
 {
-	int hashValue = Pearson(key, MutuallySimpleNumber(hashTable->Capacity), hashTable->Capacity);
-	HashItem* currentItem = hashTable->Items[hashValue];
+	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity),
+		hashTable->Capacity);
+	HashItem* currentItem = hashTable->Items[hashCode];
 	
 	while (currentItem != nullptr)
 	{
 		if (currentItem->Key == key)
 		{
-			/*throw "u cannot add an item that already exists";*/
 			return;
 		}
+		currentItem = currentItem->Next;
 	}
 	HashItem* newItem = CreateHashItem();
 	newItem->Key = key;
 	newItem->Value = value;
 
-	newItem->Next = hashTable->Items[hashValue];
-	if (hashTable->Items[hashValue] != nullptr)
-	{
-		hashTable->Items[hashValue]->Previous = newItem;
-	}
-	hashTable->Items[hashValue] = newItem;
+	HandleCollisisons(hashTable, hashCode, newItem);
 	hashTable->Size++;
+
+	double loadFactor = (double)hashTable->Size / (double)hashTable->Capacity;
+	if (loadFactor >= FillFactor)
+	{
+		hashTable = Rehash(hashTable);
+	}
 }
 
-void Rehash(HashTable* hashTable)
+HashTable* Rehash(HashTable* hashTable)
 {
 	int newCapacity = hashTable->Capacity * GrowthFactor;
 	HashTable* newHashTable = CreateHashTable(newCapacity);
@@ -90,7 +92,8 @@ void Rehash(HashTable* hashTable)
 		}
 	}
 	DeleteHashTable(hashTable);
-	hashTable = newHashTable;
+	/*hashTable = newHashTable;*/
+	return newHashTable;
 }
 
 void DeleteHashTable(HashTable* hashTable)
@@ -117,28 +120,49 @@ void Remove(HashTable* hashTable, string key)
 	{
 		return;
 	}
-	int hashValue = Pearson(key, MutuallySimpleNumber(hashTable->Capacity), hashTable->Capacity);
-	HashItem* currentItem = hashTable->Items[hashValue];
+	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity), hashTable->Capacity);
+	HashItem* currentItem = hashTable->Items[hashCode];
+	HashItem* previousItem = nullptr;
+
 	while (currentItem != nullptr)
 	{
 		if (currentItem->Key == key)
 		{
-			if (currentItem->Previous != nullptr)
+			if (previousItem != nullptr)
 			{
-				currentItem->Previous->Next = currentItem->Next;
+				previousItem->Next = currentItem->Next;
 			}
 			else
 			{
-				hashTable->Items[hashValue] = currentItem->Next;
+				hashTable->Items[hashCode] = currentItem->Next; 
 			}
-			if (currentItem->Next != nullptr)
-			{
-				currentItem->Next->Previous = currentItem->Previous;
-			}
+			delete currentItem;
+			hashTable->Size--;
+			return;
 		}
-		delete currentItem;
-		hashTable->Size--;
-		return;
+		previousItem = currentItem;
+		currentItem = currentItem->Next;
 	}
-	currentItem = currentItem->Next;
+}
+
+void HandleCollisisons(HashTable* table, int hashCode, HashItem* newItem)
+{
+	newItem->Next = table->Items[hashCode];
+	table->Items[hashCode] = newItem;
+}
+
+HashItem* Search(HashTable* hashTable, string& key)
+{
+	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity),
+		hashTable->Capacity);
+	HashItem* currentItem = hashTable->Items[hashCode];
+	while (currentItem != nullptr)
+	{
+		if (currentItem->Key == key)
+		{
+			return currentItem;
+		}
+		currentItem = currentItem->Next;
+	}
+	return nullptr;
 }

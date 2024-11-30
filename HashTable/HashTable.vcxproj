@@ -127,10 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DIctionary.cpp" />
     <ClCompile Include="HashItem.cpp" />
     <ClCompile Include="HashTable.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dictionary.h" />
     <ClInclude Include="HashItem.h" />
     <ClInclude Include="HashTable.h" />
   </ItemGroup>

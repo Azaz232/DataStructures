@@ -21,12 +21,21 @@
     <ClCompile Include="HashItem.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="DIctionary.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HashItem.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="HashTable.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Dictionary.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
