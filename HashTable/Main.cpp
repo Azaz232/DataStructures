@@ -31,7 +31,7 @@ bool isNumber(const string& msg)
 }
 
 /// <summary>
-/// Getsinput from the user
+/// Gets input from the user
 /// </summary>
 /// <param name="prompt"> Prompt </param>
 /// <returns> Number </returns>
@@ -70,7 +70,11 @@ int PositiveSize(const string& msg)
     }
 }
 
-
+/// <summary>
+/// Gets string input from the user
+/// </summary>
+/// <param name="msg"> Printed message </param>
+/// <returns> Users input </returns>
 string GetInputString(const string& msg)
 {
     string input;
@@ -79,6 +83,10 @@ string GetInputString(const string& msg)
     return input;
 }
 
+/// <summary>
+/// Prints the hash table
+/// </summary>
+/// <param name="hashTable"> A pointer to the hash table </param>
 void PrintHashTable(HashTable* hashTable)
 {
     cout << "\tHash Table:\n";
@@ -107,10 +115,9 @@ int main()
     {
         PrintHashTable(dictionary->HashTable);
         cout << "\tSelect the action you want to do: \n";
-        cout << "1. insert a value \n";
-        cout << "2. delete value \n";
-        cout << "3. search \n";
-        cout << "4. Exit loop \n";
+        cout << "1. Insert \n";
+        cout << "2. Delete \n";
+        cout << "3. Search \n";
 
         int choice = GetInput("Enter your choice: ");
 
@@ -119,7 +126,8 @@ int main()
         case 1:
         {
             string key = GetInputString("Enter the key: ");
-            string value = GetInputString("Enter the value to insert to the hash table: ");
+            string value = GetInputString("Enter the value to insert"
+                " to the hash table : ");
             InsertToDictionary(dictionary, key, value);
             break;
         }
@@ -132,13 +140,16 @@ int main()
         case 3:
         {
             string key = GetInputString("Enter the key: ");
-            HashItem* item = SearchInDictionary(dictionary, key);
-            cout << "for key " << key << " found " << item->Value << endl;
-            break;
-        }
-        case 4:
-        {
-            DeleteDictionary(dictionary);
+            if (SearchInDictionary(dictionary, key) != nullptr)
+            {
+                HashItem* item = SearchInDictionary(dictionary, key);
+                cout << "For key '" << key << "', found value"
+                    " is " << item->Value << endl;
+            }
+            else
+            {
+                cout << "No value found for the key\n";
+            }
             break;
         }
         default:

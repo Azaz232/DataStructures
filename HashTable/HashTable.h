@@ -47,7 +47,7 @@ HashTable* CreateHashTable(int capacity);
 /// <param name="a"> Simple number for an array </param>
 /// <param name="capacity"> Capacity of the array </param>
 /// <returns> Index </returns>
-int Pearson(string& key, int a, int capacity);
+int Pearson(const string& key, int a, int capacity);
 
 /// <summary>
 /// Inserts an element to the hash table
@@ -55,7 +55,7 @@ int Pearson(string& key, int a, int capacity);
 /// <param name="hashTable"> A pointer to the hash table </param>
 /// <param name="key"> A key of the element </param>
 /// <param name="value"> Element's value </param>
-void Insert(HashTable*& hashTable, string& key, string& value);
+void Insert(HashTable*& hashTable, const string& key, const string& value);
 
 /// <summary>
 /// Rehashes the hash table
@@ -70,7 +70,7 @@ HashTable* Rehash(HashTable* hashTable);
 /// </summary>
 /// <param name="hashTable"> A pointer to the hash table </param>
 /// <param name="key"> A key at which to remove an element form </param>
-void Remove(HashTable* hashTable, string key);
+void Remove(HashTable* hashTable, const string& key);
 
 /// <summary>
 /// Handles collisisons at the bucket
@@ -86,7 +86,7 @@ void HandleCollisisons(HashTable* table, int hashCode, HashItem* newItem);
 /// <param name="hashTable"> A pointer to the hash table </param>
 /// <param name="key"> A key </param>
 /// <returns> A pointer to the needed item </returns>
-HashItem* Search(HashTable* hashTable, string& key);
+HashItem* Search(HashTable* hashTable, const string& key);
 
 /// <summary>
 /// Clears dynamicaly allocated space for the table

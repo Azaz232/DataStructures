@@ -14,7 +14,7 @@ HashTable* CreateHashTable(int capacity)
 	return hashTable;
 }
 
-int Pearson(string& key, int a, int capacity)
+int Pearson(const string& key, int a, int capacity)
 {
 	int hashCode = 0;
 	int power = 1;
@@ -26,7 +26,13 @@ int Pearson(string& key, int a, int capacity)
 	return abs(hashCode % capacity);
 }
 
-int GSD(int a, int b)
+/// <summary>
+/// Finds greatest common divisor for 2 numbers
+/// </summary>
+/// <param name="a"> 1st number </param>
+/// <param name="b"> 2nd number </param>
+/// <returns> The greates common divisor </returns>
+int GCD(int a, int b)
 {
 	while (b != 0) {
 		int temp = b;
@@ -36,12 +42,17 @@ int GSD(int a, int b)
 	return a;
 }
 
+/// <summary>
+/// Finds mutually simple number for the capacity of the table
+/// </summary>
+/// <param name="capacity"> Capacity of the table </param>
+/// <returns> Mutually simple number for the capacity </returns>
 int MutuallySimpleNumber(int capacity)
 {
 	int count = 1;
 	for (int i = 1; i < capacity; i++)
 	{
-		if (GSD(i, capacity) == 1)
+		if (GCD(i, capacity) == 1)
 		{
 			count = i;
 		}
@@ -49,7 +60,7 @@ int MutuallySimpleNumber(int capacity)
 	return count;
 }
 
-void Insert(HashTable*& hashTable, string& key, string& value) 
+void Insert(HashTable*& hashTable, const string& key, const string& value)  // *&
 {
 	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity),
 		hashTable->Capacity);
@@ -92,7 +103,6 @@ HashTable* Rehash(HashTable* hashTable)
 		}
 	}
 	DeleteHashTable(hashTable);
-	/*hashTable = newHashTable;*/
 	return newHashTable;
 }
 
@@ -114,7 +124,7 @@ void DeleteHashTable(HashTable* hashTable)
 	delete hashTable;
 }
 
-void Remove(HashTable* hashTable, string key)
+void Remove(HashTable* hashTable,const string& key)
 {
 	if (hashTable->Size == 0)
 	{
@@ -135,7 +145,7 @@ void Remove(HashTable* hashTable, string key)
 			else
 			{
 				hashTable->Items[hashCode] = currentItem->Next; 
-			}
+			}	
 			delete currentItem;
 			hashTable->Size--;
 			return;
@@ -151,7 +161,7 @@ void HandleCollisisons(HashTable* table, int hashCode, HashItem* newItem)
 	table->Items[hashCode] = newItem;
 }
 
-HashItem* Search(HashTable* hashTable, string& key)
+HashItem* Search(HashTable* hashTable, const string& key)
 {
 	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity),
 		hashTable->Capacity);
