@@ -18,15 +18,6 @@ struct BinaryTree
 	{
 		Root = nullptr;
 	}
-
-	/// <summary>
-	/// Destructor to clean up the space
-	/// </summary>
-	~BinaryTree()
-	{
-		delete Root;
-	}
-
 };
 
 /// <summary>
@@ -39,13 +30,13 @@ BinaryTree* CreateBinaryTree();
 /// Clears up the space from the binary tree
 /// </summary>
 /// <param name="root"></param>
-void DeleteBinaryTree(BinaryTree* root);
+void DeleteBinaryTree(BinaryTree* tree);
 
 /// <summary>
 /// Adds a node to the tree
 /// </summary>
 /// <param name="node">  </param>
 /// <param name="data"></param>
-void AddNode(BinaryTreeNode* root, int data);
+void AddNode(BinaryTreeNode*& root, int data);
 
 

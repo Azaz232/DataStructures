@@ -12,5 +12,10 @@ BinaryTreeNode* CreateBinaryTreeNode()
 
 void DeleteBinaryTreeNode(BinaryTreeNode* node)
 {
-	delete node;
+	if (node)
+	{
+		DeleteBinaryTreeNode(node->Left);
+		DeleteBinaryTreeNode(node->Right);
+		delete node;
+	}
 }

@@ -36,15 +36,6 @@ struct BinaryTreeNode
 		Parent = nullptr;
 	}
 
-	/// <summary>
-	/// Destructor  to clean up the space
-	/// </summary>
-	~BinaryTreeNode()
-	{
-		delete Left;
-		delete Right;
-	}
-
 	BinaryTreeNode(int data)
 	{
 		Data = data;
@@ -66,9 +57,5 @@ BinaryTreeNode* CreateBinaryTreeNode();
 /// Clears up the space from the node
 /// </summary>
 /// <param name="node"></param>
-void DeleteBinaryTreeNode(BinaryTreeNode* node)
-{
-	delete node;
-}
-
+void DeleteBinaryTreeNode(BinaryTreeNode* node);
 

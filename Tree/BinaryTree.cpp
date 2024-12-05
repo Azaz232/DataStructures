@@ -5,47 +5,112 @@ BinaryTree* CreateBinaryTree()
 	return new BinaryTree;
 }
 
-void DeleteBinaryTree(BinaryTree* root)
+void DeleteBinaryTree(BinaryTree* tree)
 {
-	delete root;
+	DeleteBinaryTreeNode(tree->Root);
+	delete tree;
 }
 
-void AddNode(BinaryTreeNode* root, int data)
+void AddNode(BinaryTreeNode*& root, int data)
 {
 	if (root == nullptr)
 	{
 		root = CreateBinaryTreeNode(data);
 		return;
 	}
-	if (root->Data <= data)
+	if (root->Data >= data)
 	{
-		return AddNode(root->Left, data);
+		AddNode(root->Left, data);
 	}
 	else
 	{
-		return AddNode(root->Right, data);
+		AddNode(root->Right, data);
 	}
 }
 
-void DeleteNode(BinaryTreeNode* root, int data)
+BinaryTreeNode* Search(BinaryTreeNode* node, int data)
 {
-	if (root == nullptr)
+	if (node == nullptr)
 	{
-		return;
+		return nullptr;
 	}
-	if (root->Data < data)
+	if (node->Data == data)
 	{
-		return DeleteNode(root->Left, data);
+		return node;
 	}
-	else if (root->Data > data)
+	if (node->Data > data)
 	{
-		return DeleteNode(root->Right, data);
+		return Search(node->Left, data);
 	}
 	else
 	{
-		if (root->Left)
-		{
+		return Search(node->Right, data);
+	}
+}
 
+BinaryTreeNode* FindMin(BinaryTreeNode* node)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+	while (node->Left != nullptr)
+	{
+		node = node->Left;
+	}
+	return node;
+}
+
+BinaryTreeNode* FindMax(BinaryTreeNode* node)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+	while (node->Right != nullptr)
+	{
+		node = node->Right;
+	}
+	return node;
+}
+
+void DeleteNode(BinaryTreeNode*& node, int data)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+	if (node->Data < data)
+	{
+		return DeleteNode(node->Left, data);
+	}
+	else if (node->Data > data)
+	{
+		return DeleteNode(node->Right, data);
+	}
+	else
+	{
+		if (node->Left == nullptr && node->Right == nullptr)
+		{
+			DeleteBinaryTreeNode(node);
+		}
+		else if (node->Left == nullptr)
+		{
+			BinaryTreeNode* temp = node->Right;
+			delete node;
+			node = temp;
+		}
+		else if (node->Right == nullptr)
+		{
+			BinaryTreeNode* temp = node->Left;
+			delete node;
+			node = temp;
+		}
+		else
+		{
+			BinaryTreeNode* minNode = FindMin(node->Right);
+			node->Data = minNode->Data;
+			DeleteNode(node->Right, minNode->Data);
 		}
 	}
 }

@@ -53,16 +53,47 @@ int GetInput(const string& msg)
     }
 }
 
+/// <summary>
+/// Prints binary tree
+/// </summary>
+/// <param name="root"></param>
+/// <param name="space"></param>
+/// <param name="count"></param>
+void PrintBinaryTree(BinaryTreeNode* root, int space, int count)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+    space += count;
+    PrintBinaryTree(root->Right, space, count);
 
-int main()
+    cout << endl;
+
+    for (int i = count; i < space; i++)
+    {
+        cout << " ";
+    }
+
+    cout << root->Data << "\n";
+    PrintBinaryTree(root->Left, space, count);
+}
+
+void main()
 {
     BinaryTree* binaryTree = CreateBinaryTree();
 
 	while (true)
 	{
         
+        PrintBinaryTree(binaryTree->Root, 0, 5);
+
 		cout << "\tSelect the action you want to do: \n";
 		cout << "1. Insert a node to the tree \n";
+		cout << "2. Delete a node from the tree \n";
+		cout << "3. Search a node in the tree \n";
+		cout << "4. Search minimum \n";
+		cout << "4. Search maximum \n";
 		
 
         int choice = GetInput("Enter your choice: ");
@@ -71,8 +102,10 @@ int main()
         {
         case 1:
         {
-            int data = GetInput("Enter the value to insert to the binary tree");
+            int data = GetInput("Enter the value to insert to "
+                "the binary tree: ");
             AddNode(binaryTree->Root, data);
+            break;
         }
         default:
         {
