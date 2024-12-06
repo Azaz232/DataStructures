@@ -17,5 +17,6 @@ void DeleteBinaryTreeNode(BinaryTreeNode* node)
 		DeleteBinaryTreeNode(node->Left);
 		DeleteBinaryTreeNode(node->Right);
 		delete node;
+		node = nullptr;
 	}
 }

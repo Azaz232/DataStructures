@@ -52,7 +52,7 @@ BinaryTreeNode* FindMin(BinaryTreeNode* node)
 {
 	if (node == nullptr)
 	{
-		return;
+		return nullptr;
 	}
 	while (node->Left != nullptr)
 	{
@@ -65,7 +65,7 @@ BinaryTreeNode* FindMax(BinaryTreeNode* node)
 {
 	if (node == nullptr)
 	{
-		return;
+		return nullptr;
 	}
 	while (node->Right != nullptr)
 	{
@@ -82,17 +82,18 @@ void DeleteNode(BinaryTreeNode*& node, int data)
 	}
 	if (node->Data < data)
 	{
-		return DeleteNode(node->Left, data);
+		return DeleteNode(node->Right, data);
 	}
 	else if (node->Data > data)
 	{
-		return DeleteNode(node->Right, data);
+		return DeleteNode(node->Left, data);
 	}
 	else
 	{
 		if (node->Left == nullptr && node->Right == nullptr)
 		{
-			DeleteBinaryTreeNode(node);
+			delete node;
+			node = nullptr;
 		}
 		else if (node->Left == nullptr)
 		{
