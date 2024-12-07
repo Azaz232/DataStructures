@@ -68,5 +68,3 @@ BinaryTreeNode* FindMax(BinaryTreeNode* node);
 /// <param name="data">  </param>
 /// <param name="data"> Locates the node to delete </param>
 void DeleteNode(BinaryTreeNode*& node, int data);
-
-
