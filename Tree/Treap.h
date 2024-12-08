@@ -47,3 +47,11 @@ void Insert(TreapNode*& node, const int& key, const int& priority);
 /// <returns> A pointer to the found node </returns>
 TreapNode* Search(TreapNode* node, const int& key);
 
+
+void InsertOptimized(TreapNode*& node, const int& key, const int& priority);
+
+
+void Delete(TreapNode*& node, const int& key);
+
+
+void DeleteOptimized(TreapNode*& node, const int& key);

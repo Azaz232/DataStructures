@@ -36,7 +36,7 @@ bool IsNumber(const string& msg)
 /// <summary>
 /// Gets input from the user
 /// </summary>
-/// <param name="prompt"> Prompt </param>
+/// <param name="msg"> Message </param>
 /// <returns> Number </returns>
 int GetInput(const string& msg)
 {
@@ -54,7 +54,11 @@ int GetInput(const string& msg)
     }
 }
 
-
+/// <summary>
+/// Gets users input
+/// </summary>
+/// <param name="msg"> Message </param>
+/// <returns> String </returns>
 string GetInputString(const string& msg)
 {
     string input;
@@ -67,9 +71,9 @@ string GetInputString(const string& msg)
 /// <summary>
 /// Prints binary tree
 /// </summary>
-/// <param name="root"></param>
-/// <param name="space"></param>
-/// <param name="count"></param>
+/// <param name="root"> A pointer to the root of the binary tree </param>
+/// <param name="space"> Space between printed nodes </param>
+/// <param name="count"> Made to increase the space </param>
 void PrintBinaryTree(BinaryTreeNode* root, int space, int count)
 {
     if (root == nullptr)
@@ -90,6 +94,12 @@ void PrintBinaryTree(BinaryTreeNode* root, int space, int count)
     PrintBinaryTree(root->Left, space, count);
 }
 
+/// <summary>
+/// Prints treap pairs
+/// </summary>
+/// <param name="root"> A pointer to the root of the treap </param>
+/// <param name="space"> Space between printed nodes </param>
+/// <param name="count"> Made to ibcrease the space </param>
 void PrintTreap(TreapNode* root, int space, int count)
 {
     if (root == nullptr)
@@ -109,7 +119,6 @@ void PrintTreap(TreapNode* root, int space, int count)
     cout << root->Key << ", " << root->Priority << endl;
     PrintTreap(root->Left, space, count);
 }
-
 
 void BinaryTreeController()
 {
@@ -215,6 +224,10 @@ void TreapController()
 
         cout << "\tSelect the action you want to do: \n";
         cout << "1. Insert a node to the treap \n";
+        cout << "2. Search node \n";
+        cout << "3. Insert a node to the treap(optimized) \n";
+        cout << "4. Delete a node from the treap \n";
+        cout << "5. Delete a node from the treap(optimized) \n";
         cout << "q - Quit\n";
 
         string choice = GetInputString("Enter your choice: ");
@@ -244,9 +257,27 @@ void TreapController()
                 }
                 else
                 {
-                    cout << "Node with key " << Search(treap->Root, key)->Key << "found in the treap";
+                    cout << "Node with key " << Search(treap->Root, key)->Key << " found in the treap";
                 }
-
+                break;
+            }
+            case 3:
+            {
+                int key = GetInput("Enter the key of the node: ");
+                int priority = GetInput("Enter the priority of the node: ");
+                InsertOptimized(treap->Root, key, priority);
+                break;
+            }
+            case 4:
+            {
+                int key = GetInput("Enter the key to delete: ");
+                Delete(treap->Root, key);
+                break;
+            }
+            case 5:
+            {
+                int key = GetInput("Enter the key to delete: ");
+                DeleteOptimized(treap->Root, key);
                 break;
             }
             default:

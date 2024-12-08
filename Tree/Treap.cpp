@@ -81,4 +81,72 @@ void Insert(TreapNode*& node, const int& key, const int& priority)
 	node = Merge(Merge(left, newNode), right);
 }
 
+void InsertOptimized(TreapNode*& node, const int& key, const int& priority)
+{
+	if (node == nullptr)
+	{
+		node = CreateTreapNode(key, priority);;
+		return;
+	}
+	if (node->Priority < priority)
+	{
+		TreapNode* left = nullptr;
+		TreapNode* right = nullptr;
+		Split(node, key, left, right);
+
+		TreapNode* newNode = CreateTreapNode(key, priority);
+		newNode->Left = left;
+		newNode->Right = right;
+
+		node = newNode;
+	}
+	else
+	{
+		if (node->Key < key)
+		{
+			InsertOptimized(node->Right, key, priority);
+		}
+		else
+		{
+			InsertOptimized(node->Left, key, priority);
+		}
+	}
+}
+
+void Delete(TreapNode*& node, const int& key)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	TreapNode* left = nullptr;
+	TreapNode* right = nullptr;
+	Split(node, key, left, right);
+
+	
+}
+
+void DeleteOptimized(TreapNode*& node, const int& key)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+	if (node->Key == key)
+	{
+		TreapNode* temp = node;
+		node = Merge(node->Left, node->Right);
+		delete temp;
+	}
+	else if(node->Key < key)
+	{
+		DeleteOptimized(node->Right, key);
+	}
+	else
+	{
+		DeleteOptimized(node->Left, key);
+	}
+}
+
 
