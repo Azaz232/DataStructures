@@ -30,8 +30,7 @@ int Pop(Stack* stack)
 {
 	if (IsEmpty(stack))
 	{
-		/*throw "Stack is empty \n";*/
-		return 0;
+		return -1;
 	}
 	--stack->Size;
 	return stack->Buffer[stack->Top--];
@@ -39,14 +38,19 @@ int Pop(Stack* stack)
 
 void ResizeStack(Stack* stack, int newSize)
 {
-	stack->BufferSize = newSize;
+	stack->BufferSize = newSize;	
 	int* newBuffer = new int[newSize];
 
-	for (int i = stack->BufferSize - 1; i > -1; i-- )
+	int elementsToCopy = (stack->Size < newSize) ? stack->Size : newSize;
+
+	for (int i = 0; i < elementsToCopy; i++)
 	{
 		newBuffer[i] = stack->Buffer[i];
 	}
 
 	delete[] stack->Buffer;
 	stack->Buffer = newBuffer;
+	stack->BufferSize = newSize;
+	stack->Size = elementsToCopy;
+	stack->Top = elementsToCopy - 1;
 }

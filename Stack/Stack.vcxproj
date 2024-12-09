@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdditionalFunctionsForMain.cpp" />
     <ClCompile Include="CircularBuffer.cpp" />
     <ClCompile Include="Laborotory_work_3.cpp" />
     <ClCompile Include="CircularBufferQueue.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="StackQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdditionalFunctionsForMain.h" />
     <ClInclude Include="CircularBuffer.h" />
     <ClInclude Include="CircularBufferQueue.h" />
     <ClInclude Include="Stack.h" />

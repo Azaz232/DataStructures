@@ -123,6 +123,7 @@ int main()
 
         switch(choice)
         {
+            //TODO:
         case 1:
         {
             string key = GetInputString("Enter the key: ");

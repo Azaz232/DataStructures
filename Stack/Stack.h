@@ -1,76 +1,53 @@
 #pragma once
 
-/// <summary>
-/// Structure of a stack
-/// </summary>
+//! \brief Structure representing a stack.
 struct Stack
 {
-	/// <summary>
-	/// A pointer to an array of elements
-	/// </summary>
+	//! \brief Pointer to the array containing stack elements.
 	int* Buffer;
 
-	/// <summary>
-	/// Size of a Buffer
-	/// </summary>
+	//! \brief Maximum size of the stack (capacity).
 	int BufferSize;
 
-	/// <summary>
-	/// Index of the last element
-	/// </summary>
+	//! \brief Index of the last element in the stack.
 	int Top;
 
-	/// <summary>
-	/// Current amount of the stack elements 
-	/// </summary>
+	//! \brief Current number of elements in the stack.
 	int Size;
 
-	/// <summary>
-	/// Constructor to initialize stack
-	/// </summary>
-	/// <param name="size"> Size of the stack </param>
+	//! \brief Constructor for initializing the stack with a given size.
+	//! \param size Size of the stack.
 	Stack(int size) : BufferSize(size), Top(-1), Size(0)
 	{
 		Buffer = new int[BufferSize];
 	}
 };
 
-/// <summary>
-/// Creates a stack
-/// </summary>
-/// <returns> returns a pointer to the stack </returns>
+//! \brief Creates a new stack with a specified size.
+//! \param size Size of the stack to be created.
+//! \return Pointer to the newly created stack.
 Stack* CreateStack(int size);
 
-/// <summary>
-/// Adds a value to the stack
-/// </summary>
-/// <param name="stack"> A pointer to the stack </param>
-/// <param name="data"> Value to add </param>
+//! \brief Adds a value to the top of the stack.
+//! \param stack Pointer to the stack where the value will be added.
+//! \param data Value to be added to the stack.
 void Push(Stack* stack, int data);
 
-/// <summary>
-/// Deletes a value from stack
-/// </summary>
-/// <param name="stack"> A pointer to stack </param>
-/// <returns> Returns deleted value </returns>
+//! \brief Removes a value from the top of the stack.
+//! \param stack Pointer to the stack from which the value will be removed.
+//! \return Value that was removed from the stack.
 int Pop(Stack* stack);
 
-/// <summary>
-/// Clears dynamically allocated memory 
-/// </summary>
-/// <param name="stack"> A pointer to the stack </param>
+//! \brief Frees the memory allocated for the stack.
+//! \param stack Pointer to the stack to be deleted.
 void DeleteStack(Stack* stack);
 
-/// <summary>
-/// Resizes stack
-/// </summary>
-/// <param name="stack"> A pointer to the stack </param>
-/// <param name="newSize"> New cpacity of the stack </param>
+//! \brief Resizes the stack to a new capacity.
+//! \param stack Pointer to the stack to be resized.
+//! \param newSize New capacity of the stack.
 void ResizeStack(Stack* stack, int newSize);
 
-/// <summary>
-/// Checks if the stack is empty
-/// </summary>
-/// <param name="stack"> A pointer to the stack </param>
-/// <returns> True if its empty </returns>
+//! \brief Checks if the stack is empty.
+//! \param stack Pointer to the stack to be checked.
+//! \return true if the stack is empty; otherwise false.
 bool IsEmpty(Stack* stack);

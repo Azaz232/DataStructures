@@ -1,59 +1,41 @@
 #pragma once
 #include "Stack.h"
 
-/// <summary>
-/// Structure of the queue based on 2 stacks
-/// </summary>
+/// \brief Structure of the queue based on 2 stacks
 struct StackQueue
 {
-	/// <summary>
-	/// The 1st stack
-	/// </summary>
-	Stack* FirstStack;
+    /// \brief The first stack
+    Stack* FirstStack;
 
-	/// <summary>
-	/// the 2nd stack
-	/// </summary>
-	Stack* SecondStack;
+    /// \brief The second stack
+    Stack* SecondStack;
 };
 
-/// <summary>
-/// Creates a queue
-/// </summary>
-/// <param name="capacity"> capacity of the queue </param>
-/// <returns> A pointer to the queue </returns>
+/// \brief Creates a queue
+/// \param capacity Capacity of the queue
+/// \return A pointer to the queue
 StackQueue* CreateStackQueue(int capacity);
 
-/// <summary>
-/// Checks if the queue is full
-/// </summary>
-/// <param name="stack"> A pointer to the queue </param>
-/// <returns> true if its full </returns>
+/// \brief Checks if the queue is full
+/// \param stack A pointer to the queue
+/// \return True if the queue is full; otherwise false
 bool IsFull(Stack* stack);
 
-/// <summary>
-/// Adds a value to the queue
-/// </summary>
-/// <param name="stackQueue"> A pointer to the queue </param>
-/// <param name="data"> Value to add </param>
+/// \brief Adds a value to the queue
+/// \param stackQueue A pointer to the queue
+/// \param data Value to add
 void EnqueueStackQueue(StackQueue* stackQueue, int data);
 
-/// <summary>
-/// Deletes a value from the queue
-/// </summary>
-/// <param name="stackQueue"> A pointer to the queue </param>
-/// <returns> Deleted value </returns>
+/// \brief Deletes a value from the queue
+/// \param stackQueue A pointer to the queue
+/// \return The removed value
 int DequeueStackQueue(StackQueue* stackQueue);
 
-/// <summary>
-/// Resizes the queue
-/// </summary>
-/// <param name="stackQueue"> A pointer to the queue </param>
-/// <param name="newCapacity"> New capacity of the queue </param>
+/// \brief Resizes the queue
+/// \param stackQueue A pointer to the queue
+/// \param newCapacity New capacity of the queue
 void ResizeStackQueue(StackQueue* stackQueue, int newCapacity);
 
-/// <summary>
-/// Clears memory from the queue
-/// </summary>
-/// <param name="stackQueue"> A pointer to the queue </param>
+/// \brief Clears memory from the queue
+/// \param stackQueue A pointer to the queue
 void DeleteStackQueue(StackQueue* stackQueue);

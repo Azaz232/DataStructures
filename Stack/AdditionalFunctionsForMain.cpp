@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include "Stack.h"
 #include <string>
 #include "CircularBuffer.h"
@@ -105,7 +105,7 @@ void PrintCircularBuffer(CircularBuffer* circularBuffer)
     cout << "\nBuffer contents: \n";
     for (int i = 0; i < circularBuffer->Size; i++)
     {
-        cout << circularBuffer->Buffer[(circularBuffer->Tail + i) 
+        cout << circularBuffer->Buffer[(circularBuffer->Tail + i)
             % circularBuffer->Capacity] << " ";
     }
     cout << endl;
@@ -156,33 +156,33 @@ void StackController()
             int intChoice = stoi(choice);
             switch (intChoice)
             {
-                case 1:
-                {
-                    int value = GetInput("Enter the value to push: \n");
-                    Push(stack, value);
-                    break;
-                }
-                case 2:
-                {
-                    int result = Pop(stack);
-                    cout << "Element received " << result << endl;
-                    break;
-                }
-                case 3:
-                {
-                    int newSize = GetInput("Enter the new size of the stack \n");
-                    ResizeStack(stack, newSize);
-                    break;
-                }
-                default:
-                {
-                    cout << "Invalid choice. Please enter a number"
-                        " between 1 and 3." << endl;
-                    break;
-                }
+            case 1:
+            {
+                int value = GetInput("Enter the value to push: \n");
+                Push(stack, value);
+                break;
+            }
+            case 2:
+            {
+                int result = Pop(stack);
+                cout << "Element received " << result << endl;
+                break;
+            }
+            case 3:
+            {
+                int newSize = GetInput("Enter the new size of the stack \n");
+                ResizeStack(stack, newSize);
+                break;
+            }
+            default:
+            {
+                cout << "Invalid choice. Please enter a number"
+                    " between 1 and 3." << endl;
+                break;
+            }
             }
         }
-        
+
     }
     DeleteStack(stack);
 }
@@ -192,7 +192,7 @@ void CircularBufferController()
 {
     int circularBufferSize = PositiveSize("Enter the size of"
         " the circular buffer: ");
-    CircularBuffer* circularBuffer = 
+    CircularBuffer* circularBuffer =
         CreateCircularBuffer(circularBufferSize);
 
     while (true)
@@ -217,32 +217,32 @@ void CircularBufferController()
             int intChoice = stoi(choice);
             switch (intChoice)
             {
-                case 1:
-                {
-                    int value = GetInput("Enter the value you want to write"
-                        " to the circular buffer: \n");
-                    Enqueue(circularBuffer, value);
-                    break;
-                }
-                case 2:
-                {
-                    cout << "Element received " << Dequeue(circularBuffer) << 
-                        endl;
-                    break;
-                }
-                case 3:
-                {
-                    int newCapacity = GetInput("Enter the new size of " 
-                        "the circular buffer: ");
-                    ResizeCircularBuffer(circularBuffer, newCapacity);
-                    break;
-                }
-                default:
-                {
-                    cout << "Invalid choice. Please enter a number"
-                        " between 1 and 3." << endl;
-                    break;
-                }
+            case 1:
+            {
+                int value = GetInput("Enter the value you want to write"
+                    " to the circular buffer: \n");
+                Enqueue(circularBuffer, value);
+                break;
+            }
+            case 2:
+            {
+                cout << "Element received " << Dequeue(circularBuffer) <<
+                    endl;
+                break;
+            }
+            case 3:
+            {
+                int newCapacity = GetInput("Enter the new size of "
+                    "the circular buffer: ");
+                ResizeCircularBuffer(circularBuffer, newCapacity);
+                break;
+            }
+            default:
+            {
+                cout << "Invalid choice. Please enter a number"
+                    " between 1 and 3." << endl;
+                break;
+            }
             }
         }
     }
@@ -254,7 +254,7 @@ void CircularBufferQueueController()
 {
     int circularBufferQueueSize = PositiveSize("Enter the size of"
         " the circular buffer queue: ");
-    CircularBufferQueue* circularBufferQueue = 
+    CircularBufferQueue* circularBufferQueue =
         CreateCircularBufferQueue(circularBufferQueueSize);
 
     while (true)
@@ -279,33 +279,33 @@ void CircularBufferQueueController()
             int intChoice = stoi(choice);
             switch (intChoice)
             {
-                case 1:
-                {
-                    int value = GetInput("Enter the value to add: ");
-                    cout << endl;
-                    Enqueue(circularBufferQueue, value);
-                    break;
-                }
-                case 2:
-                {
-                    int value = Dequeue(circularBufferQueue);
-                    cout << "Element received " << value << endl;
-                    break;
-                }
-                case 3:
-                {
-                    int newCapacity = GetInput("Enter the new size of"
-                        " the circular buffer: ");
-                    ResizeCircularBufferQueue(circularBufferQueue,
-                        newCapacity);
-                    break;
-                }
-                default:
-                {
-                    cout << "Invalid choice. Please enter a number"
-                        " between 1 and 4." << endl;
-                    break;
-                }
+            case 1:
+            {
+                int value = GetInput("Enter the value to add: ");
+                cout << endl;
+                Enqueue(circularBufferQueue, value);
+                break;
+            }
+            case 2:
+            {
+                int value = Dequeue(circularBufferQueue);
+                cout << "Element received " << value << endl;
+                break;
+            }
+            case 3:
+            {
+                int newCapacity = GetInput("Enter the new size of"
+                    " the circular buffer: ");
+                ResizeCircularBufferQueue(circularBufferQueue,
+                    newCapacity);
+                break;
+            }
+            default:
+            {
+                cout << "Invalid choice. Please enter a number"
+                    " between 1 and 4." << endl;
+                break;
+            }
             }
         }
     }
@@ -340,33 +340,33 @@ void StackQueueController()
             int intChoice = stoi(choice);
             switch (intChoice)
             {
-                case 1:
-                {
-                    int value = GetInput("Enter the value to add: ");
-                    cout << endl;
-                    EnqueueStackQueue(stackQueue, value);
-                    cout << endl;
-                    break;
-                }
-                case 2:
-                {
-                    int value = DequeueStackQueue(stackQueue);
-                    cout << "Element received " << value << endl;
-                    break;
-                }
-                case 3:
-                {
-                    int newCapacity = GetInput("Enter the new size of the"
-                        " stack queue: ");
-                    ResizeStackQueue(stackQueue, newCapacity);
-                    break;
-                }
-                default:
-                {
-                    cout << "Invalid choice. Please enter a number"
-                        " between 1 and 3." << endl;
-                    break;
-                }
+            case 1:
+            {
+                int value = GetInput("Enter the value to add: ");
+                cout << endl;
+                EnqueueStackQueue(stackQueue, value);
+                cout << endl;
+                break;
+            }
+            case 2:
+            {
+                int value = DequeueStackQueue(stackQueue);
+                cout << "Element received " << value << endl;
+                break;
+            }
+            case 3:
+            {
+                int newCapacity = GetInput("Enter the new size of the"
+                    " stack queue: ");
+                ResizeStackQueue(stackQueue, newCapacity);
+                break;
+            }
+            default:
+            {
+                cout << "Invalid choice. Please enter a number"
+                    " between 1 and 3." << endl;
+                break;
+            }
             }
         }
     }
@@ -396,31 +396,31 @@ void MainController()
             int intChoice = stoi(choice);
             switch (intChoice)
             {
-                case 1:
-                {
-                    StackController();
-                    break;
-                }
-                case 2:
-                {
-                    CircularBufferController();
-                    break;
-                }
-                case 3:
-                {
-                    CircularBufferQueueController();
-                    break;
-                }
-                case 4:
-                {
-                    StackQueueController();
-                    break;
-                }
-                default:
-                {
-                    cout << "Invalid choice. Please try again." << endl;
-                    break;
-                }
+            case 1:
+            {
+                StackController();
+                break;
+            }
+            case 2:
+            {
+                CircularBufferController();
+                break;
+            }
+            case 3:
+            {
+                CircularBufferQueueController();
+                break;
+            }
+            case 4:
+            {
+                StackQueueController();
+                break;
+            }
+            default:
+            {
+                cout << "Invalid choice. Please try again." << endl;
+                break;
+            }
             }
         }
         else
@@ -430,9 +430,3 @@ void MainController()
         }
     }
 }
-
-int main()
-{
-    MainController();
-}
-

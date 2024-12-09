@@ -1,56 +1,38 @@
 #pragma once
 #include "CircularBuffer.h"
 
-/// <summary>
-/// Structure of the circular buffer queue
-/// </summary>
+/// \brief Structure of the circular buffer queue
 struct CircularBufferQueue
 {
-	/// <summary>
-	/// A pointer to the circular buffer
-	/// </summary>
-	CircularBuffer* CircularBuffer;
+    /// \brief A pointer to the circular buffer
+    CircularBuffer* CircularBuffer;
 };
 
-/// <summary>
-/// Creates a circular buffer queue
-/// </summary>
-/// <param name="capacity"> Capacity of the buffer </param>
-/// <returns> A pointer to the queue </returns>
+/// \brief Creates a circular buffer queue
+/// \param capacity Capacity of the buffer
+/// \return A pointer to the queue
 CircularBufferQueue* CreateCircularBufferQueue(int capacity);
 
-/// <summary>
-/// Clears space from the queue
-/// </summary>
-/// <param name="circularBufferQueue"> A pointer to the queue </param>
+/// \brief Clears the queue and frees memory
+/// \param circularBufferQueue A pointer to the queue
 void DeleteCircularBufferQueue(CircularBufferQueue* circularBufferQueue);
 
-/// <summary>
-/// Inserts a value
-/// </summary>
-/// <param name="queue"> A pointer to the queue </param>
-/// <param name="data"> Calue to insert </param>
+/// \brief Inserts a value into the queue
+/// \param queue A pointer to the queue
+/// \param data Value to insert
 void Enqueue(CircularBufferQueue* queue, int data);
 
-/// <summary>
-/// Deletes a value
-/// </summary>
-/// <param name="queue"> A pointer to the queue </param>
-/// <returns> Deleted value </returns>
+/// \brief Removes a value from the queue
+/// \param queue A pointer to the queue
+/// \return The removed value
 int Dequeue(CircularBufferQueue* queue);
 
-/// <summary>
-/// Checks if the queue is empty
-/// </summary>
-/// <param name="queue"> A pointer to the queue </param>
-/// <returns> True if its empty </returns>
+/// \brief Checks if the queue is empty
+/// \param queue A pointer to the queue
+/// \return True if the queue is empty; otherwise false
 bool IsEmpty(CircularBufferQueue* queue);
 
-/// <summary>
-/// Resizes the queue
-/// </summary>
-/// <param name="queue"> A pointer to the queue </param>
-/// <param name="newCapacity"> New capacity of the queue </param>
+/// \brief Resizes the queue
+/// \param queue A pointer to the queue
+/// \param newCapacity New capacity of the queue
 void ResizeCircularBufferQueue(CircularBufferQueue* queue, int newCapacity);
-
-
