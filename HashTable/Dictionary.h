@@ -1,46 +1,35 @@
 #pragma once
 #include "HashTable.h"
 
-/// <summary>
-/// Structure of the dictionary
-/// </summary>
+/// \brief Structure representing a dictionary
 struct Dictionary
 {
-	/// <summary>
-	/// A pointer to the hash table
-	/// </summary>
-	HashTable* HashTable;
+    /// \brief A pointer to the hash table
+    HashTable* HashTable;
 };
 
-/// <summary>
-/// Creates a sample of the dictionary
-/// </summary>
-/// <param name="capacity"> Capacity of the dictionary </param>
-/// <returns> A pointer to the dictionary </returns>
+/// \brief Creates a new dictionary
+/// \param capacity The capacity of the dictionary
+/// \return A pointer to the newly created dictionary
 Dictionary* CreateDictionary(int capacity);
 
-/// <summary>
-/// Inserts value to the dictionary
-/// </summary>
-/// <param name="dictionary"> A pointer to the dictionary </param>
-/// <param name="key"> A key </param>
-/// <param name="value"> A value to insert </param>
-void InsertToDictionary(Dictionary* dictionary, string& key, string& value);
+/// \brief Inserts a value into the dictionary
+/// \param dictionary A pointer to the dictionary
+/// \param key The key to insert
+/// \param value The value to insert
+void InsertToDictionary(Dictionary* dictionary, const std::string& key, const std::string& value);
 
-/// <summary>
-/// Deletes value from the dictionary
-/// </summary>
-void DeleteFromDictionary(Dictionary* dictionary, string& key);
+/// \brief Deletes a value from the dictionary
+/// \param dictionary A pointer to the dictionary
+/// \param key The key of the value to delete
+void DeleteFromDictionary(Dictionary* dictionary, const std::string& key);
 
-/// <summary>
-/// Searches value by key
-/// </summary>
-/// <param name="dictionary"> A pointer to the dictionary </param>
-/// <param name="key"> A key </param>
-/// <returns> A pointer to the item </returns>
-HashItem* SearchInDictionary(Dictionary* dictionary, string& key);
+/// \brief Searches for a value by key in the dictionary
+/// \param dictionary A pointer to the dictionary
+/// \param key The key to search for
+/// \return A pointer to the found item, or nullptr if not found
+HashItem* SearchInDictionary(Dictionary* dictionary, const std::string& key);
 
-/// <summary>
-/// Clears dynamically allocated memory 
-/// </summary>
+/// \brief Clears dynamically allocated memory for the dictionary
+/// \param dictionary A pointer to the dictionary to delete
 void DeleteDictionary(Dictionary* dictionary);

@@ -4,12 +4,10 @@
 
 using namespace std;
 
-/// <summary>
-/// Checks whether the string is a number
-/// </summary>
-/// <param name="prompt"> Prompt </param>
-/// <returns> True if the string is a number </returns>
-bool isNumber(const string& msg)
+/// \brief  Checks whether the string is a number
+/// \param input Users input
+/// \return True if the string is a number
+bool IsNumber(const string& msg)
 {
     if (msg.empty())
     {
@@ -30,17 +28,15 @@ bool isNumber(const string& msg)
     return true;
 }
 
-/// <summary>
-/// Gets input from the user
-/// </summary>
-/// <param name="prompt"> Prompt </param>
-/// <returns> Number </returns>
+/// \brief Gets input from the user
+/// \param message Prompt to display to the user
+/// \return The number entered by the user
 int GetInput(const string& msg)
 {
     string input;
     cout << msg;
     cin >> input;
-    if (isNumber(input))
+    if (IsNumber(input))
     {
         return stoi(input);
     }
@@ -51,13 +47,16 @@ int GetInput(const string& msg)
     }
 }
 
+/// \brief Gets user input for the size
+/// \param message Prompt to display to the user
+/// \return A positive number entered by the user
 int PositiveSize(const string& msg)
 {
     string input;
     cout << msg;
     cin >> input;
 
-    if (!isNumber(input) || stoi(input) <= 0)
+    if (!IsNumber(input) || stoi(input) <= 0)
     {
         cout << endl;
         cout << "Size must be positive or not be zero." << endl;
@@ -70,11 +69,10 @@ int PositiveSize(const string& msg)
     }
 }
 
-/// <summary>
-/// Gets string input from the user
-/// </summary>
-/// <param name="msg"> Printed message </param>
-/// <returns> Users input </returns>
+
+/// \brief Gets user input
+/// \param message Message to display to the user
+/// \return The string input provided by the user
 string GetInputString(const string& msg)
 {
     string input;
@@ -83,10 +81,8 @@ string GetInputString(const string& msg)
     return input;
 }
 
-/// <summary>
-/// Prints the hash table
-/// </summary>
-/// <param name="hashTable"> A pointer to the hash table </param>
+/// \brief Prints the contents of the hash table
+/// \param stack A pointer to the hash table
 void PrintHashTable(HashTable* hashTable)
 {
     cout << "\tHash Table:\n";

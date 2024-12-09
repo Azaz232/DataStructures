@@ -26,13 +26,11 @@ int Pearson(const string& key, int a, int capacity)
 	return abs(hashCode % capacity);
 }
 
-/// <summary>
-/// Finds greatest common divisor for 2 numbers
-/// </summary>
-/// <param name="a"> 1st number </param>
-/// <param name="b"> 2nd number </param>
-/// <returns> The greates common divisor </returns>
-int GCD(int a, int b)
+/// \brief Finds the greatest common divisor (GCD) for two numbers
+/// \param a The first number
+/// \param b The second number
+/// \return The greatest common divisor of the two numbers
+int GreatestCommonDivisor(int a, int b)
 {
 	while (b != 0) {
 		int temp = b;
@@ -42,17 +40,15 @@ int GCD(int a, int b)
 	return a;
 }
 
-/// <summary>
-/// Finds mutually simple number for the capacity of the table
-/// </summary>
-/// <param name="capacity"> Capacity of the table </param>
-/// <returns> Mutually simple number for the capacity </returns>
+/// \brief Finds a mutually simple number for the capacity of the table
+/// \param capacity The capacity of the table
+/// \return A mutually simple number for the given capacity
 int MutuallySimpleNumber(int capacity)
 {
 	int count = 1;
 	for (int i = 1; i < capacity; i++)
 	{
-		if (GCD(i, capacity) == 1)
+		if (GreatestCommonDivisor(i, capacity) == 1)
 		{
 			count = i;
 		}
@@ -78,7 +74,7 @@ void Insert(HashTable*& hashTable, const string& key, const string& value)  // *
 	newItem->Key = key;
 	newItem->Value = value;
 
-	HandleCollisisons(hashTable, hashCode, newItem);
+	HandleCollisions(hashTable, hashCode, newItem);
 	hashTable->Size++;
 
 	double loadFactor = (double)hashTable->Size / (double)hashTable->Capacity;
@@ -155,7 +151,7 @@ void Remove(HashTable* hashTable,const string& key)
 	}
 }
 
-void HandleCollisisons(HashTable* table, int hashCode, HashItem* newItem)
+void HandleCollisions(HashTable* table, int hashCode, HashItem* newItem)
 {
 	newItem->Next = table->Items[hashCode];
 	table->Items[hashCode] = newItem;

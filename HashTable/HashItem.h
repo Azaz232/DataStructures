@@ -2,34 +2,22 @@
 #include <string>
 using namespace std;
 
-/// <summary>
-/// A structure of the hash item
-/// </summary>
+/// \brief A structure representing a hash item
 struct HashItem
 {
-	/// <summary>
-	/// A key
-	/// </summary>
-	string Key;
+    /// \brief A key associated with the hash item
+    string Key;
 
-	/// <summary>
-	/// A value of the item
-	/// </summary>
-	string Value;
+    /// \brief The value of the hash item
+    string Value;
 
-	/// <summary>
-	/// A pointer to the previous item
-	/// </summary>
-	HashItem* Previous;
+    /// \brief A pointer to the previous hash item
+    HashItem* Previous;
 
-	/// <summary>
-	/// A pointer to the next pointer
-	/// </summary>
-	HashItem* Next;
+    /// \brief A pointer to the next hash item
+    HashItem* Next;
 };
 
-/// <summary>
-/// Creates a hash table item
-/// </summary>
-/// <returns> A poiter to the hash table item </returns>
+/// \brief Creates a hash table item
+/// \return A pointer to the newly created hash table item
 HashItem* CreateHashItem();
