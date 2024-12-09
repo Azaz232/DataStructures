@@ -9,6 +9,7 @@ struct Stack
 	/// A pointer to an array of elements
 	/// </summary>
 	int* Buffer;
+
 	/// <summary>
 	/// Size of a Buffer
 	/// </summary>
@@ -20,12 +21,12 @@ struct Stack
 	int Top;
 
 	/// <summary>
-	/// 
+	/// Current amount of the stack elements 
 	/// </summary>
 	int Size;
 
 	/// <summary>
-	/// Constructor 
+	/// Constructor to initialize stack
 	/// </summary>
 	/// <param name="size"> Size of the stack </param>
 	Stack(int size) : BufferSize(size), Top(-1), Size(0)
@@ -73,6 +74,3 @@ void ResizeStack(Stack* stack, int newSize);
 /// <param name="stack"> A pointer to the stack </param>
 /// <returns> True if its empty </returns>
 bool IsEmpty(Stack* stack);
-
-
-

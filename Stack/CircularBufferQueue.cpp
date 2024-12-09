@@ -29,15 +29,6 @@ bool IsEmpty(CircularBufferQueue* queue)
 	return queue->CircularBuffer->Size == 0;
 }
 
-int Peek(CircularBufferQueue* queue)
-{
-	if (queue->CircularBuffer->Size == 0)
-	{
-		throw "queue is empty";
-	}
-	return queue->CircularBuffer->Buffer[queue->CircularBuffer->Tail];
-}
-
 void ResizeCircularBufferQueue(CircularBufferQueue* queue, int newCapacity)
 {
 	ResizeCircularBuffer(queue->CircularBuffer, newCapacity);

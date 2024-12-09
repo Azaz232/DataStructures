@@ -36,14 +36,14 @@ bool IsFull(Stack* stack);
 /// </summary>
 /// <param name="stackQueue"> A pointer to the queue </param>
 /// <param name="data"> Value to add </param>
-void EnqueueStack(StackQueue* stackQueue, int data);
+void EnqueueStackQueue(StackQueue* stackQueue, int data);
 
 /// <summary>
 /// Deletes a value from the queue
 /// </summary>
 /// <param name="stackQueue"> A pointer to the queue </param>
 /// <returns> Deleted value </returns>
-int DequeueStack(StackQueue* stackQueue);
+int DequeueStackQueue(StackQueue* stackQueue);
 
 /// <summary>
 /// Resizes the queue

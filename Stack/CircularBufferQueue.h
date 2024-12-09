@@ -46,8 +46,6 @@ int Dequeue(CircularBufferQueue* queue);
 /// <returns> True if its empty </returns>
 bool IsEmpty(CircularBufferQueue* queue);
 
-int Peek(CircularBufferQueue* queue);
-
 /// <summary>
 /// Resizes the queue
 /// </summary>

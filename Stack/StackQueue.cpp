@@ -21,7 +21,7 @@ bool IsFull(Stack* stack)
 	return stack->BufferSize - stack->Size;
 }
 
-void EnqueueStack(StackQueue* stackQueue, int data)
+void EnqueueStackQueue(StackQueue* stackQueue, int data)
 {
 	if (IsFull(stackQueue->FirstStack) == 0)
 	{
@@ -30,7 +30,7 @@ void EnqueueStack(StackQueue* stackQueue, int data)
 	Push(stackQueue->FirstStack, data);
 }
 
-int DequeueStack(StackQueue* stackQueue)
+int DequeueStackQueue(StackQueue* stackQueue)
 {
 	if (!IsEmpty(stackQueue->SecondStack))
 	{

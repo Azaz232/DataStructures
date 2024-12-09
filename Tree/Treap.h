@@ -47,11 +47,27 @@ void Insert(TreapNode*& node, const int& key, const int& priority);
 /// <returns> A pointer to the found node </returns>
 TreapNode* Search(TreapNode* node, const int& key);
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="node"></param>
+/// <param name="key"></param>
+/// <param name="priority"></param>
 void InsertOptimized(TreapNode*& node, const int& key, const int& priority);
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="node">  </param>
+/// <param name="key">    </param>
 void Delete(TreapNode*& node, const int& key);
 
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="node"> </param>
+/// <param name="key"> </param>
 void DeleteOptimized(TreapNode*& node, const int& key);
+
+
+

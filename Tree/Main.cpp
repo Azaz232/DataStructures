@@ -67,7 +67,6 @@ string GetInputString(const string& msg)
     return input;
 }
 
-
 /// <summary>
 /// Prints binary tree
 /// </summary>
@@ -338,6 +337,3 @@ void main()
     }
 
 }
-
-
-

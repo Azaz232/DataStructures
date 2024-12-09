@@ -35,7 +35,7 @@ struct TreapNode
 		Left = nullptr;
 		Right = nullptr;
 	}
-
+	
 	TreapNode(const int& key, const int& priority)
 	{
 		Key = key;

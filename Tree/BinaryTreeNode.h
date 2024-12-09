@@ -58,4 +58,3 @@ BinaryTreeNode* CreateBinaryTreeNode();
 /// </summary>
 /// <param name="node"></param>
 void DeleteBinaryTreeNode(BinaryTreeNode* node);
-
