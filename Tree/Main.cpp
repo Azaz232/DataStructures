@@ -7,11 +7,9 @@
 
 using namespace std;
 
-/// <summary>
-/// Checks whether the string is a number
-/// </summary>
-/// <param name="prompt"> Prompt </param>
-/// <returns> True if the string is a number </returns>
+/// \brief  Checks whether the string is a number
+/// \param input Users input
+/// \return True if the string is a number
 bool IsNumber(const string& msg)
 {
     if (msg.empty())
@@ -33,11 +31,9 @@ bool IsNumber(const string& msg)
     return true;
 }
 
-/// <summary>
-/// Gets input from the user
-/// </summary>
-/// <param name="msg"> Message </param>
-/// <returns> Number </returns>
+/// \brief Gets input from the user
+/// \param message Prompt to display to the user
+/// \return The number entered by the user
 int GetInput(const string& msg)
 {
     string input;
@@ -54,11 +50,9 @@ int GetInput(const string& msg)
     }
 }
 
-/// <summary>
-/// Gets users input
-/// </summary>
-/// <param name="msg"> Message </param>
-/// <returns> String </returns>
+/// \brief Gets user input
+/// \param message Message to display to the user
+/// \return The string input provided by the user
 string GetInputString(const string& msg)
 {
     string input;
@@ -67,12 +61,10 @@ string GetInputString(const string& msg)
     return input;
 }
 
-/// <summary>
-/// Prints binary tree
-/// </summary>
-/// <param name="root"> A pointer to the root of the binary tree </param>
-/// <param name="space"> Space between printed nodes </param>
-/// <param name="count"> Made to increase the space </param>
+/// \brief Prints the contents of the binary tree
+/// \param stack A pointer to the root
+/// \param space Space between nodes
+/// \param count Made to increase the space
 void PrintBinaryTree(BinaryTreeNode* root, int space, int count)
 {
     if (root == nullptr)
@@ -93,12 +85,10 @@ void PrintBinaryTree(BinaryTreeNode* root, int space, int count)
     PrintBinaryTree(root->Left, space, count);
 }
 
-/// <summary>
-/// Prints treap pairs
-/// </summary>
-/// <param name="root"> A pointer to the root of the treap </param>
-/// <param name="space"> Space between printed nodes </param>
-/// <param name="count"> Made to ibcrease the space </param>
+/// \brief Prints the contents of the treap
+/// \param stack A pointer to the root
+/// \param space Space between nodes
+/// \param count Made to increase the space
 void PrintTreap(TreapNode* root, int space, int count)
 {
     if (root == nullptr)
@@ -119,6 +109,7 @@ void PrintTreap(TreapNode* root, int space, int count)
     PrintTreap(root->Left, space, count);
 }
 
+/// \brief Menu cintroller for the binary tree
 void BinaryTreeController()
 {
     BinaryTree* binaryTree = CreateBinaryTree();
@@ -213,6 +204,7 @@ void BinaryTreeController()
     DeleteBinaryTree(binaryTree);
 }
 
+/// \brief Menu cintroller for the treap
 void TreapController()
 {
     Treap* treap = CreateTreap();

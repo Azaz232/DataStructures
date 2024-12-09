@@ -1,60 +1,49 @@
 #pragma once
 
-/// <summary>
-/// Structure of the binary tree node
-/// </summary>
+/// \brief Structure representing a binary tree node
 struct BinaryTreeNode
 {
-	/// <summary>
-	/// Data in the node
-	/// </summary>
-	int Data;
+    /// \brief Data stored in the node
+    int Data;
 
-	/// <summary>
-	/// A pointer to the left subsidiary node
-	/// </summary>
-	BinaryTreeNode* Left;
+    /// \brief A pointer to the left child node
+    BinaryTreeNode* Left;
 
-	/// <summary>
-	/// A pointer to the right subsidiary node
-	/// </summary>
-	BinaryTreeNode* Right;
+    /// \brief A pointer to the right child node
+    BinaryTreeNode* Right;
 
-	/// <summary>
-	/// A pointer to the parent node
-	/// </summary>
-	BinaryTreeNode* Parent;
+    /// \brief A pointer to the parent node
+    BinaryTreeNode* Parent;
 
-	/// <summary>
-	/// Constructor to initialize the binary tree node
-	/// </summary>
-	BinaryTreeNode()
-	{
-		Data = 0;
-		Left = nullptr;
-		Right = nullptr;
-		Parent = nullptr;
-	}
+    /// \brief Constructor to initialize the binary tree node with default values
+    BinaryTreeNode()
+    {
+        Data = 0;
+        Left = nullptr;
+        Right = nullptr;
+        Parent = nullptr;
+    }
 
-	BinaryTreeNode(int data)
-	{
-		Data = data;
-		Left = nullptr;
-		Right = nullptr;
-		Parent = nullptr;
-	}
+    /// \brief Constructor to initialize the binary tree node with specified data
+    /// \param data The data to set in the node
+    BinaryTreeNode(int data)
+    {
+        Data = data;
+        Left = nullptr;
+        Right = nullptr;
+        Parent = nullptr;
+    }
 };
 
-/// <summary>
-/// Creates a node for the binary tree
-/// </summary>
-/// <param name="data"> Data to set to the node </param>
-/// <returns> A pointer to the node </returns>
+/// \brief Creates a new node for the binary tree
+/// \param data The data to set in the node
+/// \return A pointer to the newly created node
 BinaryTreeNode* CreateBinaryTreeNode(int data);
+
+/// \brief Creates a new node for the binary tree with default data
+/// \return A pointer to the newly created node
 BinaryTreeNode* CreateBinaryTreeNode();
 
-/// <summary>
-/// Clears up the space from the node
-/// </summary>
-/// <param name="node"></param>
+/// \brief Clears up the space used by the node
+/// \param node A pointer to the node to delete
 void DeleteBinaryTreeNode(BinaryTreeNode* node);

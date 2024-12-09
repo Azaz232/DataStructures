@@ -1,73 +1,51 @@
 #pragma once
 #include "TreapNode.h"
 
-/// <summary>
-/// Structure of the treap
-/// </summary>
+/// \brief Structure representing a treap
 struct Treap
 {
-	/// <summary>
-	/// A pointer to the root node of the treap
-	/// </summary>
-	TreapNode* Root;
-	/// <summary>
-	/// Constructor to initialize the treap
-	/// </summary>
-	Treap()
-	{
-		Root = nullptr;
-	}
+    /// \brief A pointer to the root node of the treap
+    TreapNode* Root;
+
+    /// \brief Constructor to initialize the treap
+    Treap()
+    {
+        Root = nullptr;
+    }
 };
 
-/// <summary>
-/// Creates the treap
-/// </summary>
-/// <returns></returns>
+/// \brief Creates a new treap
+/// \return A pointer to the newly created treap
 Treap* CreateTreap();
 
-/// <summary>
-/// Clears memory
-/// </summary>
-/// <param name="node"> A pointer to the root of the treap </param>
+/// \brief Clears memory used by the treap
+/// \param node A pointer to the root of the treap
 void DeleteTreap(TreapNode* node);
 
-/// <summary>
-/// Inserts a node to the treap
-/// </summary>
-/// <param name="node"> A reference to a pointer of the treap root </param>
-/// <param name="key"> Key of the node </param>
-/// <param name="priority"> Priority of the node </param>
+/// \brief Inserts a node into the treap
+/// \param node A reference to a pointer to the treap root
+/// \param key The key of the node to insert
+/// \param priority The priority of the node to insert
 void Insert(TreapNode*& node, const int& key, const int& priority);
 
-/// <summary>
-/// Searches a node in the treap
-/// </summary>
-/// <param name="node"> A pointer to the root of the treap </param>
-/// <param name="key"> Key to find in the treap </param>
-/// <returns> A pointer to the found node </returns>
+/// \brief Searches for a node in the treap
+/// \param node A pointer to the root of the treap
+/// \param key The key to find in the treap
+/// \return A pointer to the found node, or nullptr if not found
 TreapNode* Search(TreapNode* node, const int& key);
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="node"></param>
-/// <param name="key"></param>
-/// <param name="priority"></param>
+/// \brief Inserts a node into the treap with optimized logic
+/// \param node A reference to a pointer to the treap root
+/// \param key The key of the node to insert
+/// \param priority The priority of the node to insert
 void InsertOptimized(TreapNode*& node, const int& key, const int& priority);
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="node">  </param>
-/// <param name="key">    </param>
+/// \brief Deletes a node from the treap
+/// \param node A reference to a pointer to the treap root
+/// \param key The key of the node to delete
 void Delete(TreapNode*& node, const int& key);
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="node"> </param>
-/// <param name="key"> </param>
+/// \brief Deletes a node from the treap with optimized logic
+/// \param node A reference to a pointer to the treap root
+/// \param key The key of the node to delete
 void DeleteOptimized(TreapNode*& node, const int& key);
-
-
-

@@ -1,70 +1,49 @@
 #pragma once
 #include "BinaryTreeNode.h"
 
-/// <summary>
-/// Structure of the binary tree
-/// </summary>
+/// \brief Structure representing a binary tree
 struct BinaryTree
 {
-	/// <summary>
-	/// A pointer to the root node of the tree
-	/// </summary>
-	BinaryTreeNode* Root;
+    /// \brief A pointer to the root node of the tree
+    BinaryTreeNode* Root;
 
-	/// <summary>
-	/// Constructor to initialize the binary tree
-	/// </summary>
-	BinaryTree()
-	{
-		Root = nullptr;
-	}
+    /// \brief Constructor to initialize the binary tree
+    BinaryTree()
+    {
+        Root = nullptr;
+    }
 };
 
-/// <summary>
-/// Creates binary tree
-/// </summary>
-/// <returns> A pointer to the root of the binary tree </returns>
+/// \brief Creates a new binary tree
+/// \return A pointer to the newly created binary tree
 BinaryTree* CreateBinaryTree();
 
-/// <summary>
-/// Clears up the space from the binary tree
-/// </summary>
-/// <param name="root"></param>
+/// \brief Clears up the space used by the binary tree
+/// \param tree A pointer to the binary tree to delete
 void DeleteBinaryTree(BinaryTree* tree);
 
-/// <summary>
-/// Adds a node to the tree
-/// </summary>
-/// <param name="node">  </param>
-/// <param name="data"></param>
+/// \brief Adds a node to the binary tree
+/// \param root A reference to a pointer to the root node
+/// \param data The data to insert into the tree
 void AddNode(BinaryTreeNode*& root, int data);
 
-/// <summary>
-/// Searches a node in a tree by the key
-/// </summary>
-/// <param name="node"> A pointer to the node </param>
-/// <param name="data"> A data of the node to find </param>
-/// <returns> A pointer to the found node </returns>
+/// \brief Searches for a node in the tree by its key
+/// \param node A pointer to the node to search
+/// \param data The data of the node to find
+/// \return A pointer to the found node, or nullptr if not found
 BinaryTreeNode* Search(BinaryTreeNode* node, int data);
 
-/// <summary>
-/// Finds minimum number in the tree
-/// </summary>
-/// <param name="node"> A pointer to the root of the tree </param>
-/// <returns> A pointer to the node </returns>
+/// \brief Finds the minimum value in the binary tree
+/// \param node A pointer to the root of the tree
+/// \return A pointer to the node containing the minimum value
 BinaryTreeNode* FindMin(BinaryTreeNode* node);
 
-/// <summary>
-/// Finds maximum number in the tree
-/// </summary>
-/// <param name="node"> A pointer to the root of the tree </param>
-/// <returns> A pointer to the node </returns>
+/// \brief Finds the maximum value in the binary tree
+/// \param node A pointer to the root of the tree
+/// \return A pointer to the node containing the maximum value
 BinaryTreeNode* FindMax(BinaryTreeNode* node);
 
-/// <summary>
-/// Deletes a node from the tree by key
-/// </summary>
-/// <param name="node">  A reference to a pointer to the root node </param>
-/// <param name="data">  </param>
-/// <param name="data"> Locates the node to delete </param>
+/// \brief Deletes a node from the tree by its key
+/// \param node A reference to a pointer to the root node
+/// \param data The data of the node to delete
 void DeleteNode(BinaryTreeNode*& node, int data);
