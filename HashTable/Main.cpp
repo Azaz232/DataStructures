@@ -7,20 +7,20 @@ using namespace std;
 /// \brief  Checks whether the string is a number
 /// \param input Users input
 /// \return True if the string is a number
-bool IsNumber(const string& msg)
+bool IsNumber(const string& message)
 {
-    if (msg.empty())
+    if (message.empty())
     {
         return false;
     }
     size_t start = 0;
-    if (msg[0] == '-' || msg[0] == '+')
+    if (message[0] == '-' || message[0] == '+')
     {
         start = 1;
     }
-    for (size_t i = start; i < msg.size(); ++i)
+    for (size_t i = start; i < message.size(); ++i)
     {
-        if (!isdigit(msg[i]))
+        if (!isdigit(message[i]))
         {
             return false;
         }
@@ -31,10 +31,10 @@ bool IsNumber(const string& msg)
 /// \brief Gets input from the user
 /// \param message Prompt to display to the user
 /// \return The number entered by the user
-int GetInput(const string& msg)
+int GetInput(const string& message)
 {
     string input;
-    cout << msg;
+    cout << message;
     cin >> input;
     if (IsNumber(input))
     {
@@ -43,17 +43,17 @@ int GetInput(const string& msg)
     else
     {
         cout << "Unknown command. Try entering the command again." << endl;
-        return GetInput(msg);
+        return GetInput(message);
     }
 }
 
 /// \brief Gets user input for the size
 /// \param message Prompt to display to the user
 /// \return A positive number entered by the user
-int PositiveSize(const string& msg)
+int PositiveSize(const string& message)
 {
     string input;
-    cout << msg;
+    cout << message;
     cin >> input;
 
     if (!IsNumber(input) || stoi(input) <= 0)
@@ -61,7 +61,7 @@ int PositiveSize(const string& msg)
         cout << endl;
         cout << "Size must be positive or not be zero." << endl;
         cout << endl;
-        return PositiveSize(msg);
+        return PositiveSize(message);
     }
     else
     {
@@ -69,14 +69,13 @@ int PositiveSize(const string& msg)
     }
 }
 
-
 /// \brief Gets user input
 /// \param message Message to display to the user
 /// \return The string input provided by the user
-string GetInputString(const string& msg)
+string GetInputString(const string& message)
 {
     string input;
-    cout << msg;
+    cout << message;
     cin >> input;
     return input;
 }
@@ -119,40 +118,39 @@ int main()
 
         switch(choice)
         {
-            //TODO:
-        case 1:
-        {
-            string key = GetInputString("Enter the key: ");
-            string value = GetInputString("Enter the value to insert"
-                " to the hash table : ");
-            InsertToDictionary(dictionary, key, value);
-            break;
-        }
-        case 2:
-        {
-            string key = GetInputString("Enter the key: ");
-            DeleteFromDictionary(dictionary, key);
-            break;
-        }
-        case 3:
-        {
-            string key = GetInputString("Enter the key: ");
-            if (SearchInDictionary(dictionary, key) != nullptr)
+            case 1:
             {
-                HashItem* item = SearchInDictionary(dictionary, key);
-                cout << "For key '" << key << "', found value"
-                    " is " << item->Value << endl;
+                string key = GetInputString("Enter the key: ");
+                string value = GetInputString("Enter the value to insert"
+                    " to the hash table : ");
+                InsertToDictionary(dictionary, key, value);
+                break;
             }
-            else
+            case 2:
             {
-                cout << "No value found for the key\n";
+                string key = GetInputString("Enter the key: ");
+                DeleteFromDictionary(dictionary, key);
+                break;
             }
-            break;
-        }
-        default:
-        {
-            break;
-        }
+            case 3:
+            {
+                string key = GetInputString("Enter the key: ");
+                if (SearchInDictionary(dictionary, key) != nullptr)
+                {
+                    HashItem* item = SearchInDictionary(dictionary, key);
+                    cout << "For key '" << key << "', found value"
+                        " is " << item->Value << endl;
+                }
+                else
+                {
+                    cout << "No value found for the key\n";
+                }
+                break;
+            }
+            default:
+            {
+                break;
+            }
         }
     }
     DeleteDictionary(dictionary);

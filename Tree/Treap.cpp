@@ -115,16 +115,27 @@ void InsertOptimized(TreapNode*& node, const int& key, const int& priority)
 
 void Delete(TreapNode*& node, const int& key)
 {
-	/*if (node == nullptr)
+	if (!node)
 	{
 		return;
 	}
 
 	TreapNode* left = nullptr;
 	TreapNode* right = nullptr;
-	Split(node, key, left, right);*/
+	TreapNode* middle = nullptr;
 
-	
+	Split(node, key - 1, left, middle);
+	Split(middle, key, middle, right);
+
+	if (middle)
+	{
+		delete middle;
+		node = Merge(left, right);
+	}
+	else
+	{
+		node = Merge(left, middle);
+	}
 }
 
 void DeleteOptimized(TreapNode*& node, const int& key)

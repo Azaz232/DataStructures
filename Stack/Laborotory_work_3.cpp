@@ -4,129 +4,10 @@
 #include "CircularBuffer.h"
 #include "CircularBufferQueue.h"
 #include "StackQueue.h"
+#include "InputFunctions.h"
+#include "PrintFunctions.h"
 
 using namespace std;
-
-/// \brief  Checks whether the string is a number
-/// \param input Users input
-/// \return True if the string is a number
-bool IsNumber(const string& input)
-{
-    if (input.empty())
-    {
-        return false;
-    }
-    int start = 0;
-    if (input[0] == '-' || input[0] == '+')
-    {
-        start = 1;
-    }
-    for (int i = start; i < input.size(); ++i)
-    {
-        if (!isdigit(input[i]))
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
-/// \brief Gets input from the user
-/// \param message Prompt to display to the user
-/// \return The number entered by the user
-int GetInput(const string& message)
-{
-    string input;
-    cout << message;
-    cin >> input;
-    if (IsNumber(input))
-    {
-        return stoi(input);
-    }
-    else
-    {
-        cout << "Unknown command. Try entering the command again." << endl;
-        return GetInput(message);
-    }
-}
-
-/// \brief Gets user input
-/// \param message Message to display to the user
-/// \return The string input provided by the user
-string GetInputString(const string& message)
-{
-    string input;
-    cout << message;
-    cin >> input;
-    return input;
-}
-
-/// \brief Gets user input for the size
-/// \param message Prompt to display to the user
-/// \return A positive number entered by the user
-int PositiveSize(const string& message)
-{
-    string input;
-    cout << message;
-    cin >> input;
-    if (!IsNumber(input) || stoi(input) <= 0)
-    {
-        cout << endl;
-        cout << "Size must be positive or not be zero. \n";
-        return PositiveSize(message);
-    }
-    else
-    {
-        return stoi(input);
-    }
-}
-
-/// \brief Prints the contents of the stack
-/// \param stack A pointer to the stack
-void PrintStack(Stack* stack)
-{
-    cout << "\nStack contents: \n";
-    for (int i = stack->Size - 1; i > -1; i--)
-    {
-        cout << stack->Buffer[i] << endl;
-    }
-    cout << endl;
-}
-
-/// \brief Prints the contents of the circular buffer
-/// \param stack A pointer to the circular buffer
-void PrintCircularBuffer(CircularBuffer* circularBuffer)
-{
-    if (OccupiedSpace(circularBuffer) == 0)
-    {
-        cout << "Buffer is empty. \n";
-        return;
-    }
-    cout << "\nBuffer contents: \n";
-    for (int i = 0; i < circularBuffer->Size; i++)
-    {
-        cout << circularBuffer->Buffer[(circularBuffer->Tail + i) 
-            % circularBuffer->Capacity] << " ";
-    }
-    cout << endl;
-}
-
-/// \brief Prints the contents of the circular buffer queue
-/// \param stack A pointer to the circular buffer queue
-void PrintCircularBufferQueue(CircularBufferQueue* queue)
-{
-    PrintCircularBuffer(queue->CircularBuffer);
-}
-
-/// \brief Prints the contents of the stack queue
-/// \param stack A pointer to the stack queue
-void PrintStackQueue(StackQueue* stackQueue)
-{
-    cout << "First stack:";
-    PrintStack(stackQueue->FirstStack);
-    cout << "Second stack:";
-    PrintStack(stackQueue->SecondStack);
-}
 
 /// \brief Menu for the stack
 void StackController()
@@ -170,7 +51,8 @@ void StackController()
                 }
                 case 3:
                 {
-                    int newSize = GetInput("Enter the new size of the stack \n");
+                    int newSize = GetInput("Enter the new size of "
+                        "the stack \n");
                     ResizeStack(stack, newSize);
                     break;
                 }
@@ -226,7 +108,7 @@ void CircularBufferController()
                 }
                 case 2:
                 {
-                    cout << "Element received " << Dequeue(circularBuffer) << 
+                    cout << "Element received " << Dequeue(circularBuffer) <<
                         endl;
                     break;
                 }
@@ -435,4 +317,3 @@ int main()
 {
     MainController();
 }
-

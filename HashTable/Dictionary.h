@@ -17,18 +17,18 @@ Dictionary* CreateDictionary(int capacity);
 /// \param dictionary A pointer to the dictionary
 /// \param key The key to insert
 /// \param value The value to insert
-void InsertToDictionary(Dictionary* dictionary, const std::string& key, const std::string& value);
+void InsertToDictionary(Dictionary* dictionary, std::string& key, std::string& value);
 
 /// \brief Deletes a value from the dictionary
 /// \param dictionary A pointer to the dictionary
 /// \param key The key of the value to delete
-void DeleteFromDictionary(Dictionary* dictionary, const std::string& key);
+void DeleteFromDictionary(Dictionary* dictionary, std::string& key);
 
 /// \brief Searches for a value by key in the dictionary
 /// \param dictionary A pointer to the dictionary
 /// \param key The key to search for
 /// \return A pointer to the found item, or nullptr if not found
-HashItem* SearchInDictionary(Dictionary* dictionary, const std::string& key);
+HashItem* SearchInDictionary(Dictionary* dictionary, std::string& key);
 
 /// \brief Clears dynamically allocated memory for the dictionary
 /// \param dictionary A pointer to the dictionary to delete

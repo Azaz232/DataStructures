@@ -127,17 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AdditionalFunctionsForMain.cpp" />
+    <ClCompile Include="InputFunctions.cpp" />
     <ClCompile Include="CircularBuffer.cpp" />
     <ClCompile Include="Laborotory_work_3.cpp" />
     <ClCompile Include="CircularBufferQueue.cpp" />
+    <ClCompile Include="PrintFunctions.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="StackQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdditionalFunctionsForMain.h" />
+    <ClInclude Include="InputFunctions.h" />
     <ClInclude Include="CircularBuffer.h" />
     <ClInclude Include="CircularBufferQueue.h" />
+    <ClInclude Include="PrintFunctions.h" />
     <ClInclude Include="Stack.h" />
     <ClInclude Include="StackItem.h" />
     <ClInclude Include="StackQueue.h" />

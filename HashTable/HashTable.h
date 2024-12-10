@@ -21,6 +21,9 @@ const int GrowthFactor = 2;
 /// \brief Factor of the table being filled
 const double FillFactor = 0.75;
 
+/// \brief Factor of the table being filled
+const double MinFillFactor = 0.5;
+
 /// \brief Creates a new hash table
 /// \param capacity The capacity of the hash table
 /// \return A pointer to the newly created hash table
@@ -41,13 +44,14 @@ void Insert(HashTable*& hashTable, const string& key, const string& value);
 
 /// \brief Rehashes the hash table
 /// \param hashTable A pointer to the hash table
+/// \param newCapacity New capacity of the table
 /// \return A pointer to the rehashed hash table
-HashTable* Rehash(HashTable* hashTable);
+HashTable* Rehash(HashTable* hashTable, int newCapacity);
 
 /// \brief Removes an element from the hash table
 /// \param hashTable A pointer to the hash table
 /// \param key The key of the element to remove
-void Remove(HashTable* hashTable, const string& key);
+void Remove(HashTable*& hashTable, const string& key);
 
 /// \brief Handles collisions at the bucket
 /// \param table A pointer to the hash table

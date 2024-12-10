@@ -14,6 +14,8 @@ HashTable* CreateHashTable(int capacity)
 	return hashTable;
 }
 
+//TODO:
+
 int Pearson(const string& key, int a, int capacity)
 {
 	int hashCode = 0;
@@ -25,6 +27,8 @@ int Pearson(const string& key, int a, int capacity)
 	}
 	return abs(hashCode % capacity);
 }
+
+//TODO:
 
 /// \brief Finds the greatest common divisor (GCD) for two numbers
 /// \param a The first number
@@ -56,7 +60,7 @@ int MutuallySimpleNumber(int capacity)
 	return count;
 }
 
-void Insert(HashTable*& hashTable, const string& key, const string& value)  // *&
+void Insert(HashTable*& hashTable, const string& key, const string& value) 
 {
 	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity),
 		hashTable->Capacity);
@@ -64,7 +68,7 @@ void Insert(HashTable*& hashTable, const string& key, const string& value)  // *
 	
 	while (currentItem != nullptr)
 	{
-		if (currentItem->Key == key)
+		if (currentItem->Key == key && currentItem->Value == value) 
 		{
 			return;
 		}
@@ -80,15 +84,14 @@ void Insert(HashTable*& hashTable, const string& key, const string& value)  // *
 	double loadFactor = (double)hashTable->Size / (double)hashTable->Capacity;
 	if (loadFactor >= FillFactor)
 	{
-		hashTable = Rehash(hashTable);
+		hashTable = Rehash(hashTable,  hashTable->Capacity * GrowthFactor);
 	}
 }
 
-HashTable* Rehash(HashTable* hashTable)
+HashTable* Rehash(HashTable* hashTable, int newCapacity)
 {
-	int newCapacity = hashTable->Capacity * GrowthFactor;
 	HashTable* newHashTable = CreateHashTable(newCapacity);
-	
+
 	for (int i = 0; i < hashTable->Capacity; i++)
 	{
 		HashItem* currentItem = hashTable->Items[i];
@@ -102,31 +105,15 @@ HashTable* Rehash(HashTable* hashTable)
 	return newHashTable;
 }
 
-void DeleteHashTable(HashTable* hashTable)
-{
-	if (hashTable == nullptr) {
-		return;
-	}
-	for (int i = 0; i < hashTable->Capacity; i++) {
-		HashItem* currentItem = hashTable->Items[i];
-		while (currentItem != nullptr) {
-			HashItem* temp = currentItem; 
-			currentItem = currentItem->Next;
-			delete temp;
-		}
-	}
-
-	delete[] hashTable->Items;
-	delete hashTable;
-}
-
-void Remove(HashTable* hashTable,const string& key)
+void Remove(HashTable*& hashTable, const string& key)
 {
 	if (hashTable->Size == 0)
 	{
 		return;
 	}
-	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity), hashTable->Capacity);
+
+	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity),
+		hashTable->Capacity);
 	HashItem* currentItem = hashTable->Items[hashCode];
 	HashItem* previousItem = nullptr;
 
@@ -140,16 +127,24 @@ void Remove(HashTable* hashTable,const string& key)
 			}
 			else
 			{
-				hashTable->Items[hashCode] = currentItem->Next; 
-			}	
+				hashTable->Items[hashCode] = currentItem->Next;
+			}
 			delete currentItem;
 			hashTable->Size--;
+
+			double loadFactor = (double)hashTable->Size / (double)hashTable->Capacity;
+			if (loadFactor <= MinFillFactor)
+			{
+				hashTable = Rehash(hashTable, hashTable->Capacity / GrowthFactor);
+			}
+
 			return;
 		}
 		previousItem = currentItem;
 		currentItem = currentItem->Next;
 	}
 }
+
 
 void HandleCollisions(HashTable* table, int hashCode, HashItem* newItem)
 {
@@ -171,4 +166,23 @@ HashItem* Search(HashTable* hashTable, const string& key)
 		currentItem = currentItem->Next;
 	}
 	return nullptr;
+}
+
+void DeleteHashTable(HashTable* hashTable)
+{
+	//TODO:
+	if (hashTable == nullptr) {
+		return;
+	}
+	for (int i = 0; i < hashTable->Capacity; i++) {
+		HashItem* currentItem = hashTable->Items[i];
+		while (currentItem != nullptr) {
+			HashItem* temp = currentItem; 
+			currentItem = currentItem->Next;
+			delete temp;
+		}
+	}
+
+	delete[] hashTable->Items;
+	delete hashTable;
 }
