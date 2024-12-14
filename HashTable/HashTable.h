@@ -34,7 +34,18 @@ HashTable* CreateHashTable(int capacity);
 /// \param a A simple number for the array
 /// \param capacity The capacity of the array
 /// \return The index in the hash table
-int Pearson(const string& key, int a, int capacity);
+int HashFunction(const string& key, int a, int capacity);
+
+/// \brief Finds the greatest common divisor (GCD) for two numbers
+/// \param a The first number
+/// \param b The second number
+/// \return The greatest common divisor of the two numbers
+int GreatestCommonDivisor(int a, int b);
+
+/// \brief Finds a mutually simple number for the capacity of the table
+/// \param capacity The capacity of the table
+/// \return A mutually simple number for the given capacity
+int MutuallySimpleNumber(int capacity);
 
 /// \brief Inserts an element into the hash table
 /// \param hashTable A pointer to the hash table

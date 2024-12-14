@@ -130,12 +130,14 @@
     <ClCompile Include="DIctionary.cpp" />
     <ClCompile Include="HashItem.cpp" />
     <ClCompile Include="HashTable.cpp" />
+    <ClCompile Include="InputFunctions.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dictionary.h" />
     <ClInclude Include="HashItem.h" />
     <ClInclude Include="HashTable.h" />
+    <ClInclude Include="InputFunctions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

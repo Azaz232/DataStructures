@@ -15,8 +15,7 @@ HashTable* CreateHashTable(int capacity)
 }
 
 //TODO:
-
-int Pearson(const string& key, int a, int capacity)
+int HashFunction(const string& key, int a, int capacity)
 {
 	int hashCode = 0;
 	int power = 1;
@@ -29,11 +28,6 @@ int Pearson(const string& key, int a, int capacity)
 }
 
 //TODO:
-
-/// \brief Finds the greatest common divisor (GCD) for two numbers
-/// \param a The first number
-/// \param b The second number
-/// \return The greatest common divisor of the two numbers
 int GreatestCommonDivisor(int a, int b)
 {
 	while (b != 0) {
@@ -44,9 +38,6 @@ int GreatestCommonDivisor(int a, int b)
 	return a;
 }
 
-/// \brief Finds a mutually simple number for the capacity of the table
-/// \param capacity The capacity of the table
-/// \return A mutually simple number for the given capacity
 int MutuallySimpleNumber(int capacity)
 {
 	int count = 1;
@@ -62,7 +53,7 @@ int MutuallySimpleNumber(int capacity)
 
 void Insert(HashTable*& hashTable, const string& key, const string& value) 
 {
-	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity),
+	int hashCode = HashFunction(key, MutuallySimpleNumber(hashTable->Capacity),
 		hashTable->Capacity);
 	HashItem* currentItem = hashTable->Items[hashCode];
 	
@@ -112,7 +103,7 @@ void Remove(HashTable*& hashTable, const string& key)
 		return;
 	}
 
-	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity),
+	int hashCode = HashFunction(key, MutuallySimpleNumber(hashTable->Capacity),
 		hashTable->Capacity);
 	HashItem* currentItem = hashTable->Items[hashCode];
 	HashItem* previousItem = nullptr;
@@ -145,7 +136,6 @@ void Remove(HashTable*& hashTable, const string& key)
 	}
 }
 
-
 void HandleCollisions(HashTable* table, int hashCode, HashItem* newItem)
 {
 	newItem->Next = table->Items[hashCode];
@@ -154,7 +144,7 @@ void HandleCollisions(HashTable* table, int hashCode, HashItem* newItem)
 
 HashItem* Search(HashTable* hashTable, const string& key)
 {
-	int hashCode = Pearson(key, MutuallySimpleNumber(hashTable->Capacity),
+	int hashCode = HashFunction(key, MutuallySimpleNumber(hashTable->Capacity),
 		hashTable->Capacity);
 	HashItem* currentItem = hashTable->Items[hashCode];
 	while (currentItem != nullptr)
@@ -171,18 +161,20 @@ HashItem* Search(HashTable* hashTable, const string& key)
 void DeleteHashTable(HashTable* hashTable)
 {
 	//TODO:
-	if (hashTable == nullptr) {
+	if (hashTable == nullptr)
+	{
 		return;
 	}
-	for (int i = 0; i < hashTable->Capacity; i++) {
+	for (int i = 0; i < hashTable->Capacity; i++)
+	{
 		HashItem* currentItem = hashTable->Items[i];
-		while (currentItem != nullptr) {
+		while (currentItem != nullptr)
+		{
 			HashItem* temp = currentItem; 
 			currentItem = currentItem->Next;
 			delete temp;
 		}
 	}
-
 	delete[] hashTable->Items;
 	delete hashTable;
 }

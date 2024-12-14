@@ -17,20 +17,6 @@ int OccupiedSpace(CircularBuffer* circularBuffer)
 
 void Enqueue(CircularBuffer* circularBuffer, int data)
 {
-	//if (FreeSpace(circularBuffer) == 0)
-	//{
-	//	/*throw "Circular Buffer is full";*/
-	//	return;
-	//}
-	//if (circularBuffer->Head >= circularBuffer->Capacity)
-	//{
-	//	circularBuffer->Head = 0;
-	//}
-	///*circularBuffer->Buffer[circularBuffer->Head] = data; */
-	///*circularBuffer->Head = (circularBuffer->Head + 1) % circularBuffer->Capacity;*/
-	//circularBuffer->Buffer[circularBuffer->Head++] = data;
-	//++circularBuffer->Size;
-
 	if (circularBuffer->Size == circularBuffer->Capacity) 
 	{
 		circularBuffer->Tail = (circularBuffer->Tail + 1) % 

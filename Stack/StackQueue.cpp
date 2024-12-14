@@ -25,7 +25,8 @@ void EnqueueStackQueue(StackQueue* stackQueue, int data)
 {
 	if (IsFull(stackQueue->FirstStack) == 0)
 	{
-		throw "This stack is full";
+		/*throw "This stack is full";*/
+		return;
 	}
 	Push(stackQueue->FirstStack, data);
 }

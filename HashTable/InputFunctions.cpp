@@ -1,9 +1,6 @@
 #include <iostream>
-#include "Stack.h"
 #include <string>
-#include "CircularBuffer.h"
-#include "CircularBufferQueue.h"
-#include "StackQueue.h"
+#include "HashTable.h"
 
 using namespace std;
 

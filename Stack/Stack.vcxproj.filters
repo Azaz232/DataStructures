@@ -38,9 +38,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StackItem.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Stack.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>

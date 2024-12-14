@@ -33,15 +33,11 @@ void PrintCircularBuffer(CircularBuffer* circularBuffer)
     cout << endl;
 }
 
-/// \brief Prints the contents of the circular buffer queue
-/// \param stack A pointer to the circular buffer queue
 void PrintCircularBufferQueue(CircularBufferQueue* queue)
 {
     PrintCircularBuffer(queue->CircularBuffer);
 }
 
-/// \brief Prints the contents of the stack queue
-/// \param stack A pointer to the stack queue
 void PrintStackQueue(StackQueue* stackQueue)
 {
     cout << "First stack:";

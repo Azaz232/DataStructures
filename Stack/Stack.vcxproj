@@ -141,7 +141,6 @@
     <ClInclude Include="CircularBufferQueue.h" />
     <ClInclude Include="PrintFunctions.h" />
     <ClInclude Include="Stack.h" />
-    <ClInclude Include="StackItem.h" />
     <ClInclude Include="StackQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
