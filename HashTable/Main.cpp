@@ -26,6 +26,26 @@ void PrintHashTable(HashTable* hashTable)
     }
 }
 
+/// \brief Prints the contents of the dictionary
+/// \param stack A pointer to the dictionary
+void PrintDictionary(Dictionary* dictionary)
+{
+    cout << "\tDictionary:\n";
+    for (int i = 0; i < dictionary->HashTable->Capacity; i++)
+    {
+        HashItem* currentItem = dictionary->HashTable->Items[i];
+        if (currentItem != nullptr)
+        {
+            while (currentItem)
+            {
+                cout << currentItem->Key << " : " << currentItem->Value << "\n";
+                currentItem = currentItem->Next;
+            }
+        }
+    }
+    cout << endl;
+}
+
 int main()
 {
     int dictionarySize = PositiveSize("Enter the size of the dictionary: ");
@@ -34,6 +54,7 @@ int main()
     while(true)
     {
         PrintHashTable(dictionary->HashTable);
+        PrintDictionary(dictionary);
         cout << "\tSelect the action you want to do: \n";
         cout << "1. Insert \n";
         cout << "2. Delete \n";

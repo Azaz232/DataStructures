@@ -7,9 +7,6 @@
 
 using namespace std;
 
-/// \brief  Checks whether the string is a number
-/// \param input Users input
-/// \return True if the string is a number
 bool IsNumber(const string& message)
 {
     if (message.empty())
@@ -23,7 +20,7 @@ bool IsNumber(const string& message)
     }
     for (size_t i = start; i < message.size(); ++i)
     {
-        if (!isdigit(message[i]))
+        if (message[i]< '0' ||  message[i] > '9')
         {
             return false;
         }
@@ -31,9 +28,6 @@ bool IsNumber(const string& message)
     return true;
 }
 
-/// \brief Gets input from the user
-/// \param message Prompt to display to the user
-/// \return The number entered by the user
 int GetInput(const string& message)
 {
     string input;
@@ -50,9 +44,6 @@ int GetInput(const string& message)
     }
 }
 
-/// \brief Gets user input
-/// \param message Message to display to the user
-/// \return The string input provided by the user
 string GetInputString(const string& message)
 {
     string input;
