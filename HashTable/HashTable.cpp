@@ -6,7 +6,7 @@ HashTable* CreateHashTable(int capacity)
 	HashTable* hashTable = new HashTable;
 	hashTable->Capacity = capacity;
 	hashTable->Size = 0;
-	hashTable->Items = new HashItem * [hashTable->Capacity];
+	hashTable->Items = new HashItem* [hashTable->Capacity];
 	for (int i = 0; i < hashTable->Capacity; i++)
 	{
 		hashTable->Items[i] = nullptr;
@@ -28,14 +28,14 @@ int HashFunction(const string& key, int a, int capacity)
 }
 
 //TODO:
-int GreatestCommonDivisor(int a, int b)
+int GreatestCommonDivisor(int firstNumber, int secondNumber)
 {
-	while (b != 0) {
-		int temp = b;
-		b = a % b;
-		a = temp;
+	while (secondNumber != 0) {
+		int temp = secondNumber;
+		secondNumber = firstNumber % secondNumber;
+		firstNumber = temp;
 	}
-	return a;
+	return firstNumber;
 }
 
 int MutuallySimpleNumber(int capacity)
@@ -128,7 +128,6 @@ void Remove(HashTable*& hashTable, const string& key)
 			{
 				hashTable = Rehash(hashTable, hashTable->Capacity / GrowthFactor);
 			}
-
 			return;
 		}
 		previousItem = currentItem;

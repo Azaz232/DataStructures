@@ -1,5 +1,6 @@
 #pragma once
 
+
 /// \brief  Checks whether the string is a number
 /// \param input Users input
 /// \return True if the string is a number

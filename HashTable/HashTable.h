@@ -2,6 +2,7 @@
 #include "HashItem.h"
 #include <string>
 
+
 /// \brief Structure representing a hash table
 struct HashTable
 {

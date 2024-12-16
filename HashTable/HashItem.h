@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+
 /// \brief A structure representing a hash item
 struct HashItem
 {

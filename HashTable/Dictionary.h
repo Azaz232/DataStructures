@@ -1,6 +1,7 @@
 #pragma once
 #include "HashTable.h"
 
+
 /// \brief Structure representing a dictionary
 struct Dictionary
 {
