@@ -62,7 +62,6 @@ void ResizeCircularBuffer(CircularBuffer* circularBuffer, int newCapacity)
 	circularBuffer->Buffer = newBuffer; 
 	circularBuffer->Capacity = newCapacity; 
 	circularBuffer->Size = elementsToCopy;
-	/*circularBuffer->Head = circularBuffer->Size; */
 	circularBuffer->Head = elementsToCopy;
 	circularBuffer->Tail = 0; 
 }

@@ -70,6 +70,7 @@ int main()
             int intChoice = stoi(choice);
             switch (intChoice)
             {
+                //Todo: rsdn
             case 1:
             {
                 string key = GetInputString("Enter the key: ");

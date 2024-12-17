@@ -229,7 +229,7 @@ void TreapController()
                     cout << "Invalid choice. Please try again.\n" << endl;
                     break;
                 }
-                case 6:
+                /*case 6:
                 {
                     int key = GetInput("Enter the key to split the treap: ");
                     TreapNode* left = nullptr;
@@ -243,9 +243,8 @@ void TreapController()
                     PrintTreap(right, 0, 5);
                     cout << endl << endl << endl << endl;
 
-                    /*Merge(left, right);*/
                     PrintTreap(Merge(left, right), 0, 5);
-                }
+                }*/
             }
         }
         else

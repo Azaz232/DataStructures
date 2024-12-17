@@ -39,14 +39,28 @@ void StackController()
             {
                 case 1:
                 {
-                    int value = GetInput("Enter the value to push: \n");
-                    Push(stack, value);
+                    if (IsFull(stack) == 0)
+                    {
+                        cout << "stack's full\n";
+                    }
+                    else
+                    {
+                        int value = GetInput("Enter the value to push: \n");
+                        Push(stack, value);
+                    }
                     break;
                 }
                 case 2:
                 {
-                    int result = Pop(stack);
-                    cout << "Element received " << result << endl;
+                    if (IsEmpty(stack))
+                    {
+                        cout << "stack is empty";
+                    }
+                    else
+                    {
+                        int result = Pop(stack);
+                        cout << "Element received " << result << endl;
+                    }
                     break;
                 }
                 case 3:
@@ -238,16 +252,30 @@ void StackQueueController()
             {
                 case 1:
                 {
-                    int value = GetInput("Enter the value to add: ");
-                    cout << endl;
-                    EnqueueStackQueue(stackQueue, value);
-                    cout << endl;
+                    if (IsFull(stackQueue->FirstStack) == 0) 
+                    {
+                        cout << "stack is full\n\n";
+                    }
+                    else
+                    {
+                        int value = GetInput("Enter the value to add: ");
+                        cout << endl;
+                        EnqueueStackQueue(stackQueue, value);
+                        cout << endl;
+                    }
                     break;
                 }
                 case 2:
                 {
-                    int value = DequeueStackQueue(stackQueue);
-                    cout << "Element received " << value << endl;
+                    if (IsEmpty(stackQueue->FirstStack) && IsEmpty(stackQueue->SecondStack))
+                    {
+                        cout << "stack is empty\n\n";
+                    }
+                    else
+                    {
+                        int value = DequeueStackQueue(stackQueue);
+                        cout << "Element received " << value << endl;
+                    }
                     break;
                 }
                 case 3:

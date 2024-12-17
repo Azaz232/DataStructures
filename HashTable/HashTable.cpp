@@ -14,7 +14,6 @@ HashTable* CreateHashTable(int capacity)
 	return hashTable;
 }
 
-//TODO:
 int HashFunction(const string& key, int a, int capacity)
 {
 	int hashCode = 0;
@@ -27,10 +26,10 @@ int HashFunction(const string& key, int a, int capacity)
 	return abs(hashCode % capacity);
 }
 
-//TODO:
 int GreatestCommonDivisor(int firstNumber, int secondNumber)
 {
-	while (secondNumber != 0) {
+	while (secondNumber != 0) 
+	{
 		int temp = secondNumber;
 		secondNumber = firstNumber % secondNumber;
 		firstNumber = temp;
@@ -159,7 +158,6 @@ HashItem* Search(HashTable* hashTable, const string& key)
 
 void DeleteHashTable(HashTable* hashTable)
 {
-	//TODO:
 	if (hashTable == nullptr)
 	{
 		return;
