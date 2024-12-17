@@ -101,15 +101,17 @@ void BinaryTreeController()
                 }
                 case 3:
                 {
-                    int key = GetInput("Enter the key of the node to search: ");
+                    int key = GetInput("Enter the key of the node to "
+                        "search: ");
                     if (Search(binaryTree->Root, key) == nullptr)
                     {
                         cout << "\nNo node found \n";
                     }
                     else
                     {
-                        cout << "\nNode found: " << 
-                            Search(binaryTree->Root, key)->Data;
+                        cout << "\nNode" << 
+                            Search(binaryTree->Root, key)->Data << " found";
+                            
                     }
                     break;
                 }
@@ -226,6 +228,23 @@ void TreapController()
                 {
                     cout << "Invalid choice. Please try again.\n" << endl;
                     break;
+                }
+                case 6:
+                {
+                    int key = GetInput("Enter the key to split the treap: ");
+                    TreapNode* left = nullptr;
+                    TreapNode* right = nullptr;
+
+                    Split(treap->Root, key, left, right);
+                    cout << "Left\n";
+                    PrintTreap(left, 0, 5);
+                    cout << endl << endl;
+                    cout << "Right\n";
+                    PrintTreap(right, 0, 5);
+                    cout << endl << endl << endl << endl;
+
+                    /*Merge(left, right);*/
+                    PrintTreap(Merge(left, right), 0, 5);
                 }
             }
         }

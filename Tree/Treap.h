@@ -22,6 +22,19 @@ Treap* CreateTreap();
 /// \param node A pointer to the root of the treap
 void DeleteTreap(TreapNode* node);
 
+/// \brief Divides function into 2 sub-treaps
+/// \param node A pointer to the treap root
+/// \param key The key used to split the treap
+/// \param left A reference to a pointer that will point to the left sub-treap
+/// \param right A reference to a pointer that will point to the right sub-treap
+void Split(TreapNode* node, const int& key, TreapNode*& left, TreapNode*& right);
+
+/// \brief Combines 2 treaps into 1
+/// \param left A pointer of the left sub-treap
+/// \param right A pointer of the right sub-treap
+/// \return A pointer to the root of the merged treap.
+TreapNode* Merge(TreapNode* left, TreapNode* right);
+
 /// \brief Inserts a node into the treap
 /// \param node A reference to a pointer to the treap root
 /// \param key The key of the node to insert

@@ -12,8 +12,8 @@ struct BinaryTreeNode
     /// \brief A pointer to the right child node
     BinaryTreeNode* Right;
 
-    /// \brief A pointer to the parent node
-    BinaryTreeNode* Parent;
+    ///// \brief A pointer to the parent node
+    //BinaryTreeNode* Parent;
 
     /// \brief Constructor to initialize the binary tree node with default values
     BinaryTreeNode()
@@ -21,7 +21,7 @@ struct BinaryTreeNode
         Data = 0;
         Left = nullptr;
         Right = nullptr;
-        Parent = nullptr;
+        /*Parent = nullptr;*/
     }
 
     /// \brief Constructor to initialize the binary tree node with specified data
@@ -31,7 +31,7 @@ struct BinaryTreeNode
         Data = data;
         Left = nullptr;
         Right = nullptr;
-        Parent = nullptr;
+        /*Parent = nullptr;*/
     }
 };
 

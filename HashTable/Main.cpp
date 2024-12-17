@@ -18,7 +18,8 @@ void PrintHashTable(HashTable* hashTable)
             HashItem* currentItem = hashTable->Items[i];
             while (currentItem)
             {
-                cout << currentItem->Key << " - " << currentItem->Value << " | ";
+                cout << currentItem->Key << " - " << currentItem->Value 
+                    << " | ";
                 currentItem = currentItem->Next;
             }
         }
@@ -36,11 +37,8 @@ void PrintDictionary(Dictionary* dictionary)
         HashItem* currentItem = dictionary->HashTable->Items[i];
         if (currentItem != nullptr)
         {
-            while (currentItem)
-            {
-                cout << currentItem->Key << " : " << currentItem->Value << "\n";
-                currentItem = currentItem->Next;
-            }
+            cout << currentItem->Key << " : " << currentItem->Value
+                << "\n";
         }
     }
     cout << endl;

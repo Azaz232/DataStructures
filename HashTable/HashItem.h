@@ -12,9 +12,6 @@ struct HashItem
     /// \brief The value of the hash item
     string Value;
 
-    /// \brief A pointer to the previous hash item
-    HashItem* Previous;
-
     /// \brief A pointer to the next hash item
     HashItem* Next;
 };

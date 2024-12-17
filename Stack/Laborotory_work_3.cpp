@@ -64,7 +64,11 @@ void StackController()
                 }
             }
         }
-        
+        else
+        {
+            cout << "Invalid input. Please enter a number or 'q' to quit." <<
+                endl;
+        }
     }
     DeleteStack(stack);
 }
@@ -126,6 +130,11 @@ void CircularBufferController()
                     break;
                 }
             }
+        }
+        else
+        {
+            cout << "Invalid input. Please enter a number or 'q' to quit." <<
+                endl;
         }
     }
     DeleteCircularBuffer(circularBuffer);
@@ -190,6 +199,11 @@ void CircularBufferQueueController()
                 }
             }
         }
+        else
+        {
+            cout << "Invalid input. Please enter a number or 'q' to quit." <<
+                endl;
+        }
     }
     DeleteCircularBufferQueue(circularBufferQueue);
 }
@@ -250,6 +264,11 @@ void StackQueueController()
                     break;
                 }
             }
+        }
+        else
+        {
+            cout << "Invalid input. Please enter a number or 'q' to quit." <<
+                endl;
         }
     }
     DeleteStackQueue(stackQueue);
