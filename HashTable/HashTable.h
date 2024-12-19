@@ -41,7 +41,7 @@ int HashFunction(const string& key, int a, int capacity);
 /// \param a The first number
 /// \param b The second number
 /// \return The greatest common divisor of the two numbers
-int GreatestCommonDivisor(int a, int b);
+int GreatestCommonDivisor(int firstNumber, int secondNumber);
 
 /// \brief Finds a mutually simple number for the capacity of the table
 /// \param capacity The capacity of the table
@@ -80,3 +80,8 @@ HashItem* Search(HashTable* hashTable, const string& key);
 /// \brief Clears dynamically allocated space for the hash table
 /// \param hashTable A pointer to the hash table to delete
 void DeleteHashTable(HashTable* hashTable);
+
+
+
+
+HashItem* SearchDublicate(HashTable* hashTable, const string& key, const string& value);

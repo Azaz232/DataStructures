@@ -70,47 +70,58 @@ int main()
             int intChoice = stoi(choice);
             switch (intChoice)
             {
-                //Todo: rsdn
-            case 1:
-            {
-                string key = GetInputString("Enter the key: ");
-                string value = GetInputString("Enter the value to insert"
-                    " to the hash table : ");
-                InsertToDictionary(dictionary, key, value);
-                break;
-            }
-            case 2:
-            {
-                string key = GetInputString("Enter the key: ");
-                DeleteFromDictionary(dictionary, key);
-                break;
-            }
-            case 3:
-            {
-                string key = GetInputString("Enter the key: ");
-                if (SearchInDictionary(dictionary, key) != nullptr)
+                //Todo: rsdn +
+                case 1:
                 {
-                    HashItem* item = SearchInDictionary(dictionary, key);
-                    cout << "For key '" << key << "', found value"
-                        " is " << item->Value << endl;
+                    string key = GetInputString("Enter the key: ");
+                    string value = GetInputString("Enter the value to insert"
+                        " to the hash table : ");
+                    if (Search(dictionary->HashTable, key))
+                    {
+                        cout << "\n !Such key already exists in the hash "
+                            "table\n";
+                    }
+                    if (SearchDublicate(dictionary->HashTable, key, value))
+                    {
+                        cout << "\n !These key and value already exist in the"
+                            " hash table you cannot add it\n";
+                        break;
+                    }
+                    InsertToDictionary(dictionary, key, value);
+                    break;
                 }
-                else
+                case 2:
                 {
-                    cout << "No value found for the key\n";
+                    string key = GetInputString("Enter the key: ");
+                    DeleteFromDictionary(dictionary, key);
+                    break;
                 }
-                break;
+                case 3:
+                {
+                    string key = GetInputString("Enter the key: ");
+                    if (SearchInDictionary(dictionary, key) != nullptr)
+                    {
+                        HashItem* item = SearchInDictionary(dictionary, key);
+                        cout << "For key '" << key << "', found value"
+                            " is " << item->Value << endl;
+                    }
+                    else
+                    {
+                        cout << "No value found for the key\n";
+                    }
+                    break;
+                }
+                default:
+                {
+                    cout << "Incorrect input, try again\n";
+                    break;
+                }
             }
-            default:
-            {
-                break;
-            }
-            }
+        }
+        else
+        {
+            cout << "Incorrect input, try again dumbass\n";
         }
     }
     DeleteDictionary(dictionary);
 }
-
-
-
-
-
