@@ -78,12 +78,12 @@ int main()
                         " to the hash table : ");
                     if (Search(dictionary->HashTable, key))
                     {
-                        cout << "\n !Such key already exists in the hash "
+                        cout << "\n!Such key already exists in the hash "
                             "table\n";
                     }
                     if (SearchDublicate(dictionary->HashTable, key, value))
                     {
-                        cout << "\n !These key and value already exist in the"
+                        cout << "\n!These key and value already exist in the"
                             " hash table you cannot add it\n";
                         break;
                     }

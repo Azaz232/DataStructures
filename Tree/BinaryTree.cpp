@@ -115,3 +115,61 @@ void DeleteNode(BinaryTreeNode*& node, int data)
 		}
 	}
 }
+
+
+
+///////
+
+BinaryTreeNode* FindInsertionNode(BinaryTree* binaryTree, const int& data)
+{
+	BinaryTreeNode* currentNode = binaryTree->Root;
+	while (true)
+	{
+		if (currentNode->Data >= data)
+		{
+			if (currentNode->Right == nullptr)
+			{
+				return currentNode;
+			}
+			else
+			{
+				currentNode = currentNode->Right;
+			}
+		}
+		else
+		{
+			if (currentNode->Left == nullptr)
+			{
+				return currentNode;
+			}
+			else
+			{
+				currentNode = currentNode->Left;
+			}
+		}
+	}
+}
+
+
+
+
+
+void AddNode(BinaryTree* binaryTree, const int& data)
+{
+	BinaryTreeNode* newNode = CreateBinaryTreeNode(data);
+
+	if (binaryTree->Root == nullptr)
+	{
+		binaryTree->Root = newNode;
+		return;
+	}
+	else
+	{
+		BinaryTreeNode* insertionNode = FindInsertionNode(binaryTree, data);
+
+	}
+
+
+}
+
+
