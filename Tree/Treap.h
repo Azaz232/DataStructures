@@ -39,26 +39,39 @@ TreapNode* Merge(TreapNode* left, TreapNode* right);
 /// \param node A reference to a pointer to the treap root
 /// \param key The key of the node to insert
 /// \param priority The priority of the node to insert
-void Insert(TreapNode*& node, const int& key, const int& priority);
+//void Insert(TreapNode*& node, const int& key, const int& priority);
+
+void Insert(Treap*& treap, const int& key);
 
 /// \brief Searches for a node in the treap
 /// \param node A pointer to the root of the treap
 /// \param key The key to find in the treap
 /// \return A pointer to the found node, or nullptr if not found
-TreapNode* Search(TreapNode* node, const int& key);
+//TreapNode* Search(TreapNode* node, const int& key);
+
+TreapNode* Search(Treap* treap, const int& key);
 
 /// \brief Inserts a node into the treap with optimized logic
 /// \param node A reference to a pointer to the treap root
 /// \param key The key of the node to insert
 /// \param priority The priority of the node to insert
-void InsertOptimized(TreapNode*& node, const int& key, const int& priority);
+//void InsertOptimized(TreapNode*& node, const int& key, const int& priority);
+
+void InsertOptimized(Treap*& treap, const int& key);
 
 /// \brief Deletes a node from the treap
 /// \param node A reference to a pointer to the treap root
 /// \param key The key of the node to delete
-void Delete(TreapNode*& node, const int& key);
+//void Delete(TreapNode*& node, const int& key);
+
+void Delete(Treap*& treap, const int& key);
+
 
 /// \brief Deletes a node from the treap with optimized logic
 /// \param node A reference to a pointer to the treap root
 /// \param key The key of the node to delete
-void DeleteOptimized(TreapNode*& node, const int& key);
+//void DeleteOptimized(TreapNode*& node, const int& key);
+
+
+void DeleteOptimized(Treap*& treap, const int& key);
+

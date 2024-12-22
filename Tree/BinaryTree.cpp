@@ -122,32 +122,6 @@ void DeleteBinaryTree(BinaryTree* tree)
 
 BinaryTreeNode* FindInsertionNode(BinaryTree* binaryTree, const int& data)
 {
-	/*BinaryTreeNode* currentNode = binaryTree->Root;
-	while (true)
-	{
-		if (currentNode->Data >= data)
-		{
-			if (currentNode->Right == nullptr)
-			{
-				return currentNode;
-			}
-			else
-			{
-				currentNode = currentNode->Right;
-			}
-		}
-		else
-		{
-			if (currentNode->Left == nullptr)
-			{
-				return currentNode;
-			}
-			else
-			{
-				currentNode = currentNode->Left;
-			}
-		}
-	}*/
 	BinaryTreeNode* currentNode = binaryTree->Root;
 	BinaryTreeNode* parentNode = nullptr;
 
@@ -188,24 +162,6 @@ void AddNode(BinaryTree*& binaryTree, const int& data)
 		}
 	}
 }
-
-//BinaryTreeNode* FindMin(BinaryTreeNode* node)
-//{
-//	while (node && node->Left != nullptr)
-//	{
-//		node = node->Left;
-//	}
-//	return node;
-//}
-//
-//BinaryTreeNode* FindMax(BinaryTreeNode* node)
-//{
-//	while (node && node->Right != nullptr)
-//	{
-//		node = node->Right;
-//	}
-//	return node;
-//}
 
 BinaryTreeNode* FindMin(BinaryTree* binaryTree)
 {
@@ -260,101 +216,106 @@ BinaryTreeNode* Search(BinaryTree* binaryTree, const int& data)
 	return nullptr;
 }
 
-void ChangeParentPointer(BinaryTreeNode* node, BinaryTreeNode* changeNode)
+void ChangeParentPointer(BinaryTree*& binaryTree, BinaryTreeNode* node,
+	BinaryTreeNode* changeNode)
 {
+	if (node == nullptr)
+	{
+		return; 
+	}
+
 	BinaryTreeNode* parent = node->Parent;
-	if (parent->Left == nullptr)
+	if (parent == nullptr)
 	{
-		parent->Right = changeNode;
-		return;
+		if (changeNode)
+		{
+			binaryTree->Root = changeNode;
+			changeNode->Parent = nullptr;
+		}
+		return; 
 	}
-	if (parent->Right == nullptr)
+
+	if (parent->Left == node)
 	{
-		parent->Left = changeNode;
-		return;
-	}
-	if (parent->Left->Data == node->Data)
-	{
-		parent->Left = changeNode;
+		parent->Left = changeNode; 
 	}
 	else
 	{
 		parent->Right = changeNode;
 	}
+	if (changeNode != nullptr)
+	{
+		changeNode->Parent = parent;
+	}
 }
 
-
-BinaryTreeNode* GetSmallestRightNode(BinaryTree* binaryTree, BinaryTreeNode* startNode)
+BinaryTreeNode* GetSmallestRightNode(BinaryTree* binaryTree,
+	BinaryTreeNode* startNode)
 {
 	if (startNode->Right == nullptr)
 	{
-		return binaryTree->Root;
+		return nullptr;
 	}
 	BinaryTreeNode* currentNode = startNode->Right;
-	while (true)
+	while (currentNode->Left != nullptr)
 	{
-		if (currentNode->Left == nullptr)
-		{
-			return currentNode;
-		}
 		currentNode = currentNode->Left;
 	}
+	return currentNode;
 }
 
-
-bool DeleteNode(BinaryTree*& binaryTree, const int& data)
+void DeleteNode(BinaryTree*& binaryTree, const int& data)
 {
 	BinaryTreeNode* deleteNode = Search(binaryTree, data);
 
 	if (deleteNode == nullptr)
 	{
-		return false;
+		return;
 	}
-	if (deleteNode == binaryTree->Root && binaryTree->Root->Left == nullptr
-		&& binaryTree->Root->Right == nullptr)
+	if (deleteNode == binaryTree->Root && deleteNode->Left == nullptr
+		&& deleteNode->Right == nullptr)
 	{
 		delete binaryTree->Root;
 		binaryTree->Root = nullptr;
-		return true;
+		return;
 	}
 	if (deleteNode->Left == nullptr && deleteNode->Right == nullptr)
 	{
-		ChangeParentPointer(deleteNode, nullptr);
+		ChangeParentPointer(binaryTree, deleteNode, nullptr);
 		delete deleteNode;
-		return true;
+		return;
 	}
-	else if ((deleteNode->Left != nullptr && deleteNode->Right == nullptr)
-		 || (deleteNode->Left == nullptr && deleteNode->Right != nullptr))
+	else if (deleteNode->Left != nullptr && deleteNode->Right == nullptr)
 	{
-		if (deleteNode->Left != nullptr)
-		{
-			ChangeParentPointer(deleteNode, deleteNode->Left);
-		}
-		else
-		{
-			ChangeParentPointer(deleteNode, deleteNode->Right);
-		}
-		return true;
+		ChangeParentPointer(binaryTree, deleteNode, deleteNode->Left);
+		delete deleteNode;
+		return;
+	}
+	else if (deleteNode->Left == nullptr && deleteNode->Right != nullptr)
+	{
+		ChangeParentPointer(binaryTree, deleteNode, deleteNode->Right);
+		delete deleteNode;
+		return;
 	}
 	else
 	{
-		BinaryTreeNode* smallestRightNode = 
+		BinaryTreeNode* smallestRightNode =
 			GetSmallestRightNode(binaryTree, deleteNode);
 		if (smallestRightNode->Right == nullptr)
 		{
 			deleteNode->Data = smallestRightNode->Data;
-			ChangeParentPointer(smallestRightNode, nullptr);
+			ChangeParentPointer(binaryTree, smallestRightNode, nullptr);
 			delete smallestRightNode;
 		}
 		else
 		{
-			ChangeParentPointer(smallestRightNode, smallestRightNode->Right);
+			ChangeParentPointer(binaryTree, smallestRightNode,
+				smallestRightNode->Right);
 			deleteNode->Data = smallestRightNode->Data;
 			smallestRightNode->Right->Parent = smallestRightNode->Parent;
 			delete smallestRightNode;
 		}
-		return true;
+		return;
 	}
 }
-
 

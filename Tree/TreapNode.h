@@ -15,33 +15,33 @@ struct TreapNode
     /// \brief A pointer to the right child
     TreapNode* Right;
 
-    /// \brief Constructor to initialize a treap node with default values
-    TreapNode()
-    {
-        Key = 0;
-        Priority = 0;
-        Left = nullptr;
-        Right = nullptr;
-    }
+    ///// \brief Constructor to initialize a treap node with default values
+    //TreapNode()
+    //{
+    //    Key = 0;
+    //    Priority = 0;
+    //    Left = nullptr;
+    //    Right = nullptr;
+    //}
 
-    /// \brief Constructor to initialize a treap node with specified key and priority
-    /// \param key The key to set for the node
-    /// \param priority The priority to set for the node
-    TreapNode(const int& key, const int& priority)
-    {
-        Key = key;
-        Priority = priority;
-        Left = nullptr;
-        Right = nullptr;
-    }
+    ///// \brief Constructor to initialize a treap node with specified key and priority
+    ///// \param key The key to set for the node
+    ///// \param priority The priority to set for the node
+    //TreapNode(const int& key, const int& priority)
+    //{
+    //    Key = key;
+    //    Priority = priority;
+    //    Left = nullptr;
+    //    Right = nullptr;
+    //}
 };
-
-/// \brief Creates a new treap node with default values
-/// \return A pointer to the newly created treap node
-TreapNode* CreateTreapNode();
+//
+///// \brief Creates a new treap node with default values
+///// \return A pointer to the newly created treap node
+//TreapNode* CreateTreapNode();
 
 /// \brief Creates a new treap node with specified key and priority
 /// \param key The key to set for the node
 /// \param priority The priority to set for the node
 /// \return A pointer to the newly created treap node
-TreapNode* CreateTreapNode(const int& key, const int& priority);
+TreapNode* CreateTreapNode(const int& key);

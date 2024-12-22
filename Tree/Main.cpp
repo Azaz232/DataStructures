@@ -86,41 +86,49 @@ void BinaryTreeController()
             int intChoice = stoi(choice);
             switch (intChoice)
             {
-                /*case 1:
+                case 1:
                 {
                     int data = GetInput("Enter the value to insert to "
                         "the binary tree: ");
-                    AddNode(binaryTree->Root, data);
+                    AddNode(binaryTree, data);
                     break;
                 }
                 case 2:
                 {
                     int data = GetInput("Node to delete from the tree: ");
-                    DeleteNode(binaryTree->Root, data);
-                    break;
+                    if (!Search(binaryTree, data))
+                    {
+                        cout << "Theres no node with this value\n";
+                        break;
+                    }
+                    else
+                    {
+                        DeleteNode(binaryTree, data);
+                        break;
+                    }
                 }
                 case 3:
                 {
                     int key = GetInput("Enter the key of the node to "
                         "search: ");
-                    if (Search(binaryTree->Root, key) == nullptr)
+                    if (Search(binaryTree, key) == nullptr)
                     {
                         cout << "\nNo node found \n";
                     }
                     else
                     {
-                        cout << "\nNode" << 
-                            Search(binaryTree->Root, key)->Data << " found";
-                            
+                        cout << "\nNode " <<
+                            Search(binaryTree, key)->Data << " found";
+
                     }
                     break;
                 }
                 case 4:
                 {
-                    if (FindMin(binaryTree->Root) != nullptr)
+                    if (FindMin(binaryTree) != nullptr)
                     {
-                        cout << "Min value in the tree: " << 
-                            FindMin(binaryTree->Root)->Data;
+                        cout << "Min value in the tree: " <<
+                            FindMin(binaryTree)->Data;
                     }
                     else
                     {
@@ -130,10 +138,10 @@ void BinaryTreeController()
                 }
                 case 5:
                 {
-                    if (FindMax(binaryTree->Root) != nullptr)
+                    if (FindMax(binaryTree) != nullptr)
                     {
-                        cout << "Max value in the tree: " << 
-                            FindMax(binaryTree->Root)->Data;
+                        cout << "Max value in the tree: " <<
+                            FindMax(binaryTree)->Data;
                     }
                     else
                     {
@@ -145,78 +153,7 @@ void BinaryTreeController()
                 {
                     cout << "Invalid choice. Please try again.\n" << endl;
                     break;
-                }*/
-            case 1:
-            {
-                int data = GetInput("Enter the value to insert to "
-                    "the binary tree: ");
-                AddNode(binaryTree, data);
-                break;
-            }
-            case 2:
-            {
-                /*int data = GetInput("Node to delete from the tree: ");
-                if (DeleteNode(binaryTree, data))
-                {
-                    DeleteNode(binaryTree, data);
-                    break;
                 }
-                else
-                {
-                    cout << "Theres no such node  \n";
-                    break;
-                }*/
-                int data = GetInput("Node to delete from the tree: ");
-                DeleteNode(binaryTree, data);
-                break;
-            }
-            case 3:
-            {
-                int key = GetInput("Enter the key of the node to "
-                    "search: ");
-                if (Search(binaryTree, key) == nullptr)
-                {
-                    cout << "\nNo node found \n";
-                }
-                else
-                {
-                    cout << "\nNode " <<
-                        Search(binaryTree, key)->Data << " found";
-
-                }
-                break;
-            }
-            case 4:
-            {
-                if (FindMin(binaryTree) != nullptr)
-                {
-                    cout << "Min value in the tree: " <<
-                        FindMin(binaryTree)->Data;
-                }
-                else
-                {
-                    cout << "Tree is empty \n";
-                }
-                break;
-            }
-            case 5:
-            {
-                if (FindMax(binaryTree) != nullptr)
-                {
-                    cout << "Max value in the tree: " <<
-                        FindMax(binaryTree)->Data;
-                }
-                else
-                {
-                    cout << "Tree is empty \n";
-                }
-                break;
-            }
-            default:
-            {
-                cout << "Invalid choice. Please try again.\n" << endl;
-                break;
-            }
             }
         }
         else
@@ -238,8 +175,8 @@ void TreapController()
         PrintTreap(treap->Root, 0, 5);
 
         cout << "\tSelect the action you want to do: \n";
-        cout << "1. Insert a node to the treap \n";
-        cout << "2. Search node \n";
+        cout << "1. Search node \n";
+        cout << "2. Insert a node to the treap \n";
         cout << "3. Insert a node to the treap(optimized) \n";
         cout << "4. Delete a node from the treap \n";
         cout << "5. Delete a node from the treap(optimized) \n";
@@ -256,7 +193,7 @@ void TreapController()
             int intChoice = stoi(choice);
             switch(intChoice)
             {
-                case 1:
+                /*case 1:
                 {
                     int key = GetInput("Enter the key of the node: ");
                     int priority = GetInput("Enter the priority of the node: ");
@@ -299,7 +236,7 @@ void TreapController()
                 {
                     cout << "Invalid choice. Please try again.\n" << endl;
                     break;
-                }
+                }*/
                 /*case 6:
                 {
                     int key = GetInput("Enter the key to split the treap: ");
@@ -316,6 +253,51 @@ void TreapController()
 
                     PrintTreap(Merge(left, right), 0, 5);
                 }*/
+
+                case 1:
+                {
+                    int key = GetInput("Enter the key to find at the treap: ");
+                    if (Search(treap, key) == nullptr)
+                    {
+                        cout << "No node found in the treap\n";
+                    }
+                    else
+                    {
+                        cout << "Node with key " << Search(treap, key)->Key << 
+                            " found in the treap";
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    int key = GetInput("Enter the key of the node: ");
+                    Insert(treap, key);
+                    break;
+                }
+                case 3:
+                {
+                    int key = GetInput("Enter the key of the node: ");
+                    InsertOptimized(treap, key);
+                    break;
+                }
+                case 4:
+                {
+                    int key = GetInput("Enter the key to delete: ");
+                    Delete(treap, key);
+                    break;
+                }
+                case 5:
+                {
+                    int key = GetInput("Enter the key to delete: ");
+                    DeleteOptimized(treap, key);
+                    break;
+                }
+                default:
+                {
+                    cout << "Invalid choice. Please try again.\n" << endl;
+                    break;
+                }
+
             }
         }
         else
