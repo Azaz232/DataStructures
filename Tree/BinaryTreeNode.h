@@ -15,7 +15,6 @@ struct BinaryTreeNode
     /// \brief A pointer to the parent node
     BinaryTreeNode* Parent;
 
-
     /// \brief Constructor to initialize the binary tree node with default values
     BinaryTreeNode()
     {

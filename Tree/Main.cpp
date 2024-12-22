@@ -86,7 +86,7 @@ void BinaryTreeController()
             int intChoice = stoi(choice);
             switch (intChoice)
             {
-                case 1:
+                /*case 1:
                 {
                     int data = GetInput("Enter the value to insert to "
                         "the binary tree: ");
@@ -145,7 +145,78 @@ void BinaryTreeController()
                 {
                     cout << "Invalid choice. Please try again.\n" << endl;
                     break;
+                }*/
+            case 1:
+            {
+                int data = GetInput("Enter the value to insert to "
+                    "the binary tree: ");
+                AddNode(binaryTree, data);
+                break;
+            }
+            case 2:
+            {
+                /*int data = GetInput("Node to delete from the tree: ");
+                if (DeleteNode(binaryTree, data))
+                {
+                    DeleteNode(binaryTree, data);
+                    break;
                 }
+                else
+                {
+                    cout << "Theres no such node  \n";
+                    break;
+                }*/
+                int data = GetInput("Node to delete from the tree: ");
+                DeleteNode(binaryTree, data);
+                break;
+            }
+            case 3:
+            {
+                int key = GetInput("Enter the key of the node to "
+                    "search: ");
+                if (Search(binaryTree, key) == nullptr)
+                {
+                    cout << "\nNo node found \n";
+                }
+                else
+                {
+                    cout << "\nNode " <<
+                        Search(binaryTree, key)->Data << " found";
+
+                }
+                break;
+            }
+            case 4:
+            {
+                if (FindMin(binaryTree) != nullptr)
+                {
+                    cout << "Min value in the tree: " <<
+                        FindMin(binaryTree)->Data;
+                }
+                else
+                {
+                    cout << "Tree is empty \n";
+                }
+                break;
+            }
+            case 5:
+            {
+                if (FindMax(binaryTree) != nullptr)
+                {
+                    cout << "Max value in the tree: " <<
+                        FindMax(binaryTree)->Data;
+                }
+                else
+                {
+                    cout << "Tree is empty \n";
+                }
+                break;
+            }
+            default:
+            {
+                cout << "Invalid choice. Please try again.\n" << endl;
+                break;
+            }
             }
         }
         else
