@@ -193,67 +193,6 @@ void TreapController()
             int intChoice = stoi(choice);
             switch(intChoice)
             {
-                /*case 1:
-                {
-                    int key = GetInput("Enter the key of the node: ");
-                    int priority = GetInput("Enter the priority of the node: ");
-                    Insert(treap->Root, key, priority);
-                    break;
-                }
-                case 2:
-                {
-                    int key = GetInput("Enter the key to find at the treap: ");
-                    if (Search(treap->Root, key) == nullptr)
-                    {
-                        cout << "No node found in the treap\n";
-                    }
-                    else
-                    {
-                        cout << "Node with key " << Search(treap->Root, key)->Key << " found in the treap";
-                    }
-                    break;
-                }
-                case 3:
-                {
-                    int key = GetInput("Enter the key of the node: ");
-                    int priority = GetInput("Enter the priority of the node: ");
-                    InsertOptimized(treap->Root, key, priority);
-                    break;
-                }
-                case 4:
-                {
-                    int key = GetInput("Enter the key to delete: ");
-                    Delete(treap->Root, key);
-                    break;
-                }
-                case 5:
-                {
-                    int key = GetInput("Enter the key to delete: ");
-                    DeleteOptimized(treap->Root, key);
-                    break;
-                }
-                default:
-                {
-                    cout << "Invalid choice. Please try again.\n" << endl;
-                    break;
-                }*/
-                /*case 6:
-                {
-                    int key = GetInput("Enter the key to split the treap: ");
-                    TreapNode* left = nullptr;
-                    TreapNode* right = nullptr;
-
-                    Split(treap->Root, key, left, right);
-                    cout << "Left\n";
-                    PrintTreap(left, 0, 5);
-                    cout << endl << endl;
-                    cout << "Right\n";
-                    PrintTreap(right, 0, 5);
-                    cout << endl << endl << endl << endl;
-
-                    PrintTreap(Merge(left, right), 0, 5);
-                }*/
-
                 case 1:
                 {
                     int key = GetInput("Enter the key to find at the treap: ");
@@ -283,13 +222,45 @@ void TreapController()
                 case 4:
                 {
                     int key = GetInput("Enter the key to delete: ");
-                    Delete(treap, key);
-                    break;
+                    if (Search(treap, key) == nullptr)
+                    {
+                        cout << "There is no such node\n";
+                        break;
+                    }
+                    else
+                    {
+                        Delete(treap, key);
+                        break;
+                    }
                 }
                 case 5:
                 {
                     int key = GetInput("Enter the key to delete: ");
-                    DeleteOptimized(treap, key);
+                    if (Search(treap, key) == nullptr)
+                    {
+                        cout << "There is no such node\n";
+                        break;
+                    }
+                    else
+                    {
+                        DeleteOptimized(treap, key);
+                        break;
+                    }
+                }
+                case 6:
+                {
+                    int key = GetInput("Enter the key to split ");
+                    TreapNode* left = nullptr;
+                    TreapNode* right = nullptr;
+                    Split(treap->Root, key, left, right);
+                    /*PrintTreap(left);*/
+
+                    PrintTreap(left, 0, 5);
+
+                    cout << endl << "______________________________________" << endl;
+
+                    PrintTreap(right, 0, 5);
+                    cout << endl << "______________________________________" << endl;
                     break;
                 }
                 default:

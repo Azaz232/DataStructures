@@ -1,13 +1,9 @@
 #include "TreapNode.h"
 #include <iostream>
 
-TreapNode* CreateTreapNode()
-{
-	return new TreapNode;
-}
-
 TreapNode* CreateTreapNode(const int& key)
 {
+	//TODO: nullptr
 	srand(time(0));
 	TreapNode* treapNode = new TreapNode;
 	treapNode->Key = key;

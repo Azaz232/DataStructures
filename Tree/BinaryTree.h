@@ -22,6 +22,11 @@ BinaryTree* CreateBinaryTree();
 /// \param tree A pointer to the binary tree to delete
 void DeleteBinaryTree(BinaryTree* tree);
 
+/// \brief Checks whether the tree is empty or not
+/// \param binaryTree A pointer to the tree root
+/// \return true - empty, false - not empty
+bool IsEmptyTree(BinaryTree* binaryTree);
+
 /// \brief Finds a node at which to insert 
 /// \param binaryTree A pointer to the binary tree 
 /// \param data Data which will be inserted
@@ -55,6 +60,13 @@ BinaryTreeNode* FindMax(BinaryTree* binaryTree);
 /// \param changeNode Node to change places with deletion node 
 void ChangeParentPointer(BinaryTree*& binaryTree, BinaryTreeNode* node,
     BinaryTreeNode* changeNode);
+
+/// \brief Gets the smallest node from thr right sub tree
+/// \param binaryTree A pointer to the tree
+/// \param startNode  Node to delete - starting node
+/// \return A pointer to the smallest node in the right sub-tree
+BinaryTreeNode* GetSmallestRightNode(BinaryTree* binaryTree,
+    BinaryTreeNode* startNode);
 
 /// \brief Deletes a node from the tree by its key
 /// \param node A reference to a pointer to the root node

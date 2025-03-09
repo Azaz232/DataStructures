@@ -4,26 +4,6 @@ Treap* CreateTreap()
 {
 	return new Treap;
 }
-//
-//TreapNode* Search(TreapNode* node, const int& key)
-//{
-//	if (node == nullptr)
-//	{
-//		return nullptr;
-//	}
-//	if (node->Key == key)
-//	{
-//		return node;
-//	}
-//	if (node->Key < key)
-//	{
-//		return Search(node->Right, key);
-//	}
-//	else
-//	{
-//		return Search(node->Left, key);
-//	}
-//}
 
 TreapNode* Search(Treap* treap, const int& key)
 {
@@ -58,13 +38,14 @@ void Split(TreapNode* node, const int& key, TreapNode*& left, TreapNode*& right)
 	}
 	else if (node->Key <= key)
 	{
-		Split(node->Right, key, node->Right, right);
 		left = node;
+		Split(node->Right, key, node->Right, right);
+
 	}
 	else if (node->Key >= key)
 	{
-		Split(node->Left, key, left, node->Left);
 		right = node;
+		Split(node->Left, key, left, node->Left);
 	}
 }
 
@@ -83,7 +64,7 @@ TreapNode* Merge(TreapNode* left, TreapNode* right)
 	return right;
 }
 
-void DeleteTreap(TreapNode* node)
+void DeleteTreap(TreapNode*& node)
 {
 	if (!node) return;
 
@@ -93,18 +74,6 @@ void DeleteTreap(TreapNode* node)
 	delete node;
 	node = nullptr;
 }
-
-//void Insert(TreapNode*& node, const int& key, const int& priority)
-//{
-//	TreapNode* newNode = CreateTreapNode(key, priority);
-//
-//	TreapNode* left = nullptr;
-//	TreapNode* right = nullptr;
-//
-//	Split(node, key, left, right);
-//
-//	node = Merge(Merge(left, newNode), right);
-//}
 
 void Insert(Treap*& treap, const int& key)
 {
@@ -155,56 +124,9 @@ void InsertOptimized(Treap*& treap, const int& key)
 	treap->Root = InsertOptimizedRecursion(treap->Root, key);
 }
 
-//void Delete(TreapNode*& node, const int& key)
-//{
-//	if (!node)
-//	{
-//		return;
-//	}
-//
-//	TreapNode* left = nullptr;
-//	TreapNode* right = nullptr;
-//	TreapNode* middle = nullptr;
-//
-//	Split(node, key - 1, left, middle);
-//	Split(middle, key, middle, right);
-//
-//	if (middle)
-//	{
-//		delete middle;
-//		node = Merge(left, right);
-//	}
-//	else
-//	{
-//		node = Merge(left, middle);
-//	}
-//}
-
-//TreapNode* FindDeleteNode(Treap* treap, const int& key)
-//{
-//	TreapNode* currentNode = treap->Root;
-//	while (currentNode != nullptr)
-//	{
-//		if (key == currentNode->Key)
-//		{
-//			return currentNode; // Node found
-//		}
-//		else if (key < currentNode->Key)
-//		{
-//			currentNode = currentNode->Left; // Move to the left child
-//		}
-//		else
-//		{
-//			currentNode = currentNode->Right; // Move to the right child
-//		}
-//	}
-//	return nullptr; // Node not found
-//}
-
 void Delete(Treap*& treap, const int& key)
 {
 	TreapNode* deleteNode = Search(treap, key);
-	
 	if (deleteNode)
 	{
 		TreapNode* left = nullptr;
@@ -220,28 +142,6 @@ void Delete(Treap*& treap, const int& key)
 		treap->Root = Merge(left, right);
 	}
 }
-
-//void DeleteOptimized(TreapNode*& node, const int& key)
-//{
-//	if (node == nullptr)
-//	{
-//		return;
-//	}
-//	if (node->Key == key)
-//	{
-//		TreapNode* temp = node;
-//		node = Merge(node->Left, node->Right);
-//		delete temp;
-//	}
-//	else if(node->Key < key)
-//	{
-//		DeleteOptimized(node->Right, key);
-//	}
-//	else
-//	{
-//		DeleteOptimized(node->Left, key);
-//	}
-//}
 
 TreapNode* FindParentNode(Treap* treap, const int& key)
 {

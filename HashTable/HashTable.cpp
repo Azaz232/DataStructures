@@ -156,23 +156,6 @@ HashItem* Search(HashTable* hashTable, const string& key)
 	return nullptr;
 }
 
-HashItem* SearchDublicate(HashTable* hashTable, const string& key,
-	const string& value)
-{
-	int hashCode = HashFunction(key, MutuallySimpleNumber(hashTable->Capacity),
-		hashTable->Capacity);
-	HashItem* currentItem = hashTable->Items[hashCode];
-	while (currentItem != nullptr)
-	{
-		if (currentItem->Key == key && currentItem->Value == value)
-		{
-			return currentItem;
-		}
-		currentItem = currentItem->Next;
-	}
-	return nullptr;
-}
-
 void DeleteHashTable(HashTable* hashTable)
 {
 	if (hashTable == nullptr)

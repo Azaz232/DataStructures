@@ -70,23 +70,17 @@ int main()
             int intChoice = stoi(choice);
             switch (intChoice)
             {
-                //Todo: rsdn +
                 case 1:
                 {
                     string key = GetInputString("Enter the key: ");
-                    string value = GetInputString("Enter the value to insert"
-                        " to the hash table : ");
                     if (Search(dictionary->HashTable, key))
                     {
-                        cout << "\n!Such key already exists in the hash "
-                            "table\n";
+                        cout << "!Key already exists in the hash "
+                            "table. Do not add the existing value\n"
+                            "It will not be added\n";
                     }
-                    if (SearchDublicate(dictionary->HashTable, key, value))
-                    {
-                        cout << "\n!These key and value already exist in the"
-                            " hash table you cannot add it\n";
-                        break;
-                    }
+                    string value = GetInputString("Enter the value to insert"
+                        " to the hash table : ");
                     InsertToDictionary(dictionary, key, value);
                     break;
                 }
@@ -120,7 +114,7 @@ int main()
         }
         else
         {
-            cout << "Incorrect input, try again dumbass\n";
+            cout << "Incorrect input, try again\n";
         }
     }
     DeleteDictionary(dictionary);

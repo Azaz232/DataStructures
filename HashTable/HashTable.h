@@ -80,8 +80,3 @@ HashItem* Search(HashTable* hashTable, const string& key);
 /// \brief Clears dynamically allocated space for the hash table
 /// \param hashTable A pointer to the hash table to delete
 void DeleteHashTable(HashTable* hashTable);
-
-
-
-
-HashItem* SearchDublicate(HashTable* hashTable, const string& key, const string& value);
